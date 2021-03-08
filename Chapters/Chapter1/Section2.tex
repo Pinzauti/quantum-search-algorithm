@@ -1,0 +1,34 @@
+\section{Quantum bit}
+The definition of qubit (quantum bit) immediately follow from \hyperref[postulate:1]{postulate 1}:
+\begin{defn}
+A qubit is a system S whose Hilbert space is two-dimensional (i.e. $\text{dim}\mathcal{H}_S = 2$).
+\end{defn}
+Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector.
+\begin{equation}\label{eq:1}
+    \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathcal{C} \quad \abs{a}^2 + \abs{b}^2 = 1
+\end{equation}
+is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
+
+Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition states physically mean? If we measure for example \ref{eq:1} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
+
+According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let's define it's basis:
+\begin{defn}\label{def:computational-basis}
+The orthonormal basis of the two-dimensional Hilbert space describing a qubit is called \emph{computational basis} and it's composed by the states $\ket{0}$ and $\ket{1}$ known as \emph{computational basis states}.
+\end{defn}
+How is a qubit physically made?
+It can be a $1/2$ spin particle, an atomic system whose dynamics is described by two (non degenerate) energy level and so on.
+Whatever we choose to be our physical realization of the qubit we have an hermitian operator associated to the the observable chosen. The computational basis then will be composed by the eigenstates of the hermitian operator associated with the observable, those state (whatever the operator is) will be labelled as $\{\ket{0},\ket{1}\}$ according to the \hyperref[def:computational-basis]{definition}.
+
+Let's try, for example, to use $1/2$ spin particle. We know that the hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ and we are okay with that because it has two eigenstates and two non degenerate eigenvales:
+\marginpar{An example of how a qubit can be physically implemented}
+\begin{align*}
+    &\hat{\sigma}_z \ket{\chi_+} = \ket{\chi_+}  \\
+    &\hat{\sigma}_z \ket{\chi_-} = -\ket{\chi_-}
+\end{align*}
+This eigentates (i.e. the spinors) span a two-dimensional Hilbert space\footnote{Note that this is true in general: every hermitian operator admits eigenstates and those eigenstate form a basis for the Hilbert space where the operator itself is defined \cite[p.100]{Shankar}.} and are then the computational basis.
+\subsection{Quantum register}
+What if 
+\begin{defn}
+A quantum register is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^N$.
+\end{defn}
+\subsection{Entanglement}

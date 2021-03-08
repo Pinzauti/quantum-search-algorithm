@@ -1,0 +1,42 @@
+\section{The postulates}
+We shall start with a general overview of the basic postulates of quantum mechanics. These postulates provide a connection between the physical world and the mathematical formalism of quantum mechanics upon quantum computation is built on.
+\begin{postulate}\label{postulate:1}
+Associated to any isolated physical system is a Hilbert space $\mathcal{H}$ known as the \emph{state space} of the
+system. The system is completely described by its \emph{state vector} $\ket{\psi(t)}$, which is a unit
+vector in the system’s state space.
+\end{postulate}
+\begin{postulate}
+The time-evolution of the state of a closed quantum system is described by a
+unitary operator. That is, for any evolution of the closed system there exists
+a unitary operator $\widehat{U}(t_2,t_1)$ such that if the initial state of the system is $\ket{\psi(t_1)}$ then
+after the evolution the state of the system will be:
+\begin{equation*}
+    \ket{\psi(t_2)} = \hat{U}(t_2,t_1) \ket{\psi(t_1)} \quad \text{with} \quad \hat{U}^\dagger\hat{U} = \hat{\mathbb{I}}\,.
+\end{equation*}
+\end{postulate}
+\begin{postulate}
+Quantum measurements are described by a collection $\{M_m\}$ of
+measurement operators. These are operators acting on the state space of the
+system being measured. The index $m$ refers to the measurement outcomes that
+may occur in the experiment. If the state of the quantum system is $\ket{\psi(t)}$
+immediately before the measurement then the probability that result m occurs is given by
+\begin{equation*}
+    p(m) = \expval{M^\dagger_m M_m}{\psi}
+\end{equation*}
+and the state of the system after the measurement is
+\begin{equation*}
+    \frac{M_m\ket{\psi}}{\expval{M^\dagger_m M_m}{\psi}}
+\end{equation*}
+The measurement operators satisfy the \emph{completeness equation}
+\begin{equation*}
+    \sum_m M_m^\dagger M_m = \mathbb{I}
+\end{equation*}
+which express the fact that probabilities sum to one: $\sum_n p(m) = \sum_n \expval{M^\dagger_m M_m}{\psi} = 1$.
+\end{postulate}
+\begin{postulate}
+The state space of a composite physical system is the tensor product
+of the state spaces of the component physical systems. If we have systems numbered $1$ through $N$:
+\begin{equation*}
+   \mathcal{H} = \bigotimes_{i=1}^{N}\,\mathcal{H}_i\,.
+\end{equation*}
+\end{postulate}

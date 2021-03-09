@@ -1,7 +1,7 @@
 \section{Quantum bit}
 The definition of qubit (quantum bit) immediately follow from \hyperref[postulate:1]{postulate 1}:
 \begin{defn}
-A qubit is a system S whose Hilbert space is two-dimensional (i.e. $\text{dim}\mathcal{H}_S = 2$).
+A \emph{qubit} is a system S whose Hilbert space is two-dimensional (i.e. $\text{dim}\mathcal{H}_S = 2$).
 \end{defn}
 Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector.
 \begin{equation}\label{eq:1}
@@ -31,7 +31,7 @@ This eigentates (i.e., the spinors) span a two-dimensional Hilbert space and are
 \subsection{Quantum register}
 The definition of quantum register, the quantum analog of the classical register, immediately follows from \hyperref[postulate:4]{postulate 4}:
 \begin{defn}
-A $n$ size quantum register is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^n$.
+A $n$ size \emph{quantum register} is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^n$.
 \end{defn}
 In other words a quantum register is a system comprising multiple qubits.
 
@@ -42,7 +42,36 @@ The simpliest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we defi
 \end{equation*}
 and as expected we have $\text{dim}\mathcal{H}_{QR} = 4$.
 \subsection{Entanglement}
-
+Consider two arbitrary quantum systems $A$ and $B$, with respective Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B.$ The Hilbert space of the composite system is the tensor product: 
+\begin{equation*}
+\mathcal{H}_A \otimes \mathcal{H}_B
+\end{equation*}
+If the first system is in state $\ket{\psi}_A$ and the second in state $\ket{\psi}_B$, the state of the composite system is
+\begin{equation*}
+    \ket{\psi}_A \otimes \ket{\psi}_B
+\end{equation*}
+States of the composite system that can be represented in this form are called \emph{separable states} while
 \begin{defn}
-
+A composite system that can’t be written as a product of states of its component systems is an \emph{entangled state}.
 \end{defn}
+
+\graffito{An example of separable state.}
+
+If we consider two qubits:
+\begin{align*}
+    &\ket{Q_1} = \alpha\ket{0}_1 + \beta\ket{1}_1 \quad \alpha,\beta \in \mathcal{C}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1 \\
+    &\ket{Q_2} = \lambda\ket{0}_2 + \gamma\ket{1}_2 \quad \lambda,\gamma \in \mathcal{C}, \quad \abs{\lambda}^2 + \abs{\gamma}^2 = 1
+\end{align*}
+the overall state of the system is:
+\begin{multline*}
+    \ket{Q_1} \otimes \ket{Q_2} = \alpha \lambda \ket{0}_1 \otimes \ket{0}_2 +  \beta \lambda  \ket{1}_1 \otimes \ket{0}_2 + \\ 
+    \alpha \gamma \ket{0}_1 \otimes \ket{1}_2 + \beta \gamma \ket{1}_1 \otimes \ket{1}_2
+\end{multline*}
+that is a separable state.
+
+\graffito{An example of entangled state.}
+If instead we have:
+\begin{equation*}
+    \ket{\Phi^+} = \frac{\ket{0}_1 \otimes \ket{0}_2 + \ket{1}_1 \otimes \ket{1}_2}{\sqrt{2}}
+\end{equation*}
+we immediately see that this is an entangled state\footnote{It's one of the Bell states, four specific maximally entangled quantum states of two qubits.} as there is no way of writing it in the $\ket{Q_1} \otimes \ket{Q_2}$ way. 

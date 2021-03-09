@@ -3,11 +3,20 @@ A \emph{quantum circuit} is a set of elementary quantum operations, that is a mo
 
 The basic blocks of a quantum circuit are quantum channel, single qubit gates, multiple qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
 \subsection{Quantum channel}
-A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture quantum channels as the cables of our circuit.
+A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 \begin{theorem}
-The unitary operator for an isolated system can be written as $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system.
+There always exist an operator $H$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
-Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. We want our quantum channel to not alter the information but just transmit it, it follows:
+Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. After the evolution the state is still normalized (i.e. still part of Hilbert space):
+\begin{theorem}
+A unitary operator preserves the inner product.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+    \bra{\hat{U}(t)\psi}\ket{\hat{U}(t)\psi} = \expval{\hat{U}^\dagger(t)\hat{U}(t)}{\psi} = \braket{\psi}
+\end{equation*}
+\end{proof}
+We want our quantum channel not to alter the information but just transmit it, it follows:
 \begin{defn}
 A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
 \end{defn}
@@ -18,6 +27,7 @@ If we define $\ket{Q}_\text{in}$ as the input qubit and $\ket{Q}_\text{out}$ as 
 and we know that a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \expval{\mathbb{P}_\omega}{\psi} = p(\omega) \quad \forall \omega\,.$}
 \subsection{Single qubit gates}
 
+\subsubsection{Hadamard gate}
 \begin{equation}
     X = 
     \begin{bmatrix}

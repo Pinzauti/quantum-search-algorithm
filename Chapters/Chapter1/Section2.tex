@@ -8,8 +8,8 @@ Because of \hyperref[postulate:1]{postulate 1} and according to the definition o
     \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathcal{C} \quad \abs{a}^2 + \abs{b}^2 = 1
 \end{equation}
 is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
-\graffito{Main difference between a bit and a qubit.}
 
+\graffito{Main difference between a bit and a qubit.}
 Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \ref{eq:1} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
@@ -20,7 +20,8 @@ How is a qubit physically made?
 It can be a $1/2$ spin particle, an atomic system whose dynamics is described by two (non-degenerate) energy levels and so on.
 Whatever we choose to be our physical realization of the qubit we have an Hermitian operator associated with the observable chosen. The computational basis then will be composed by the eigenstates of the Hermitian operator associated with the observable\footnote{To every Hermitian operator $\Omega$, there exist (at least) a basis consisting of its orthonormal eigenvectors. \cite[p.36]{Shankar}.} , those state (whatever the operator is) will be labelled as $\{\ket{0},\ket{1}\}$ according to the \hyperref[def:computational-basis]{definition}.
 
-Let us use, for example, a $1/2$ spin particle.  \graffito{An example of how a qubit can be physically implemented.} We know that the Hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ and we are okay with that because it has two eigenstates and two non-degenerate eigenvalues: 
+\graffito{An example of how a qubit can be physically implemented.}
+Let us use, for example, a $1/2$ spin particle.  We know that the Hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ and we are okay with that because it has two eigenstates and two non-degenerate eigenvalues: 
 
 \begin{align*}
     &\hat{\sigma}_z \ket{\chi_+} = \ket{\chi_+}  \\
@@ -28,8 +29,20 @@ Let us use, for example, a $1/2$ spin particle.  \graffito{An example of how a q
 \end{align*}
 This eigentates (i.e., the spinors) span a two-dimensional Hilbert space and are then the computational basis.
 \subsection{Quantum register}
-What if 
+The definition of quantum register, the quantum analog of the classical register, immediately follows from \hyperref[postulate:4]{postulate 4}:
 \begin{defn}
-A quantum register is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^N$.
+A $n$ size quantum register is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^n$.
 \end{defn}
+In other words a quantum register is a system comprising multiple qubits.
+
+\graffito{Qauntum register with two qubits.}
+The simpliest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we define the basis of $\mathcal{H}_{Q_1}$ and $\mathcal{H}_{Q_2}$ as $\{\ket{0}_1, \ket{1}_1\}$ and $\{\ket{0}_2, \ket{1}_2\}$ the basis of $H_{QR}$ is 
+\begin{equation*}
+    \{\ket{0}_1 \otimes \ket{0}_2, \ket{1}_1 \otimes \ket{0}_2, \ket{0}_1 \otimes \ket{1}_2, \ket{1}_1 \otimes \ket{1}_2\}\
+\end{equation*}
+and as expected we have $\text{dim}\mathcal{H}_{QR} = 4$.
 \subsection{Entanglement}
+
+\begin{defn}
+
+\end{defn}

@@ -1,5 +1,5 @@
 \section{Quantum bit}
-The definition of qubit (quantum bit) immediately follow from \hyperref[postulate:1]{postulate 1}:
+The definition of qubit (quantum bit) immediately follows from \hyperref[postulate:1]{postulate 1}:
 \begin{defn}
 A \emph{qubit} is a system S whose Hilbert space is two-dimensional (i.e. $\text{dim}\mathcal{H}_S = 2$).
 \end{defn}
@@ -9,7 +9,7 @@ Because of \hyperref[postulate:1]{postulate 1} and according to the definition o
 \end{equation}
 is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
 
-\graffito{Main difference between a bit and a qubit.}
+\graffito{Main difference between bits and a qubits.}
 Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \ref{eq:1} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
@@ -35,8 +35,8 @@ A $n$ size \emph{quantum register} is a system QR  with $\text{dim}\mathcal{H}_{
 \end{defn}
 In other words a quantum register is a system comprising multiple qubits.
 
-\graffito{Qauntum register with two qubits.}
-The simpliest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we define the basis of $\mathcal{H}_{Q_1}$ and $\mathcal{H}_{Q_2}$ as $\{\ket{0}_1, \ket{1}_1\}$ and $\{\ket{0}_2, \ket{1}_2\}$ the basis of $H_{QR}$ is 
+\graffito{Quantum register with two qubits.}
+The simplest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we define the basis of $\mathcal{H}_{Q_1}$ and $\mathcal{H}_{Q_2}$ as $\{\ket{0}_1, \ket{1}_1\}$ and $\{\ket{0}_2, \ket{1}_2\}$ the basis of $H_{QR}$ is 
 \begin{equation*}
     \{\ket{0}_1 \otimes \ket{0}_2, \ket{1}_1 \otimes \ket{0}_2, \ket{0}_1 \otimes \ket{1}_2, \ket{1}_1 \otimes \ket{1}_2\}\
 \end{equation*}
@@ -59,13 +59,13 @@ A composite system that can’t be written as a product of states of its compone
 
 If we consider two qubits:
 \begin{align*}
-    &\ket{Q_1} = \alpha\ket{0}_1 + \beta\ket{1}_1 \quad \alpha,\beta \in \mathcal{C}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1 \\
-    &\ket{Q_2} = \lambda\ket{0}_2 + \gamma\ket{1}_2 \quad \lambda,\gamma \in \mathcal{C}, \quad \abs{\lambda}^2 + \abs{\gamma}^2 = 1
+    &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathcal{C}, \quad \abs{a}^2 + \abs{b}^2 = 1 \\
+    &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathcal{C}, \quad \abs{c}^2 + \abs{d}^2 = 1
 \end{align*}
 the overall state of the system is:
 \begin{multline*}
-    \ket{Q_1} \otimes \ket{Q_2} = \alpha \lambda \ket{0}_1 \otimes \ket{0}_2 +  \beta \lambda  \ket{1}_1 \otimes \ket{0}_2 + \\ 
-    \alpha \gamma \ket{0}_1 \otimes \ket{1}_2 + \beta \gamma \ket{1}_1 \otimes \ket{1}_2
+    \ket{Q_1} \otimes \ket{Q_2} = ac \ket{0}_1 \otimes \ket{0}_2 +  bc  \ket{1}_1 \otimes \ket{0}_2 + \\ 
+    ad \ket{0}_1 \otimes \ket{1}_2 + bd \ket{1}_1 \otimes \ket{1}_2
 \end{multline*}
 that is a separable state.
 

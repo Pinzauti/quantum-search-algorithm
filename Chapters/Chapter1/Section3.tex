@@ -1,5 +1,44 @@
 \section{Quantum circuits}
-\subsection{Transmission channels}
+A \emph{quantum circuit} is a set of elementary quantum operations, that is a model for quantum computation in which a computation is a sequence of quantum gates.
+
+The basic blocks of a quantum circuit are quantum channel, single qubit gates, multiple qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
+\subsection{Quantum channel}
+A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture quantum channels as the cables of our circuit.
+\begin{theorem}
+The unitary operator for an isolated system can be written as $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system.
+\end{theorem}
+Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. We want our quantum channel to not alter the information but just transmit it, it follows:
+\begin{defn}
+A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
+\end{defn}
+If we define $\ket{Q}_\text{in}$ as the input qubit and $\ket{Q}_\text{out}$ as the output we find the following evolution due to the quantum channel:
+\begin{equation*}
+    \ket{Q}_\text{out} = \hat{U}(\tau_\text{ch}) \ket{Q}_\text{in} = e^{-i\tau_\text{ch}\hat{\mathbb{I}}} \ket{Q}_\text{in} = e^{-i\tau_\text{ch}} \ket{Q}_\text{in}
+\end{equation*}
+and we know that a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \expval{\mathbb{P}_\omega}{\psi} = p(\omega) \quad \forall \omega\,.$}
 \subsection{Single qubit gates}
+
+\begin{equation}
+    X = 
+    \begin{bmatrix}
+    0 & 1\\
+    1 & 0
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    Z = 
+    \begin{bmatrix}
+    1 & 0\\
+    0 & -1
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    H = \frac{1}{\sqrt{2}}
+    \begin{bmatrix}
+    1 & 1\\
+    1 & -1
+    \end{bmatrix}
+\end{equation}
 \subsection{Multiple qubit gates}
+ricordati la qeustione del disantenglamento
 \subsection{Measurement}\label{sec:measurement}

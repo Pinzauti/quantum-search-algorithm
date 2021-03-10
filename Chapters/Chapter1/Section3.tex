@@ -3,12 +3,12 @@ A \emph{quantum circuit} is a set of elementary quantum operations, that is a mo
 
 The basic blocks of a quantum circuit are quantum channels, single qubit gates, multiple qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
 
-It follows from the \hyperref[postulate:2]{second postulate} that the state evolution due to the various elements of the circuit is described by a unitary operator. Let us review some of its proprieties: 
+It follows from the \hyperref[postulate:2]{second postulate} that the dynamical evolution of the qubit due to the various elements of the circuit is described by a unitary operator. Let us review some of its proprieties: 
 \begin{theorem}\label{theorem:1}
 There always exist an operator $\hat{H}$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
 
-Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. After the evolution the state is still normalized (i.e. still part of Hilbert space):
+Note that the the Hamiltonian being Hermitian guarantees the unitarity of our operator. After the evolution the norm of the input is conserved (which implies that the state is still valid according to \hyperref[postulate:1]{postulate 1}) since:
 \begin{theorem}
 A unitary operator preserves the inner product.
 \end{theorem}
@@ -17,21 +17,21 @@ A unitary operator preserves the inner product.
     \bra{\hat{U}(t)\psi}\ket{\hat{U}(t)\psi} = \expval{\hat{U}^\dagger(t)\hat{U}(t)}{\psi} = \braket{\psi}
 \end{equation*}
 \end{proof}
-Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand how the state evolves after each gate (or channel):
+
+\graffito{State evolution in the circuit.}
+Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dinamical evolution of the qubit (or the quantum register) due to each gate (or channel):
 \begin{equation}\label{eq:evolution}
      \ket{Q}_\text{out} = \hat{U}(\tau) \ket{Q}_\text{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\text{in}
 \end{equation}
 where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit Hamiltonian and $\ket{Q}_\text{in}$, $\ket{Q}_\text{out}$ are the input and the output.
 \subsection{Quantum channel}
-A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
-
+A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one single qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 \begin{figure}
 \centering
 \includegraphics[width=0.2\textwidth]{example-image-a}
 \caption{Ideal quantum channel.}
 \label{fig:quantum-channel}
 \end{figure}
-
 A quantum channel should not to alter the information but just transmit it, thus, from \ref{eq:evolution}:
 \begin{defn}
 A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
@@ -45,30 +45,46 @@ as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}=
 Such condition can be otbained in two ways:
 \begin{description}
 \item[Flying qubit] When the object embodying the qubit can physically move. Its repositioning should be shielded enough to avoid any interaction that could result in $H \neq \mathbb{I}$.
-\item[Still qubit] If the object embodying the qubit can't move an auxiliary medium it's necessary, with the interaction in the medium properly designed so as to guarantee that condition \ref{eq:quantum-channel} be fulfilled.
+\item[Still qubit] If the object embodying the qubit cannot move an auxiliary medium is necessary, with the interaction in the medium properly designed so as to guarantee that condition \ref{eq:quantum-channel} be fulfilled.
 \end{description}
+
 \subsection{Single qubit gates}
+Quantum gates are not meant to only transport information like quantum channels, their dynamical evolution is supposed to alter the state.
+Single qubit gates $G1$ perform an operation on one single qubit. $G1$ represents the dynamical evolution of the qubit and can therefore be realized by properly designing an Hamiltonian according to:
+\begin{equation*}
+   \ket{Q}_\text{out} = G1\ket{Q}_\text{in} = e^{-iH_Q \tau_{G1}/\hbar}\ket{Q}_\text{in}\,.
+\end{equation*}
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{example-image-a}
 \caption{One qubit gate}
 \label{fig:single-qubit-gate}
 \end{figure}
-\subsubsection{Hadamard gate}
-\begin{equation}
+
+
+Once a computational basis has been chosen we can indicate the corresponding matrix representation for the basis vectors:
+\begin{equation}\label{eq:basis-matrix}
+    \ket{0} \rightarrow \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \ket{1} \rightarrow \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{equation}
+
+Among the most important gates there are \emph{Pauli X gate} and \emph{Pauli Z gate}, their matrix representation according to \ref{eq:basis-matrix} is\footnote{Their matrix representation equals Pauli matrices, hence the name.}:
+\begin{align*}
     X = 
     \begin{bmatrix}
     0 & 1\\
     1 & 0
-    \end{bmatrix}
-\end{equation}
-\begin{equation}
-    Z = 
+    \end{bmatrix} 
+    \quad &
+     Z = 
     \begin{bmatrix}
     1 & 0\\
     0 & -1
-    \end{bmatrix}
-\end{equation}
+    \end{bmatrix}\,.
+\end{align*}
+The Pauli-X gate is the quantum equivalent of the NOT gate for classical computers. 
+The Pauli-Z gate leaves the basis state $\ket{0}$  unchanged and maps $\ket{1}$  to $-\ket{1}$. Due to this nature, it is sometimes called phase-flip. 
+\subsubsection{Hadamard gate}
+
 \begin{equation}
     H = \frac{1}{\sqrt{2}}
     \begin{bmatrix}
@@ -76,6 +92,17 @@ Such condition can be otbained in two ways:
     1 & -1
     \end{bmatrix}
 \end{equation}
+\begin{equation}
+\left\{
+\begin{aligned}
+    & H\ket{0} = \frac{\ket{0} + \ket{1}}{\sqrt{2}} \\
+    & H\ket{1} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}
+\end{aligned}
+\right.
+\end{equation}
+\graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
+Let us consider an example.
+
 \subsection{Multiple qubit gates}
 ricordati la qeustione del disantenglamento
 \subsection{Measurement}\label{sec:measurement}

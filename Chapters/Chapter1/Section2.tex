@@ -3,14 +3,14 @@ The definition of qubit (quantum bit) immediately follows from \hyperref[postula
 \begin{defn}
 A \emph{qubit} is a physical system Q whose Hilbert space $\mathcal{H}_Q$ has dimension $\text{dim}\mathcal{H}_S = 2$.
 \end{defn}
-Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector.
-\begin{equation}\label{eq:1}
+Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector
+\begin{equation}\label{eq:linear-combination}
     \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathbb{C} \quad \abs{a}^2 + \abs{b}^2 = 1
 \end{equation}
 is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
 
 \graffito{Main difference between bits and a qubits.}
-Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \ref{eq:1} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
+Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \ref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
 \begin{defn}\label{def:computational-basis}
@@ -25,7 +25,7 @@ Let us use, for example, a $1/2$ spin particle.  We know that the Hermitian oper
 
 \begin{align*}
     &\hat{\sigma}_z \ket{\chi_+} = \ket{\chi_+}  \\
-    &\hat{\sigma}_z \ket{\chi_-} = -\ket{\chi_-}
+    &\hat{\sigma}_z \ket{\chi_-} = -\ket{\chi_-}\,.
 \end{align*}
 This eigentates (i.e., the spinors) span a two-dimensional Hilbert space and can be choosen as the computational basis.
 \subsection{Quantum register}
@@ -46,9 +46,9 @@ Consider two arbitrary quantum systems $A$ and $B$, with respective Hilbert spac
 \begin{equation*}
 \mathcal{H}_A \otimes \mathcal{H}_B
 \end{equation*}
-If the first system is in state $\ket{\psi}_A$ and the second in state $\ket{\psi}_B$, the state of the composite system is
+if the first system is in state $\ket{\psi}_A$ and the second in state $\ket{\psi}_B$, the state of the composite system is
 \begin{equation*}
-    \ket{\psi}_A \otimes \ket{\psi}_B
+    \ket{\psi}_A \otimes \ket{\psi}_B\,.
 \end{equation*}
 States of the composite system that can be represented in this form are called \emph{separable states} while
 \begin{defn}

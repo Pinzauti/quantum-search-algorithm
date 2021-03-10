@@ -1,12 +1,13 @@
 \section{Quantum circuits}
 A \emph{quantum circuit} is a set of elementary quantum operations, that is a model for quantum computation in which a computation is a sequence of quantum gates.
 
-The basic blocks of a quantum circuit are quantum channel, single qubit gates, multiple qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
-\subsection{Quantum channel}
-A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
-\begin{theorem}
+The basic blocks of a quantum circuit are quantum channels, single qubit gates, multiple qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
+
+It follows from the \hyperref[postulate:2]{second postulate} that the state evolution due to the various elements of the circuit is described by a unitary operator. Let us review some of its proprieties: 
+\begin{theorem}\label{theorem:1}
 There always exist an operator $\hat{H}$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
+
 Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. After the evolution the state is still normalized (i.e. still part of Hilbert space):
 \begin{theorem}
 A unitary operator preserves the inner product.
@@ -16,17 +17,43 @@ A unitary operator preserves the inner product.
     \bra{\hat{U}(t)\psi}\ket{\hat{U}(t)\psi} = \expval{\hat{U}^\dagger(t)\hat{U}(t)}{\psi} = \braket{\psi}
 \end{equation*}
 \end{proof}
-We want our quantum channel not to alter the information but just transmit it, it follows:
+Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand how the state evolves after each gate (or channel):
+\begin{equation}\label{eq:evolution}
+     \ket{Q}_\text{out} = \hat{U}(\tau) \ket{Q}_\text{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\text{in}
+\end{equation}
+where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit Hamiltonian and $\ket{Q}_\text{in}$, $\ket{Q}_\text{out}$ are the input and the output.
+\subsection{Quantum channel}
+A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.2\textwidth]{example-image-a}
+\caption{Ideal quantum channel.}
+\label{fig:quantum-channel}
+\end{figure}
+
+A quantum channel should not to alter the information but just transmit it, thus, from \ref{eq:evolution}:
 \begin{defn}
 A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
 \end{defn}
-If we define $\ket{Q}_\text{in}$ as the input qubit and $\ket{Q}_\text{out}$ as the output we find the following evolution due to the quantum channel:
-\begin{equation*}
-    \ket{Q}_\text{out} = \hat{U}(\tau_\text{ch}) \ket{Q}_\text{in} = e^{-i\tau_\text{ch}\hat{\mathbb{I}}} \ket{Q}_\text{in} = e^{-i\tau_\text{ch}} \ket{Q}_\text{in}
-\end{equation*}
-and we know that a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \expval{\mathbb{P}_\omega}{\psi} = p(\omega) \quad \forall \omega\,.$}
-\subsection{Single qubit gates}
+The evolution due to the quantum channel can be readily built:
+\begin{equation}\label{eq:quantum-channel}
+    \ket{Q}_\text{out} = \hat{U}(\tau_\text{ch}) \ket{Q}_\text{in} = e^{-i\tau_\text{ch}\hat{\mathbb{I}}} \ket{Q}_\text{in} = e^{-i\tau_\text{ch}/\hbar} \ket{Q}_\text{in}
+\end{equation}
+as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \expval{\mathbb{P}_\omega}{\psi} = p(\omega) \quad \forall \omega\,.$}
 
+Such condition can be otbained in two ways:
+\begin{description}
+\item[Flying qubit] When the object embodying the qubit can physically move. Its repositioning should be shielded enough to avoid any interaction that could result in $H \neq \mathbb{I}$.
+\item[Still qubit] If the object embodying the qubit can't move an auxiliary medium it's necessary, with the interaction in the medium properly designed so as to guarantee that condition \ref{eq:quantum-channel} be fulfilled.
+\end{description}
+\subsection{Single qubit gates}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{example-image-a}
+\caption{One qubit gate}
+\label{fig:single-qubit-gate}
+\end{figure}
 \subsubsection{Hadamard gate}
 \begin{equation}
     X = 

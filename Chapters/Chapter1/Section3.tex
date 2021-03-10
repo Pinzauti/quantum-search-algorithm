@@ -5,7 +5,7 @@ The basic blocks of a quantum circuit are quantum channel, single qubit gates, m
 \subsection{Quantum channel}
 A \emph{quantum channel} is a communication channel which can transmit quantum information that is going to be elaborated by the quantum gates or that is going to be measured. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 \begin{theorem}
-There always exist an operator $H$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
+There always exist an operator $\hat{H}$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
 Note that the the Hamiltonian being hermitian guarantees the unitarity of our operator. After the evolution the state is still normalized (i.e. still part of Hilbert space):
 \begin{theorem}

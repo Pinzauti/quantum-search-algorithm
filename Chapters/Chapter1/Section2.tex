@@ -5,7 +5,7 @@ A \emph{qubit} is a physical system Q whose Hilbert space $\mathcal{H}_Q$ has di
 \end{defn}
 Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector.
 \begin{equation}\label{eq:1}
-    \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathcal{C} \quad \abs{a}^2 + \abs{b}^2 = 1
+    \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathbb{C} \quad \abs{a}^2 + \abs{b}^2 = 1
 \end{equation}
 is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
 
@@ -18,7 +18,7 @@ The orthonormal basis of the two-dimensional Hilbert space describing a qubit is
 \end{defn}
 How is a qubit physically made?
 It can be a $1/2$ spin particle, an atomic system whose dynamics is described by two (non-degenerate) energy levels and so on.
-Whatever we choose to be our physical realization of the qubit we have an Hermitian operator associated with the observable chosen. The computational basis then will be composed by the eigenstates of the Hermitian operator associated with the observable\footnote{To every Hermitian operator $\Omega$, there exist (at least) a basis consisting of its orthonormal eigenvectors. \cite[p.36]{Shankar}.} , those state (whatever the operator is) will be labelled as $\{\ket{0},\ket{1}\}$ according to the \hyperref[def:computational-basis]{definition}.
+Whatever we choose to be our physical realization of the qubit we have an Hermitian operator associated with the observable chosen. The computational basis then will be composed by the eigenstates of the Hermitian operator associated with the observable\footnote{To every Hermitian operator $\Omega$, there exist (at least) a basis consisting of its orthonormal eigenvectors. \cite[p.36]{Shankar}.} , those state (whatever the operator is) will be labelled as $\{\ket{0},\ket{1}\}$ according to \hyperref[def:computational-basis]{definition 2}.
 
 \graffito{An example of how a qubit can be physically implemented.}
 Let us use, for example, a $1/2$ spin particle.  We know that the Hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ and we are okay with that because it has two eigenstates and two non-degenerate eigenvalues: 
@@ -59,8 +59,8 @@ A composite system such that $\ket{QR} \neq \otimes_i \ket{Q_i}$ is an \emph{ent
 
 If we consider two qubits:
 \begin{align*}
-    &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathcal{C}, \quad \abs{a}^2 + \abs{b}^2 = 1 \\
-    &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathcal{C}, \quad \abs{c}^2 + \abs{d}^2 = 1
+    &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathbb{C}, \quad \abs{a}^2 + \abs{b}^2 = 1 \\
+    &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathbb{C}, \quad \abs{c}^2 + \abs{d}^2 = 1
 \end{align*}
 the overall state of the system is:
 \begin{multline*}

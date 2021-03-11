@@ -8,7 +8,7 @@ It follows from the \hyperref[postulate:2]{second postulate} that the dynamical 
 There always exist an operator $\hat{H}$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
 
-Note that the the Hamiltonian being Hermitian guarantees the unitarity of our operator. After the evolution the norm of the input is conserved (which implies that the state is still valid according to \hyperref[postulate:1]{postulate 1}) since:
+Note that the the Hamiltonian being Hermitian guarantees the unitarity of our operator. After the evolution the norm of the input is conserved (which implies that the state is still valid according to \hyperref[postulate:1]{postulate 1}) since
 \begin{theorem}
 A unitary operator preserves the inner product.
 \end{theorem}
@@ -19,7 +19,7 @@ A unitary operator preserves the inner product.
 \end{proof}
 
 \graffito{State evolution in the circuit.}
-Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dinamical evolution of the qubit (or the quantum register) due to each gate (or channel):
+Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dinamical evolution of the qubit (or the quantum register) due to each gate (or channel)
 \begin{equation}\label{eq:evolution}
      \ket{Q}_\textup{out} \equiv \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
 \end{equation}
@@ -75,12 +75,12 @@ Single qubit gates $G_1$ perform an operation on one single qubit. $G_1$ represe
 \end{figure}
 
 
-Once a computational basis has been chosen we can indicate the corresponding matrix representation for the basis vectors:
+Once a computational basis has been chosen we can indicate the corresponding matrix representation for the basis vectors as following
 \begin{equation}\label{eq:basis-matrix}
-    \ket{0} \rightarrow \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \ket{1} \rightarrow \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    \ket{0} \rightarrow \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \ket{1} \rightarrow \begin{pmatrix} 0 \\ 1 \end{pmatrix}\,.
 \end{equation}
 
-Among the most important gates there are \emph{Pauli X gate} and \emph{Pauli Z gate}, their matrix representation according to \ref{eq:basis-matrix} is\footnote{Their matrix representation equals Pauli matrices, hence the name.}:
+Among the most important gates there are \emph{Pauli X gate} and \emph{Pauli Z gate}, their matrix representation according to \ref{eq:basis-matrix} is\footnote{Their matrix representation equals Pauli matrices, hence the name.}
 \begin{align*}
     X = 
     \begin{bmatrix}
@@ -105,7 +105,7 @@ Finally the \emph{Hadamard gate}. The matrix representation is the following:
     1 & -1
     \end{bmatrix}
 \end{equation}
-Hence from \eqref{eq:basis-matrix} we have the action of the gate on the basis states (and using linear combination of those the action on any qubit):
+Therefore from \eqref{eq:basis-matrix} we have the action of the gate on the basis states (and using linear combination of those the action on any qubit):
 \begin{equation}
 \left\{
 \begin{aligned}
@@ -117,7 +117,7 @@ Hence from \eqref{eq:basis-matrix} we have the action of the gate on the basis s
 This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\bra{1}$ or $\ket{0}$). Therefore is often the first step of quantum algorithms as we are going to discuss in \ref{sec:the-algorithm}.
 
 \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
-Let us consider an example of a possibile physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$. Thus the Hamiltonian representing the interaction is:
+Let us consider an example of a possibile physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$. Thus the Hamiltonian representing the interaction is
 \begin{equation*}
     \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} = h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
 \end{equation*}
@@ -138,7 +138,7 @@ e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} = \mathbb{I}\cos\theta
 \end{split}
 \end{equation*}
 \end{proof}
-therefore we can write the evolution operator as:
+therefore we can write the evolution operator as
 \begin{equation*}
     \hat{U}(\tau_{G_1}) = e^{-ih\tau_{G_1} \hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n}} = \mathbb{I}\cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} (\hat{\sigma}^x + \hat{\sigma}^z) \sin(h\tau_{G_1})
 \end{equation*}
@@ -161,7 +161,7 @@ Two qubits gates perform an operation on two qubit simultaneously, they are repr
 \begin{equation*}
    \ket{QR}_\textup{out} = G_2\ket{QR}_\textup{in} = e^{-i\hat{H}_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
 \end{equation*}
-where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it's the quantum register Hamiltonian. Note that if the dynamical evolution of the quantum register it's of course unitary, the evolution of the two qubit it's not.
+where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it's the quantum register Hamiltonian. Note that if the dynamical evolution of the quantum register is of course unitary, the evolution of the two qubit is not.
 We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
 \begin{figure}
 \centering
@@ -193,23 +193,13 @@ If we apply the Control-U gate we have
 \end{equation}
 which is an entangled quantum register if $\expval{\hat{U}}{\psi} \neq 0$.
 \subsubsection{C-NOT gate}
-
+Control-U gate with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{example-image-a}
-\caption{C-NOT gate}
+\caption{C-NOT gates}
 \label{fig:controlled-note}
 \end{figure}
-\begin{equation*}
-\left\{
-\begin{aligned}
-\text{CNOT} \ket{0}_c \otimes \ket{0}_t = \ket{0}_c \otimes \ket{0}_t \\
-\text{CNOT} \ket{1}_c \otimes \ket{0}_t = \ket{1}_c \otimes \ket{1}_t \\
-\text{CNOT} \ket{0}_c \otimes \ket{1}_t = \ket{0}_c \otimes \ket{1}_t \\
-\text{CNOT} \ket{1}_c \otimes \ket{1}_t = \ket{1}_c \otimes \ket{0}_t
-\end{aligned}
-\right.
-\end{equation*}
 The action of the CNOT gate can be represented by the matrix
 \begin{equation*}
       \text{CNOT} =  \begin{bmatrix}
@@ -219,5 +209,26 @@ The action of the CNOT gate can be represented by the matrix
     0 & 0 & 1 & 0
     \end{bmatrix} 
 \end{equation*}
+and it follows the action of the gate on the basis states \eqref{eq:basis-matrix}
+\begin{equation*}
+\left\{
+\begin{aligned}
+&\text{CNOT} \ket{0}_c \otimes \ket{0}_t = \ket{0}_c \otimes \ket{0}_t \\
+&\text{CNOT} \ket{1}_c \otimes \ket{0}_t = \ket{1}_c \otimes \ket{1}_t \\
+&\text{CNOT} \ket{0}_c \otimes \ket{1}_t = \ket{0}_c \otimes \ket{1}_t \\
+&\text{CNOT} \ket{1}_c \otimes \ket{1}_t = \ket{1}_c \otimes \ket{0}_t\,.
+\end{aligned}
+\right.
+\end{equation*}
+We see that the effect of the CNOT gate is flipping the second qubit (the target qubit) if and only if the first qubit (the control qubit) is $\ket{1}$.
 \subsubsection{Universal quantum gates}
+We know that in classical computation a small set of gates (i.e. NOR gates or alternatively NAND gates) can be used to compute an arbitrary classical function, those gates are called universal gates, in quantum computation
+\begin{defn}
+A set of gates is said to be universal for quantum computation if any unitary operation may be approximated to arbitrary accuracy by a quantum circuit involving only those gates.
+\end{defn}
+\begin{theorem}
+Single qubit and CNOT gates can be used to implement an arbitrary unitary operation on $n$ qubits,
+and therefore are universal for quantum computation. \cite[191]{NielsenChuang}
+\end{theorem}
+
 \subsection{Measurement}\label{sec:measurement}

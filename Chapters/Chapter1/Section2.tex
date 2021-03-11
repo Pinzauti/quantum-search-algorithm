@@ -1,7 +1,7 @@
 \section{Quantum bit}
 The definition of qubit (quantum bit) immediately follows from \hyperref[postulate:1]{postulate 1}:
 \begin{defn}
-A \emph{qubit} is a physical system Q whose Hilbert space $\mathcal{H}_Q$ has dimension $\text{dim}\mathcal{H}_S = 2$.
+A \emph{qubit} is a physical system Q whose Hilbert space $\mathcal{H}_Q$ has dimension $\dim\mathcal{H}_S = 2$.
 \end{defn}
 Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector
 \begin{equation}\label{eq:linear-combination}
@@ -10,7 +10,7 @@ Because of \hyperref[postulate:1]{postulate 1} and according to the definition o
 is still part of the state space and it still describes the physics of the system. (There is an only constraint: the state has to be normalized as we will discuss in \ref{sec:measurement}, such a rescaling is possible and will be assumed hereafter.) 
 
 \graffito{Main difference between bits and a qubits.}
-Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \ref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
+Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed in quantum computation also superposition states are perfectly acceptable. What does a superposition state physically mean? If we measure for example \eqref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
 \begin{defn}\label{def:computational-basis}
@@ -31,7 +31,7 @@ This eigentates (i.e., the spinors) span a two-dimensional Hilbert space and can
 \subsection{Quantum register}
 The definition of quantum register, the quantum analog of the classical register, immediately follows from \hyperref[postulate:4]{postulate 4}:
 \begin{defn}
-A $n$ size \emph{quantum register} is a system QR  with $\text{dim}\mathcal{H}_{QR} = 2^n$.
+A $n$ size \emph{quantum register} is a system QR  with $\dim\mathcal{H}_{QR} = 2^n$.
 \end{defn}
 In other words a quantum register is a system comprising multiple qubits.
 
@@ -40,7 +40,7 @@ The simplest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we defin
 \begin{equation*}
     \{\ket{0}_1 \otimes \ket{0}_2, \ket{1}_1 \otimes \ket{0}_2, \ket{0}_1 \otimes \ket{1}_2, \ket{1}_1 \otimes \ket{1}_2\}\
 \end{equation*}
-and as expected we have $\text{dim}\mathcal{H}_{QR} = 4$.
+and as expected we have $\dim\mathcal{H}_{QR} = 4$.
 \subsection{Entanglement}
 Consider two arbitrary quantum systems $A$ and $B$, with respective Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B.$ The Hilbert space of the composite system is the tensor product: 
 \begin{equation*}

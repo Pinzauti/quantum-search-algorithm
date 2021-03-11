@@ -24,7 +24,20 @@ Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2
      \ket{Q}_\textup{out} = \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
 \end{equation}
 where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit Hamiltonian and $\ket{Q}_\textup{in}$, $\ket{Q}_\textup{out}$ are the input and the output.
-\subsection{Quantum channel}
+\begin{theorem}
+For every element of the circuit (gate or transmission channel) acting as $\ket{Q}_\textup{out} = \hat{U} \ket{Q}_\textup{in}$ there exist $\hat{U}^\dagger$ such that $\ket{Q}_\textup{in} = \hat{U}^\dagger \ket{Q}_\textup{out}$
+\end{theorem}
+\begin{proof}
+It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger = \mathbb{I} \rightarrow \hat{U}^{-1} = \hat{U}^\dagger$.
+\end{proof}
+In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
+\begin{figure}
+\centering
+\includegraphics[width=0.2\textwidth]{example-image-a}
+\caption{Classical inverse gate.}
+\label{fig:classical-inverse-gate}
+\end{figure}
+\subsection{Quantum channels}
 A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one single qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channel (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 \begin{figure}
 \centering
@@ -32,7 +45,7 @@ A \emph{quantum channel} represents any process that realizes a point-to-point t
 \caption{Ideal quantum channel.}
 \label{fig:quantum-channel}
 \end{figure}
-A quantum channel should not to alter the information but just transmit it, thus, from \eqref{eq:evolution}:
+A quantum channel should not alter the information but just transmit it, thus, from \eqref{eq:evolution}:
 \begin{defn}
 A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
 \end{defn}
@@ -52,7 +65,7 @@ Such condition can be otbained in two ways:
 Quantum gates are not meant to only transport information like quantum channels, their dynamical evolution is supposed to alter the state.
 Single qubit gates $G_1$ perform an operation on one single qubit. $G_1$ represents the dynamical evolution of the qubit and can therefore be realized by properly designing an Hamiltonian according to \eqref{eq:evolution}:
 \begin{equation*}
-   \ket{Q}_\textup{out} = G_1\ket{Q}_\textup{in} = e^{-iH_Q \tau_{G_1}/\hbar}\ket{Q}_\textup{in}\,.
+   \ket{Q}_\textup{out} = \hat{G}_1\ket{Q}_\textup{in} = e^{-iH_Q \tau_{G_1}/\hbar}\ket{Q}_\textup{in}\,.
 \end{equation*}
 \begin{figure}
 \centering
@@ -119,7 +132,7 @@ e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} = \mathbb{I}\cos\theta
 \begin{proof}
 \begin{equation*}
 \begin{split}
- &e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}}  =  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} )^m = \\
+ e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} &=  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} )^m = \\
     &= \mathbb{I} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m}}{(2m)!}  + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m+1}}{(2m+1)!} = \\
 &= \mathbb{I}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sin\theta
 \end{split}
@@ -144,18 +157,24 @@ and we can compare it with \eqref{eq:hadamard-gate} (we are trying to build an H
 Only with this constraint we have an Hadamard gate, thereafter the time that is physically necessary for the gate to complete its action is not just a
 label, but must be regarded as a genuine physical time, depending on fundamental constants and tunable Hamiltonian parameters.
 \subsection{Two qubit gates}
-Two qubits gates perform an operation on two qubit simultaneously, they are represented by an unitary operator acting on $\mathcal{H}_{QR} = \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}$ such that
+Two qubits gates perform an operation on two qubit simultaneously, they are represented by an unitary operator acting on $\mathcal{H}_{QR} = \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}$ such that, according to \eqref{eq:evolution},
 \begin{equation*}
-   \ket{QR}_\textup{out} = G_2\ket{QR}_\textup{in} = e^{-iH_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
+   \ket{QR}_\textup{out} = \hat{G}_2\ket{QR}_\textup{in} = e^{-iH_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
 \end{equation*}
-where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it's the quantum register Hamiltonian.
-
+where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it's the quantum register Hamiltonian. Note that if the dynamical evolution of the quantum register it's of course unitary, the evolution of the two qubit it's not.
+We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{example-image-a}
 \caption{Two qubit gate}
 \label{fig:two-qubit-gate}
 \end{figure}
+\subsubsection{Controlled gates}
 
-
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{example-image-a}
+\caption{Controlled gate}
+\label{fig:controlled-u}
+\end{figure}
 \subsection{Measurement}\label{sec:measurement}

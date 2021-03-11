@@ -21,7 +21,7 @@ A unitary operator preserves the inner product.
 \graffito{State evolution in the circuit.}
 Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dinamical evolution of the qubit (or the quantum register) due to each gate (or channel):
 \begin{equation}\label{eq:evolution}
-     \ket{Q}_\textup{out} = \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
+     \ket{Q}_\textup{out} \equiv \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
 \end{equation}
 where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit Hamiltonian and $\ket{Q}_\textup{in}$, $\ket{Q}_\textup{out}$ are the input and the output.
 \begin{theorem}
@@ -65,7 +65,7 @@ Such condition can be otbained in two ways:
 Quantum gates are not meant to only transport information like quantum channels, their dynamical evolution is supposed to alter the state.
 Single qubit gates $G_1$ perform an operation on one single qubit. $G_1$ represents the dynamical evolution of the qubit and can therefore be realized by properly designing an Hamiltonian according to \eqref{eq:evolution}:
 \begin{equation*}
-   \ket{Q}_\textup{out} = \hat{G}_1\ket{Q}_\textup{in} = e^{-iH_Q \tau_{G_1}/\hbar}\ket{Q}_\textup{in}\,.
+   \ket{Q}_\textup{out} = G_1\ket{Q}_\textup{in} = e^{-i\hat{H}_Q \tau_{G_1}/\hbar}\ket{Q}_\textup{in}\,.
 \end{equation*}
 \begin{figure}
 \centering
@@ -119,7 +119,7 @@ This gate is fundamental as it creates a superposition state (i.e. a measurement
 \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
 Let us consider an example of a possibile physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$. Thus the Hamiltonian representing the interaction is:
 \begin{equation*}
-    \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \equiv h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}}
+    \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} = h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
 \end{equation*}
 where $\hat{\boldsymbol{S}} = (\hat{S}^x, \hat{S}^y, \hat{S}^z)$ is the spin operator, $\hat{\boldsymbol{\sigma}} = (\hat{\sigma}^x, \hat{\sigma}^y, \hat{\sigma}^z)$ is the Pauli vector, g is the g-factor and $\mu_B$ is the Bohr magneton.
 
@@ -159,7 +159,7 @@ label, but must be regarded as a genuine physical time, depending on fundamental
 \subsection{Two qubit gates}
 Two qubits gates perform an operation on two qubit simultaneously, they are represented by an unitary operator acting on $\mathcal{H}_{QR} = \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}$ such that, according to \eqref{eq:evolution},
 \begin{equation*}
-   \ket{QR}_\textup{out} = \hat{G}_2\ket{QR}_\textup{in} = e^{-iH_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
+   \ket{QR}_\textup{out} = G_2\ket{QR}_\textup{in} = e^{-i\hat{H}_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
 \end{equation*}
 where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it's the quantum register Hamiltonian. Note that if the dynamical evolution of the quantum register it's of course unitary, the evolution of the two qubit it's not.
 We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
@@ -170,11 +170,54 @@ We can readily verify that the matrix representation of those operators is a 4x4
 \label{fig:two-qubit-gate}
 \end{figure}
 \subsubsection{Controlled gates}
-
+Suppose $\hat{U}$ is an arbitrary single qubit unitary operation. A \emph{controlled-
+U} operation is a two-qubit operation with a control and a target qubit. If the control
+qubit is set then $\hat{U}$ is applied to the target qubit, otherwise the target qubit is left alone.
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{example-image-a}
 \caption{Controlled gate}
 \label{fig:controlled-u}
 \end{figure}
+
+\graffito{Entangling gates} 
+Control-U gate that can convert a separable state to an entangled one are called \emph{entangling gates}. Let us make an example, we consider the following quantum register
+
+\begin{equation*}
+    \ket{QR}_\textup{in} = \frac{1}{\sqrt2} (\ket{0} + \ket{1})_c \otimes \ket{\psi}_t
+\end{equation*}
+with $\ket{\psi}$ being the target state and the subscript c indicating the controlled one.
+If we apply the Control-U gate we have
+\begin{equation}
+     \ket{QR}_\textup{out} =\text{CU} \ket{QR}_\textup{in} =  \frac{1}{\sqrt2} \bigl(\ket{0} \otimes \ket{\psi}_t + \ket{1}_c \otimes \hat{U}\ket{\psi}_t\bigr)
+\end{equation}
+which is an entangled quantum register if $\expval{\hat{U}}{\psi} \neq 0$.
+\subsubsection{C-NOT gate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{example-image-a}
+\caption{C-NOT gate}
+\label{fig:controlled-note}
+\end{figure}
+\begin{equation*}
+\left\{
+\begin{aligned}
+\text{CNOT} \ket{0}_c \otimes \ket{0}_t = \ket{0}_c \otimes \ket{0}_t \\
+\text{CNOT} \ket{1}_c \otimes \ket{0}_t = \ket{1}_c \otimes \ket{1}_t \\
+\text{CNOT} \ket{0}_c \otimes \ket{1}_t = \ket{0}_c \otimes \ket{1}_t \\
+\text{CNOT} \ket{1}_c \otimes \ket{1}_t = \ket{1}_c \otimes \ket{0}_t
+\end{aligned}
+\right.
+\end{equation*}
+The action of the CNOT gate can be represented by the matrix
+\begin{equation*}
+      \text{CNOT} =  \begin{bmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+    \end{bmatrix} 
+\end{equation*}
+\subsubsection{Universal quantum gates}
 \subsection{Measurement}\label{sec:measurement}

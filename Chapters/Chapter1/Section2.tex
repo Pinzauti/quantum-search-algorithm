@@ -23,10 +23,10 @@ Whatever we choose to be our physical realization of the qubit we have an Hermit
 \graffito{An example of how a qubit can be physically implemented.}
 Let us use, for example, a $1/2$ spin particle.  We know that the Hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ and we are okay with that because it has two eigenstates and two non-degenerate eigenvalues: 
 
-\begin{align*}
+\begin{align}\label{eq:spin-particle}
     &\hat{\sigma}_z \ket{\chi_+} = \ket{\chi_+}  \\
     &\hat{\sigma}_z \ket{\chi_-} = -\ket{\chi_-}\,.
-\end{align*}
+\end{align}
 This eigentates (i.e., the spinors) span a two-dimensional Hilbert space and can be choosen as the computational basis.
 \subsection{Quantum register}
 The definition of quantum register, the quantum analog of the classical register, immediately follows from \hyperref[postulate:4]{postulate 4}:
@@ -44,7 +44,7 @@ and as expected we have $\text{dim}\mathcal{H}_{QR} = 4$.
 \subsection{Entanglement}
 Consider two arbitrary quantum systems $A$ and $B$, with respective Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B.$ The Hilbert space of the composite system is the tensor product: 
 \begin{equation*}
-\mathcal{H}_A \otimes \mathcal{H}_B
+\mathcal{H}_A \otimes \mathcal{H}_B\,,
 \end{equation*}
 if the first system is in state $\ket{\psi}_A$ and the second in state $\ket{\psi}_B$, the state of the composite system is
 \begin{equation*}

@@ -50,9 +50,9 @@ Such condition can be otbained in two ways:
 
 \subsection{Single qubit gates}
 Quantum gates are not meant to only transport information like quantum channels, their dynamical evolution is supposed to alter the state.
-Single qubit gates $G1$ perform an operation on one single qubit. $G1$ represents the dynamical evolution of the qubit and can therefore be realized by properly designing an Hamiltonian according to:
+Single qubit gates $G_1$ perform an operation on one single qubit. $G_1$ represents the dynamical evolution of the qubit and can therefore be realized by properly designing an Hamiltonian according to \ref{eq:evolution}:
 \begin{equation*}
-   \ket{Q}_\text{out} = G1\ket{Q}_\text{in} = e^{-iH_Q \tau_{G1}/\hbar}\ket{Q}_\text{in}\,.
+   \ket{Q}_\text{out} = G_1\ket{Q}_\text{in} = e^{-iH_Q \tau_{G_1}/\hbar}\ket{Q}_\text{in}\,.
 \end{equation*}
 \begin{figure}
 \centering
@@ -84,14 +84,15 @@ Among the most important gates there are \emph{Pauli X gate} and \emph{Pauli Z g
 The Pauli-X gate is the quantum equivalent of the NOT gate for classical computers. 
 The Pauli-Z gate leaves the basis state $\ket{0}$  unchanged and maps $\ket{1}$  to $-\ket{1}$. Due to this nature, it is sometimes called phase-flip. 
 \subsubsection{Hadamard gate}
-
-\begin{equation}
+Finally the \emph{Hadamard gate}. The matrix representation is the following:
+\begin{equation}\label{eq:hadamard-gate}
     H = \frac{1}{\sqrt{2}}
     \begin{bmatrix}
     1 & 1\\
     1 & -1
     \end{bmatrix}
 \end{equation}
+Hence from \ref{eq:basis-matrix} we have the action of the gate on the basis states (and using linear combination of those the action on any qubit):
 \begin{equation}
 \left\{
 \begin{aligned}
@@ -100,9 +101,51 @@ The Pauli-Z gate leaves the basis state $\ket{0}$  unchanged and maps $\ket{1}$ 
 \end{aligned}
 \right.
 \end{equation}
-\graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
-Let us consider an example.
+This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\bra{1}$ or $\ket{0}$). Therefore is often the first step of quantum algorithms as we are going to discuss in \ref{sec:the-algorithm}.
 
-\subsection{Multiple qubit gates}
+\graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
+Let us consider an example of a possibile physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \ref{eq:spin-particle}. If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$. Thus the Hamiltonian representing the interaction is:
+\begin{equation*}
+    \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \equiv h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}}
+\end{equation*}
+where $\hat{\boldsymbol{S}} = (\hat{S}^x, \hat{S}^y, \hat{S}^z)$ is the spin operator, $\hat{\boldsymbol{\sigma}} = (\hat{\sigma}^x, \hat{\sigma}^y, \hat{\sigma}^z)$ is the Pauli vector, g is the g-factor and $\mu_B$ is the Bohr magneton.
+
+We know that
+\begin{theorem}
+\begin{equation*}
+e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} = \mathbb{I}\cos{\theta} + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sin{\theta}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+    f
+\end{equation*}
+\end{proof}
+therefore we can write the evolution operator as:
+\begin{equation*}
+    \hat{U}(\tau_{G_1}) = e^{-ih\tau_{G_1} \hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n}} = \mathbb{I}\cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} (\hat{\sigma}^x + \hat{\sigma}^z) \sin(h\tau_{G_1})
+\end{equation*}
+and thus its matrix representation is
+\begin{equation*}
+    U(\tau_{G_1}) = 
+    \begin{pmatrix}
+    \cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} \sin(h\tau_{G_1})  & - \frac{i}{\sqrt{2}} \sin(h\tau_{G_1}) \\
+    - \frac{i}{\sqrt{2}} \sin(h\tau_{G_1}) & \cos(h\tau_{G_1}) + \frac{i}{\sqrt{2}} \sin(h\tau_{G_1})
+    \end{pmatrix}
+\end{equation*}
+and we can compare it with \ref{eq:hadamard-gate} (we are trying to build an Hadamard gate) to obtain
+\begin{equation*}
+    \tau_{G_1} = \frac{\pi}{2h}\,.
+\end{equation*}
+Only with this constraint we have an Hadamard gate, thereafter the time that is physically necessary for the gate to complete its action is not just a
+label, but must be regarded as a genuine physical time, depending on fundamental constants and tunable Hamiltonian parameters.
+\subsection{Two qubit gates}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{example-image-a}
+\caption{Two qubit gate}
+\label{fig:two-qubit-gate}
+\end{figure}
 ricordati la qeustione del disantenglamento
+
 \subsection{Measurement}\label{sec:measurement}

@@ -15,25 +15,25 @@ after the evolution the state of the system will be:
 \end{equation*}
 \end{postulate}
 \begin{postulate}\label{postulate:3}
-Quantum measurements are described by a collection $\{M_m\}$ of
+Quantum measurements are described by a collection $\{\hat{M}_m\}$ of
 measurement operators. These are operators acting on the state space of the
 system being measured. The index $m$ refers to the measurement outcomes that
 may occur in the experiment. If the state of the quantum system is $\ket{\psi(t)}$
 immediately before the measurement then the probability that result m occurs is given by
 \begin{equation*}
-    p(m) = \expval{M^\dagger_m M_m}{\psi}
+    p(m) = \expval{\hat{M}^\dagger_m \hat{M}_m}{\psi}
 \end{equation*}
 and the state of the system after the measurement is
 \begin{equation*}
-    \frac{M_m\ket{\psi}}{\expval{M^\dagger_m M_m}{\psi}}\,.
+    \frac{\hat{M}_m\ket{\psi}}{\expval{\hat{M}^\dagger_m \hat{M}_m}{\psi}}\,.
 \end{equation*}
 The measurement operators satisfy the \emph{completeness equation}
 \begin{equation*}
-    \sum_m M_m^\dagger M_m = \mathbb{I}
+    \sum_m \hat{M}_m^\dagger \hat{M}_m = \mathbb{I}
 \end{equation*}
 which express the fact that, if the states are normalized (and that will be always required), probabilities sum to one: 
     \begin{equation}\label{eq:normalization}
-    \sum_n p(m) = \sum_n \expval{M^\dagger_m M_m}{\psi} = \sum_n \braket{\psi} = 1\,.
+    \sum_n p(m) = \sum_n \expval{\hat{M}^\dagger_m \hat{M}_m}{\psi} = \sum_n \braket{\psi} = 1\,.
     \end{equation}
 \end{postulate}
 \begin{postulate}\label{postulate:4}

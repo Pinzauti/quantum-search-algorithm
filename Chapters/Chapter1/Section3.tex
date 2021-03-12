@@ -1,9 +1,9 @@
 \section{Quantum circuits}
 A \emph{quantum circuit} is a set of elementary quantum operations, that is a model for quantum computation in which a computation is a sequence of quantum gates.
 
-The basic blocks of a quantum circuit are quantum channels, single-qubit gates, multiple qubit gates and the measurement operation, which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
+The basic blocks of a quantum circuit are quantum channels, single-qubit gates, two-qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
 
-It follows from the \hyperref[postulate:2]{second postulate} that the dynamical evolution of the qubit due to the various elements of the circuit is described by a unitary operator. Let us review some of its proprieties: 
+It follows from the \hyperref[postulate:2]{second postulate} that the dynamical evolution of the qubit due to the various elements of the circuit (gates and channels) is described by a unitary operator. Let us review some of its proprieties: 
 \begin{theorem}\label{theorem:1}
 There always exist an operator $\hat{H}$ such that $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$ with $\hat{H} = \hat{H}^\dagger$ the Hamiltonian describing the system. \cite[p.145]{Shankar}
 \end{theorem}
@@ -18,17 +18,17 @@ A unitary operator preserves the inner product.
 \end{equation*}
 \end{proof}
 
-\graffito{State evolution in the circuit.}
-Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dynamical evolution of the qubit (or the quantum register) due to each gate (or channel)
+
+Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dynamical evolution of the qubit (or the quantum register) due to each gate (or channel) \graffito{State evolution in the circuit.}
 \begin{equation}\label{eq:evolution}
      \ket{Q}_\textup{out} \equiv \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
 \end{equation}
-where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit Hamiltonian and $\ket{Q}_\textup{in}$, $\ket{Q}_\textup{out}$ are the input and the output.
+where $\tau$ is the time which is physically necessary for the element of the circuit to complete its action, $H_Q$ is the qubit (or quantum register) Hamiltonian and $\ket{Q}_\textup{in}$, $\ket{Q}_\textup{out}$ are the input and output.
 \begin{theorem}
-For every element of the circuit (gate or transmission channel) acting as $\ket{Q}_\textup{out} = \hat{U} \ket{Q}_\textup{in}$ there exist $\hat{U}^\dagger$ such that $\ket{Q}_\textup{in} = \hat{U}^\dagger \ket{Q}_\textup{out}$
+For every element of the circuit (gate or transmission channel) acting as $\ket{Q}_\textup{out} = \hat{U} \ket{Q}_\textup{in}$ there exist $\hat{U}^\dagger$ such that $\ket{Q}_\textup{in} = \hat{U}^\dagger \ket{Q}_\textup{out}$.
 \end{theorem}
 \begin{proof}
-It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger = \mathbb{I} \rightarrow \hat{U}^{-1} = \hat{U}^\dagger$.
+It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger = \mathbb{I} \rightarrow \hat{U}^{-1} = \hat{U}^\dagger$
 \end{proof}
 In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
 \begin{figure}[htb]
@@ -38,16 +38,16 @@ In other words, every operation executed by the circuit is \emph{reversible} and
 \label{fig:classical-inverse-gate}
 \end{figure}
 \subsection{Quantum channels}
-A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one single-qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channels (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.2\textwidth]{example-image-a}
 \caption{Ideal quantum channel.}
 \label{fig:quantum-channel}
 \end{figure}
+A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channels (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 A quantum channel should not alter the information but just transmit it, thus, from \eqref{eq:evolution}:
 \begin{defn}
-A \emph{quantum channel} is an evolution operator with $\mathcal{H}=\mathbb{I}$
+A \emph{quantum channel} is an evolution operator with $\hat{H}=\hat{\mathbb{I}}$.
 \end{defn}
 The evolution due to the quantum channel can be readily built:
 \begin{equation}\label{eq:quantum-channel}
@@ -114,10 +114,10 @@ Therefore from \eqref{eq:basis-matrix} we have the action of the gate on the bas
 \end{aligned}
 \right.
 \end{equation}
-This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\bra{1}$ or $\ket{0}$). Therefore is often the first step of quantum algorithms as we are going to discuss in \ref{sec:the-algorithm}.
+This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\ket{1}$ or $\ket{0}$) therefore is often the first step of quantum algorithms as we are going to see in \ref{sec:the-algorithm}.
 
-\graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.}
-Let us consider an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$. Thus the Hamiltonian representing the interaction is
+
+Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
 \begin{equation*}
     \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} = h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
 \end{equation*}
@@ -138,11 +138,11 @@ e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} = \mathbb{I}\cos\theta
 \end{split}
 \end{equation*}
 \end{proof}
-therefore we can write the evolution operator as
+thus we can write the evolution operator as
 \begin{equation*}
     \hat{U}(\tau_{G_1}) = e^{-ih\tau_{G_1} \hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n}} = \mathbb{I}\cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} (\hat{\sigma}^x + \hat{\sigma}^z) \sin(h\tau_{G_1})
 \end{equation*}
-and thus its matrix representation is
+and its matrix representation is
 \begin{equation*}
     U(\tau_{G_1}) = 
     \begin{pmatrix}
@@ -150,14 +150,14 @@ and thus its matrix representation is
     - \frac{i}{\sqrt{2}} \sin(h\tau_{G_1}) & \cos(h\tau_{G_1}) + \frac{i}{\sqrt{2}} \sin(h\tau_{G_1})
     \end{pmatrix}
 \end{equation*}
-and we can compare it with \eqref{eq:hadamard-gate} (we are trying to build an Hadamard gate) to obtain
+that we can compare with \eqref{eq:hadamard-gate} (we are trying to build an Hadamard gate) to obtain
 \begin{equation*}
     \tau_{G_1} = \frac{\pi}{2h}\,.
 \end{equation*}
 Only with this constraint we have a Hadamard gate, thereafter the time that is physically necessary for the gate to complete its action is not just a
 label, but must be regarded as a genuine physical time, depending on fundamental constants and tunable Hamiltonian parameters.
-\subsection{Two qubit gates}
-Two qubit gates perform an operation on two qubits simultaneously, they are represented by a unitary operator acting on $\mathcal{H}_{QR} = \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}$ such that, according to \eqref{eq:evolution},
+\subsection{Two-qubit gates}
+Two-qubit gates perform an operation on two qubits simultaneously, they are represented by a unitary operator acting on $\mathcal{H}_{QR} = \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}$ such that, according to \eqref{eq:evolution},
 \begin{equation*}
    \ket{QR}_\textup{out} = G_2\ket{QR}_\textup{in} = e^{-i\hat{H}_{QR} \tau_{G_2}/\hbar}\ket{QR}_\textup{in}
 \end{equation*}
@@ -166,7 +166,7 @@ We can readily verify that the matrix representation of those operators is a 4x4
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.2\textwidth]{example-image-a}
-\caption{Two qubit gate}
+\caption{Two-qubit gate}
 \label{fig:two-qubit-gate}
 \end{figure}
 \subsubsection{Controlled gates}
@@ -180,9 +180,9 @@ qubit is set then $\hat{U}$ is applied to the target qubit, otherwise the target
 \label{fig:controlled-u}
 \end{figure}
 
-\graffito{Entangling gates} 
-Control-U gates that can convert a separable state to an entangled one are called \emph{entangling gates}. Let us take an example where we consider the following quantum register
 
+Control-U gates that can convert a separable state to an entangled one are called \emph{entangling gates}. Let us take an example where we consider the following quantum register
+\graffito{Entangling gates} 
 \begin{equation*}
     \ket{QR}_\textup{in} = \frac{1}{\sqrt2} (\ket{0} + \ket{1})_c \otimes \ket{\psi}_t
 \end{equation*}
@@ -243,12 +243,12 @@ Without loss of generality, any unterminated quantum wires (qubits which are not
 \end{figure}
 We have discussed all postulates except \hyperref[postulate:3]{postulate 3} which is the root of this last element of the circuit.
 This postulate is intrinsically probabilistic (as quantum mechanics is) and one could argue that the implementation of deterministic algorithms in something probabilistic is a contradiction in terms.
-That is not the case, let us start defying the features of a quantum circuit in order to be able to execute an algorithm:
+That is not the case, let us start defining the features of a quantum circuit in order to be able to execute an algorithm:
 \begin{itemize}
     \item The input and output of the algorithm should be in a separable state (i.e. not entangled);
     \item the gates of the circuit should not depend on the form of the input, the algorithm has to be a universal process independent of the input;
     \item the input and output of the algorithm should be written in terms of the computational basis\footnote{If the input and/or the output is a quantum register the computational basis is $\eqref{eq:quantum-register-basis}$.} (the results of a measure are the eigenvalues associated to their eigenstates, those eigenstates represent the computational basis of the operator chosen);
-    \item a type of measure of the observable associated with the operator that defines the computational basis should be possible.
+    \item a type of measure of the observable associated with the operator that defines the computational basis should be built.
 \end{itemize}
 
 Those conditions are enough for a quantum circuit to be \emph{consistent} that is with definite inputs and outputs and with an output that guarantees a certain outcome once measured.

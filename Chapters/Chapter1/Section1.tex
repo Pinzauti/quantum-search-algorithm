@@ -6,7 +6,7 @@ system. The system is completely described by its \emph{state vector} $\ket{\psi
 vector in the system’s state space.
 \end{postulate}
 \begin{postulate}\label{postulate:2}
-The time-evolution of the state of a closed quantum system is described by a
+The time evolution of the state of a closed quantum system is described by a
 unitary operator. That is, for any evolution of the closed system there exists
 a unitary operator $\widehat{U}(t_2,t_1)$ such that if the initial state of the system is $\ket{\psi(t_1)}$ then
 after the evolution the state of the system will be:
@@ -14,7 +14,7 @@ after the evolution the state of the system will be:
     \ket{\psi(t_2)} = \hat{U}(t_2,t_1) \ket{\psi(t_1)} \quad \text{with} \quad \hat{U}^\dagger\hat{U} = \hat{\mathbb{I}}\,.
 \end{equation*}
 \end{postulate}
-\begin{postulate}
+\begin{postulate}\label{postulate:3}
 Quantum measurements are described by a collection $\{M_m\}$ of
 measurement operators. These are operators acting on the state space of the
 system being measured. The index $m$ refers to the measurement outcomes that
@@ -31,7 +31,10 @@ The measurement operators satisfy the \emph{completeness equation}
 \begin{equation*}
     \sum_m M_m^\dagger M_m = \mathbb{I}
 \end{equation*}
-which express the fact that probabilities sum to one: $\sum_n p(m) = \sum_n \expval{M^\dagger_m M_m}{\psi} = 1$.
+which express the fact that, if the states are normalized (and that will be always required), probabilities sum to one: 
+    \begin{equation}\label{eq:normalization}
+    \sum_n p(m) = \sum_n \expval{M^\dagger_m M_m}{\psi} = \sum_n \braket{\psi} = 1\,.
+    \end{equation}
 \end{postulate}
 \begin{postulate}\label{postulate:4}
 The state space of a composite physical system is the tensor product

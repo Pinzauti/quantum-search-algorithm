@@ -28,7 +28,7 @@ where $\tau$ is the time which is physically necessary for the element of the ci
 For every element of the circuit (gate or transmission channel) acting as $\ket{Q}_\textup{out} = \hat{U} \ket{Q}_\textup{in}$ there exist $\hat{U}^\dagger$ such that $\ket{Q}_\textup{in} = \hat{U}^\dagger \ket{Q}_\textup{out}$.
 \end{theorem}
 \begin{proof}
-It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger = \mathbb{I} \rightarrow \hat{U}^{-1} = \hat{U}^\dagger$
+It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger = \hat{\mathbb{I}} \rightarrow \hat{U}^{-1} = \hat{U}^\dagger$
 \end{proof}
 In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
 \begin{figure}[htb]
@@ -57,7 +57,7 @@ as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}=
 
 Such condition can be obtained in two ways:
 \begin{description}
-\item[Flying qubit] When the object embodying the qubit can physically move. Its repositioning should be shielded enough to avoid any interaction that could result in $H \neq \mathbb{I}$.
+\item[Flying qubit] When the object embodying the qubit can physically move. Its repositioning should be shielded enough to avoid any interaction that could result in $\hat{H} \neq \hat{\mathbb{I}}$.
 \item[Still qubit] If the object embodying the qubit cannot move an auxiliary medium is necessary, with the interaction in the medium properly designed so as to guarantee that condition \eqref{eq:quantum-channel} be fulfilled.
 \end{description}
 
@@ -117,30 +117,30 @@ Therefore from \eqref{eq:basis-matrix} we have the action of the gate on the bas
 This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\ket{1}$ or $\ket{0}$) therefore is often the first step of quantum algorithms as we are going to see in \ref{sec:the-algorithm}.
 
 
-Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\boldsymbol{B} = B\boldsymbol{n}$ with $\boldsymbol{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
+Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\mathbf{B} = B\mathbf{n}$ with $\mathbf{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
 \begin{equation*}
-    \hat{H} = g\mu_B \boldsymbol{B} \cdot \hat{\boldsymbol{S}} = \frac{gB\mu_B}{2} \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} = h \boldsymbol{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
+    \hat{H} = g\mu_B \mathbf{B} \cdot \hat{\mathbf{S}} = \frac{gB\mu_B}{2} \mathbf{n} \cdot \hat{\boldsymbol{\sigma}} = h \mathbf{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
 \end{equation*}
-where $\hat{\boldsymbol{S}} = (\hat{S}^x, \hat{S}^y, \hat{S}^z)$ is the spin operator, $\hat{\boldsymbol{\sigma}} = (\hat{\sigma}^x, \hat{\sigma}^y, \hat{\sigma}^z)$ is the Pauli vector, g is the g-factor and $\mu_B$ is the Bohr magneton.
+where $\hat{\mathbf{S}} = (\hat{S}^x, \hat{S}^y, \hat{S}^z)$ is the spin operator, $\hat{\boldsymbol{\sigma}} = (\hat{\sigma}^x, \hat{\sigma}^y, \hat{\sigma}^z)$ is the Pauli vector, g is the g-factor and $\mu_B$ is the Bohr magneton.
 
 We know that
 \begin{theorem}
 \begin{equation*}
-e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} = \mathbb{I}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sin\theta
+e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\mathbf{n}}} = \hat{\mathbb{I}}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sin\theta
 \end{equation*}
 \end{theorem}
 \begin{proof}
 \begin{equation*}
 \begin{split}
- e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\boldsymbol{n}}} &=  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} )^m = \\
-    &= \mathbb{I} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m}}{(2m)!}  + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m+1}}{(2m+1)!} = \\
-&= \mathbb{I}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n} \sin\theta
+ e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\mathbf{n}}} &=  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} )^m = \\
+    &= \hat{\mathbb{I}} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m}}{(2m)!}  + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m+1}}{(2m+1)!} = \\
+&= \hat{\mathbb{I}}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sin\theta
 \end{split}
 \end{equation*}
 \end{proof}
 thus we can write the evolution operator as
 \begin{equation*}
-    \hat{U}(\tau_{G_1}) = e^{-ih\tau_{G_1} \hat{\boldsymbol{\sigma}} \cdot \boldsymbol{n}} = \mathbb{I}\cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} (\hat{\sigma}^x + \hat{\sigma}^z) \sin(h\tau_{G_1})
+    \hat{U}(\tau_{G_1}) = e^{-ih\tau_{G_1} \hat{\boldsymbol{\sigma}} \cdot \mathbf{n}} = \hat{\mathbb{I}}\cos(h\tau_{G_1}) - \frac{i}{\sqrt{2}} (\hat{\sigma}^x + \hat{\sigma}^z) \sin(h\tau_{G_1})
 \end{equation*}
 and its matrix representation is
 \begin{equation*}

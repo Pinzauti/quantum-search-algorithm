@@ -5,12 +5,12 @@ A \emph{qubit} is a physical system $Q$ whose Hilbert space $\mathcal{H}_Q$ has 
 \end{defn}
 Because of \hyperref[postulate:1]{postulate 1} and according to the definition of vector space we see that every linear combination of a state vector
 \begin{equation}\label{eq:linear-combination}
-    \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathbb{C} \quad \abs{a}^2 + \abs{b}^2 = 1
+    \bra{\psi} = a \bra{\alpha} + b \bra{\beta} \quad \bra{\alpha},\bra{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathbb{C} \quad \abs*{a}^2 + \abs*{b}^2 = 1
 \end{equation}
 is still part of the state space and it still describes the physics of the system. (There is only a constraint: the state has to be normalized according to \eqref{eq:normalization}, such a rescaling is possible and will be assumed hereafter.) 
 
 
-Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed, in quantum computation also superposition states are perfectly acceptable. \graffito{Main difference between bits and qubits.} What does a superposition state physically mean? If we measure for example \eqref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs{b}^2$.
+Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed, in quantum computation also superposition states are perfectly acceptable. \graffito{Main difference between bits and qubits.} What does a superposition state physically mean? If we measure for example \eqref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs*{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs*{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
 \begin{defn}\label{def:computational-basis}
@@ -35,7 +35,7 @@ These eigenstates (i.e. the spinors) span a two-dimensional Hilbert space and ca
 \subsection{Quantum register}
 The definition of quantum register, quantum analogue of the classical register, immediately follows from \hyperref[postulate:4]{postulate 4}:
 \begin{defn}
-A $n$ size \emph{quantum register} is a system QR  with $\dim\mathcal{H}_{QR} = 2^n$.
+A $n$ size \emph{quantum register} is a system QR with $\dim\mathcal{H}_{QR} = 2^n$.
 \end{defn}
 In other words, a quantum register is a system comprising multiple qubits.
 
@@ -62,8 +62,8 @@ A composite system such that $\ket{QR} \neq \otimes_i \ket{Q_i}$ is an \emph{ent
 If we consider two qubits:
 \graffito{An example of a separable state.}
 \begin{align*}
-    &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathbb{C}, \quad \abs{a}^2 + \abs{b}^2 = 1 \\
-    &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathbb{C}, \quad \abs{c}^2 + \abs{d}^2 = 1
+    &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathbb{C}, \quad \abs*{a}^2 + \abs*{b}^2 = 1 \\
+    &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathbb{C}, \quad \abs*{c}^2 + \abs*{d}^2 = 1
 \end{align*}
 the overall state of the system is:
 \begin{multline*}

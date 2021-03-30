@@ -14,7 +14,7 @@ A unitary operator preserves the inner product.
 \end{theorem}
 \begin{proof}
 \begin{equation*}
-    \bra{\hat{U}(t)\psi}\ket{\hat{U}(t)\psi} = \expval{\hat{U}^\dagger(t)\hat{U}(t)}{\psi} = \braket{\psi}
+    \braket{\hat{U}(t)\psi | \hat{U}(t)\psi} = \braket{ \psi | \hat{U}^\dagger(t)\hat{U}(t) | \psi} = \braket{\psi | \psi}
 \end{equation*}
 \end{proof}
 
@@ -53,7 +53,7 @@ The evolution due to the quantum channel can be readily built:
 \begin{equation}\label{eq:quantum-channel}
     \ket{Q}_\textup{out} = \hat{U}(\tau_\textup{ch}) \ket{Q}_\textup{in} = e^{-i\tau_\textup{ch}\hat{\mathbb{I}}} \ket{Q}_\textup{in} = e^{-i\tau_\textup{ch}/\hbar} \ket{Q}_\textup{in}
 \end{equation}
-as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \expval{\mathbb{P}_\omega}{\psi} = p(\omega) \quad \forall \omega\,.$}
+as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \braket{\psi|\mathbb{P}_\omega|\psi} = p(\omega) \quad \forall \omega\,.$}
 
 Such condition can be obtained in two ways:
 \begin{description}
@@ -126,13 +126,13 @@ where $\hat{\mathbf{S}} = (\hat{S}^x, \hat{S}^y, \hat{S}^z)$ is the spin operato
 We know that
 \begin{theorem}
 \begin{equation*}
-e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\mathbf{n}}} = \hat{\mathbb{I}}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sin\theta
+e^{i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n}\theta} = \hat{\mathbb{I}}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sin\theta
 \end{equation*}
 \end{theorem}
 \begin{proof}
 \begin{equation*}
 \begin{split}
- e^{i\hat{\boldsymbol{\sigma}} \cdot \hat{\mathbf{n}}} &=  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} )^m = \\
+ e^{i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n}\theta} &=  \sum_{m=0}^\infty \frac{(i\theta)^m}{m!} (\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} )^m = \\
     &= \hat{\mathbb{I}} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m}}{(2m)!}  + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sum_{m=0}^\infty (-1)^m \frac{\theta^{2m+1}}{(2m+1)!} = \\
 &= \hat{\mathbb{I}}\cos\theta + i\hat{\boldsymbol{\sigma}} \cdot \mathbf{n} \sin\theta
 \end{split}
@@ -190,7 +190,7 @@ If we apply the Control-U gate we have
 \begin{equation}
      \ket{QR}_\textup{out} =\text{CU} \ket{QR}_\textup{in} =  \frac{1}{\sqrt2} \bigl(\ket{0} \otimes \ket{\psi}_t + \ket{1}_c \otimes \hat{U}\ket{\psi}_t\bigr)
 \end{equation}
-which is an entangled quantum register if $\expval{\hat{U}}{\psi} \neq 0$.
+which is an entangled quantum register if $\braket{\psi|\hat{U}|\psi} \neq 0$.
 \subsubsection{C-NOT gates}
 Control-U gates with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}[htb]
@@ -246,7 +246,7 @@ That is not the case, let us start defining the features of a quantum circuit in
 \begin{itemize}
     \item The input and output of the algorithm should be in a separable state (i.e. not entangled);
     \item the gates of the circuit should not depend on the form of the input, the algorithm has to be a universal process independent of the input;
-    \item the input and output of the algorithm should be written in terms of the computational basis\footnote{If the input and/or the output is a quantum register the computational basis is $\eqref{eq:quantum-register-basis}$.} (the results of a measure are the eigenvalues associated to their eigenstates, those eigenstates represent the computational basis of the operator chosen);
+    \item the input and output of the algorithm should be written in terms of the computational basis\footnote{If the input and/or the output is a quantum register the computational basis is a tensor product like $\eqref{eq:quantum-register-basis}$.} (the results of a measure are the eigenvalues associated to their eigenstates, those eigenstates represent the computational basis of the operator chosen);
     \item a type of measure of the observable associated with the operator that defines the computational basis should be built.
 \end{itemize}
 

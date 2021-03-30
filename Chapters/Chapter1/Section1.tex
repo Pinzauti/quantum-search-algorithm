@@ -21,11 +21,11 @@ system being measured. The index $m$ refers to the measurement outcomes that
 may occur in the experiment. If the state of the quantum system is $\ket{\psi(t)}$
 immediately before the measurement then the probability that result m occurs is given by
 \begin{equation*}
-    p(m) = \expval{\hat{M}^\dagger_m \hat{M}_m}{\psi}
+    p(m) = \braket{ \psi | \hat{M}^\dagger_m \hat{M}_m | \psi}
 \end{equation*}
 and the state of the system after the measurement is
 \begin{equation*}
-    \frac{\hat{M}_m\ket{\psi}}{\expval{\hat{M}^\dagger_m \hat{M}_m}{\psi}}\,.
+    \frac{\hat{M}_m\ket{\psi}}{\braket{\psi | \hat{M}^\dagger_m \hat{M}_m | \psi}}\,.
 \end{equation*}
 The measurement operators satisfy the \emph{completeness equation}
 \begin{equation*}
@@ -33,7 +33,7 @@ The measurement operators satisfy the \emph{completeness equation}
 \end{equation*}
 which express the fact that, if the states are normalized (and that will be always required), probabilities sum to one: 
     \begin{equation}\label{eq:normalization}
-    \sum_n p(m) = \sum_n \expval{\hat{M}^\dagger_m \hat{M}_m}{\psi} = \sum_n \braket{\psi} = 1\,.
+    \sum_n p(m) = \sum_n \braket{ \psi | \hat{M}^\dagger_m \hat{M}_m | \psi} = \sum_n \braket{\psi} = 1\,.
     \end{equation}
 \end{postulate} 
 \begin{postulate}\label{postulate:4}

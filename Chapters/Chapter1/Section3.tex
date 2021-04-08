@@ -244,10 +244,10 @@ We have discussed all postulates except \hyperref[postulate:3]{postulate 3} whic
 This postulate is intrinsically probabilistic (as quantum mechanics is) and one could argue that the implementation of deterministic algorithms in something probabilistic is a contradiction in terms.
 That is not the case, let us start defining the features of a quantum circuit in order to be able to execute an algorithm:
 \begin{itemize}
-    \item The input and output of the algorithm should be in a separable state (i.e. not entangled);
-    \item the gates of the circuit should not depend on the form of the input, the algorithm has to be a universal process independent of the input;
-    \item the input and output of the algorithm should be written in terms of the computational basis\footnote{If the input and/or the output is a quantum register the computational basis is a tensor product like $\eqref{eq:quantum-register-basis}$.} (the results of a measure are the eigenvalues associated to their eigenstates, those eigenstates represent the computational basis of the operator chosen);
-    \item a type of measure of the observable associated with the operator that defines the computational basis should be built.
+    \item The input and output of the algorithm should be in a separable state (i.e. not entangled).
+    \item The gates of the circuit should not depend on the form of the input, the algorithm has to be a universal process independent of the input.
+    \item The input and output of the algorithm should be written in terms of the computational basis\footnote{If the input and/or the output is a quantum register the computational basis is a tensor product like $\eqref{eq:quantum-register-basis}$.} (the results of a measure are the eigenvalues associated to their eigenstates, those eigenstates represent the computational basis of the operator chosen).
+    \item A type of measure of the observable associated with the operator that defines the computational basis should be built.
 \end{itemize}
 
 Those conditions are enough for a quantum circuit to be \emph{consistent} that is with definite inputs and outputs and with an output that guarantees a certain outcome once measured.

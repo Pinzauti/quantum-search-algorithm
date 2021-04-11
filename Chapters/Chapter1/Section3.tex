@@ -39,8 +39,10 @@ In other words, every operation executed by the circuit is \emph{reversible} and
 \end{figure}
 \subsection{Quantum channels}
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\[ \Qcircuit @C=3em @R=1em {
+\lstick{\ket{Q}} & \rstick{\ket{Q}} \qw
+}
+\]
 \caption{Ideal quantum channel.}
 \label{fig:quantum-channel}
 \end{figure}
@@ -67,11 +69,13 @@ Single-qubit gates $G_1$ perform an operation on one single qubit. $G_1$ represe
 \begin{equation*}
    \ket{Q}_\textup{out} = G_1\ket{Q}_\textup{in} = e^{-i\hat{H}_Q \tau_{G_1}/\hbar}\ket{Q}_\textup{in}\,.
 \end{equation*}
+
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
-\caption{One qubit gate}
-\label{fig:single-qubit-gate}
+\[ \Qcircuit {
+     \lstick{\ket{Q}_\textup{in}}  & \gate{G_1} & \rstick{\ket{Q}_\textup{out}} \qw 
+}\]
+\caption{One-qubit gate}
+\label{fig:one-qubit-gate}
 \end{figure}
 
 
@@ -165,7 +169,11 @@ where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its t
 We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\[ \Qcircuit @C=1em @R=1em {
+ \lstick{\ket{Q_1}} & \multigate{1}{G_2} & \rstick{\ket{Q_t}} \qw \\
+ \lstick{\ket{Q_1}} & \ghost{G_2} & \rstick{\ket{Q_t}}  \qw 
+}
+\]
 \caption{Two-qubit gate}
 \label{fig:two-qubit-gate}
 \end{figure}
@@ -174,8 +182,11 @@ Suppose $\hat{U}$ is an arbitrary single-qubit unitary operation. A \emph{contro
 U} operation is a two-qubit operation with a control and a target qubit. If the control
 qubit is set then $\hat{U}$ is applied to the target qubit, otherwise the target qubit is left alone.
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\[ \Qcircuit  {
+\lstick{\ket{Q_t}} & \gate{U} & \rstick{\ket{Q_t}} \qw \\
+\lstick{\ket{Q_c}} & \ctrl{-1} &  \rstick{\ket{Q_c}} \qw
+}
+\]
 \caption{Controlled gate}
 \label{fig:controlled-u}
 \end{figure}
@@ -194,11 +205,14 @@ which is an entangled quantum register if $\braket{\psi|\hat{U}|\psi} \neq 0$.
 \subsubsection{C-NOT gates}
 Control-U gates with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\centerline{\Qcircuit  {
+\lstick{\ket{Q_t}} & \targ & \qw \\
+\lstick{\ket{Q_c}} & \ctrl{-1} &   \qw
+}}
 \caption{C-NOT gates}
 \label{fig:controlled-note}
 \end{figure}
+
 The action of the CNOT gate can be represented by the matrix
 \begin{equation*}
       \text{CNOT} =  \begin{bmatrix}
@@ -235,8 +249,9 @@ and therefore are universal for quantum computation. \cite{NielsenChuang}
 Without loss of generality, any unterminated quantum wires (qubits which are not measured) at the end of a quantum circuit may be assumed to be measured. \cite{Shankar}
 \end{theorem}
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\[ \Qcircuit {
+     & \meter & \qw
+}\]
 \caption{Meter}
 \label{fig:measurement}
 \end{figure}

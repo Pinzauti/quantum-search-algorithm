@@ -33,13 +33,13 @@ It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger
 In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.2\textwidth]{example-image-a}
+\includegraphics[width=0.5\textwidth]{inverse-gate}
 \caption{Classical inverse gate.}
 \label{fig:classical-inverse-gate}
 \end{figure}
 \subsection{Quantum channels}
 \begin{figure}[htb]
-\[ \Qcircuit @C=3em @R=1em {
+\[ \Qcircuit {
 \lstick{\ket{Q}} & \rstick{\ket{Q}} \qw
 }
 \]
@@ -169,9 +169,9 @@ where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its t
 We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
 \begin{figure}[htb]
 \centering
-\[ \Qcircuit @C=1em @R=1em {
- \lstick{\ket{Q_1}} & \multigate{1}{G_2} & \rstick{\ket{Q_t}} \qw \\
- \lstick{\ket{Q_1}} & \ghost{G_2} & \rstick{\ket{Q_t}}  \qw 
+\[ \Qcircuit  {
+ \lstick{\ket{Q}_{1_\textup{in}}} & \multigate{1}{G_2} & \rstick{\ket{Q}_{1_\textup{out}}} \qw \\
+ \lstick{\ket{Q}_{2_\textup{in}}} & \ghost{G_2} & \rstick{\ket{Q}_{2_\textup{out}}}  \qw 
 }
 \]
 \caption{Two-qubit gate}
@@ -183,8 +183,8 @@ U} operation is a two-qubit operation with a control and a target qubit. If the 
 qubit is set then $\hat{U}$ is applied to the target qubit, otherwise the target qubit is left alone.
 \begin{figure}[htb]
 \[ \Qcircuit  {
-\lstick{\ket{Q_t}} & \gate{U} & \rstick{\ket{Q_t}} \qw \\
-\lstick{\ket{Q_c}} & \ctrl{-1} &  \rstick{\ket{Q_c}} \qw
+\lstick{\ket{Q}_{t_\textup{in}}} & \gate{U} & \rstick{\ket{Q}_{t_\textup{in}}} \qw \\
+\lstick{\ket{Q}_{c}} & \ctrl{-1} &  \rstick{\ket{Q}_{c}} \qw
 }
 \]
 \caption{Controlled gate}
@@ -206,8 +206,8 @@ which is an entangled quantum register if $\braket{\psi|\hat{U}|\psi} \neq 0$.
 Control-U gates with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}[htb]
 \centerline{\Qcircuit  {
-\lstick{\ket{Q_t}} & \targ & \qw \\
-\lstick{\ket{Q_c}} & \ctrl{-1} &   \qw
+\lstick{\ket{Q}_{t_\textup{in}}} & \targ & \rstick{\ket{Q}_{t_\textup{in}}} \qw \\
+\lstick{\ket{Q}_{c}} & \ctrl{-1} &  \rstick{\ket{Q}_{c}} \qw
 }}
 \caption{C-NOT gates}
 \label{fig:controlled-note}

@@ -33,7 +33,7 @@ It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger
 In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.5\textwidth]{inverse-gate}
+\includegraphics[width=0.3\textwidth]{inverse-gate}
 \caption{Classical inverse gate.}
 \label{fig:classical-inverse-gate}
 \end{figure}
@@ -168,7 +168,6 @@ Two-qubit gates perform an operation on two qubits simultaneously, they are repr
 where as always $\tau_{G_2}$ is the time that the gate takes to accomplish its task and $H_{QR}$ it is the quantum register Hamiltonian. Note that if the dynamical evolution of the quantum register is of course unitary, the evolution of the two qubits is not.
 We can readily verify that the matrix representation of those operators is a 4x4 matrix as they act on a four-dimensional Hilbert space.
 \begin{figure}[htb]
-\centering
 \[ \Qcircuit  {
  \lstick{\ket{Q}_{1_\textup{in}}} & \multigate{1}{G_2} & \rstick{\ket{Q}_{1_\textup{out}}} \qw \\
  \lstick{\ket{Q}_{2_\textup{in}}} & \ghost{G_2} & \rstick{\ket{Q}_{2_\textup{out}}}  \qw 
@@ -205,10 +204,10 @@ which is an entangled quantum register if $\braket{\psi|\hat{U}|\psi} \neq 0$.
 \subsubsection{C-NOT gates}
 Control-U gates with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}[htb]
-\centerline{\Qcircuit  {
+\[\Qcircuit  {
 \lstick{\ket{Q}_{t_\textup{in}}} & \targ & \rstick{\ket{Q}_{t_\textup{in}}} \qw \\
 \lstick{\ket{Q}_{c}} & \ctrl{-1} &  \rstick{\ket{Q}_{c}} \qw
-}}
+}\]
 \caption{C-NOT gates}
 \label{fig:controlled-note}
 \end{figure}

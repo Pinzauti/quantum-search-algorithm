@@ -182,8 +182,8 @@ U} operation is a two-qubit operation with a control and a target qubit. If the 
 qubit is set then $\hat{U}$ is applied to the target qubit, otherwise the target qubit is left alone.
 \begin{figure}[htb]
 \[ \Qcircuit  {
-\lstick{\ket{Q}_{t_\textup{in}}} & \gate{U} & \rstick{\ket{Q}_{t_\textup{in}}} \qw \\
-\lstick{\ket{Q}_{c}} & \ctrl{-1} &  \rstick{\ket{Q}_{c}} \qw
+\lstick{\ket{Q}_{c}} & \ctrl{1} &  \rstick{\ket{Q}_{c}} \qw \\
+\lstick{\ket{Q}_{t_\textup{in}}} & \gate{U} & \rstick{\ket{Q}_{t_\textup{out}}} \qw
 }
 \]
 \caption{Controlled gate}
@@ -205,8 +205,8 @@ which is an entangled quantum register if $\braket{\psi|\hat{U}|\psi} \neq 0$.
 Control-U gates with $U$ being the NOT operation are said \emph{C-NOT gates}.
 \begin{figure}[htb]
 \[\Qcircuit  {
-\lstick{\ket{Q}_{t_\textup{in}}} & \targ & \rstick{\ket{Q}_{t_\textup{in}}} \qw \\
-\lstick{\ket{Q}_{c}} & \ctrl{-1} &  \rstick{\ket{Q}_{c}} \qw
+\lstick{\ket{Q}_{c}} & \ctrl{1} &  \rstick{\ket{Q}_{c}} \qw \\
+\lstick{\ket{Q}_{t_\textup{in}}} & \targ & \rstick{\ket{Q}_{t_\textup{out}}} \qw 
 }\]
 \caption{C-NOT gates}
 \label{fig:controlled-note}

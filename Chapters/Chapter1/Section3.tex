@@ -33,7 +33,7 @@ It immediately follows from the unitary of the operator $\hat{U} \hat{U}^\dagger
 In other words, every operation executed by the circuit is \emph{reversible} and operation with a different number of inputs and outputs (perfectly acceptable in classical computation, an example in \ref{fig:classical-inverse-gate}) are not possible.
 \begin{figure}[htb]
 \centering
-\begin{circuitikz} \draw
+\begin{circuitikz}[scale = 0.7, transform shape]\draw
 (0,0) node[and port] (myand1) {}
 (2,0) node[and port, xscale=-1] (myand2) {};
 \end{circuitikz}

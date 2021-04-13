@@ -7,7 +7,6 @@
 \usepackage{graphicx} 
     \graphicspath{{Images/}}
 \usepackage{braket, amsmath, amssymb, amsthm, mathtools}
-\usepackage{qcircuit}
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
@@ -18,5 +17,8 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
 
-\usepackage{frontespizio}
-\usepackage{classicthesis}
+\usepackage{frontespizio, classicthesis}
+
+\PassOptionsToPackage{RPvoltages}{circuitikz}
+\usepackage{tikz, circuitikz}
+\usetikzlibrary{quantikz}

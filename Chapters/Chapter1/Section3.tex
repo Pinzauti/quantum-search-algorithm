@@ -47,7 +47,7 @@ In other words, every operation executed by the circuit is \emph{reversible} and
 \lstick{$\ket{Q}$}  & \qw & \qw
 & \rstick{$\ket{Q}$} \qw
 \end{quantikz}
-\caption{Ideal quantum channel.}
+\caption{Ideal quantum channel}
 \label{fig:quantum-channel}
 \end{figure}
 A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channels (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
@@ -124,7 +124,14 @@ Therefore from \eqref{eq:basis-matrix} we have the action of the gate on the bas
 \right.
 \end{equation}
 This gate is fundamental as it creates a superposition state (i.e. a measurement will have equal probabilities to result in $\ket{1}$ or $\ket{0}$) therefore is often the first step of quantum algorithms as we are going to see in \ref{sec:the-algorithm}.
-
+\begin{figure}[htb]
+\centering
+\begin{quantikz}
+\lstick{$\ket{Q}_\textup{in}$} & \gate{H} & \rstick{$\ket{Q}_\textup{out}$} \qw
+\end{quantikz}
+\caption{Hadamard gate}
+\label{fig:hadamard-gate}
+\end{figure}
 
 Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\mathbf{B} = B\mathbf{n}$ with $\mathbf{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
 \begin{equation*}

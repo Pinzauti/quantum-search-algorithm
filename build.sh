@@ -17,13 +17,13 @@ fi
 NETLIFY_CACHE_DIR="$NETLIFY_BUILD_BASE/cache"
 
 TEXLIVE_DIR="$NETLIFY_CACHE_DIR/texlive"
-TEXLIVE_BIN="$TEXLIVE_DIR/2021/bin/x86_64-linux"
+TEXLIVE_BIN="$TEXLIVE_DIR/2020/bin/x86_64-linux"
 
 INSTALL_TL_URL="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
 INSTALL_TL="install-tl-unx.tar.gz"
 INSTALL_TL_SUCCESS="$NETLIFY_CACHE_DIR/install-tl-success"
 
-TEXLIVEONFLY="$TEXLIVE_DIR/2021/texmf-dist/scripts/texliveonfly/texliveonfly.py"
+TEXLIVEONFLY="$TEXLIVE_DIR/2020/texmf-dist/scripts/texliveonfly/texliveonfly.py"
 
 TEXLIVE_PROFILE="\
 selected_scheme scheme-custom
@@ -51,11 +51,10 @@ tlpdbopt_sys_bin /usr/local/bin
 tlpdbopt_sys_info /usr/local/share/info
 tlpdbopt_sys_man /usr/local/share/man
 tlpdbopt_w32_multi_user 1
-TEXDIR $TEXLIVE_DIR/2021
-
+TEXDIR $TEXLIVE_DIR/2020
 TEXMFLOCAL $TEXLIVE_DIR/texmf-local
-TEXMFSYSCONFIG $TEXLIVE_DIR/2021/texmf-config
-TEXMFSYSVAR $TEXLIVE_DIR/2021/texmf-var
+TEXMFSYSCONFIG $TEXLIVE_DIR/2020/texmf-config
+TEXMFSYSVAR $TEXLIVE_DIR/2020/texmf-var
 "
 
 if [ ! -e "$INSTALL_TL_SUCCESS" ]; then
@@ -64,7 +63,8 @@ if [ ! -e "$INSTALL_TL_SUCCESS" ]; then
   curl -L "$INSTALL_TL_URL" | tar xz --one-top-level=itl --strip-components=1
   echo "$TEXLIVE_PROFILE" > texlive.profile
   itl/install-tl --profile=texlive.profile
-  "$TEXLIVE_BIN/tlmgr" update -all
+  "$TEXLIVE_BIN/tlmgr" install latexmk 
+  "$TEXLIVE_BIN/tlmgr" install biblatex
   echo "[$0] Installed TeX Live."
 
   touch "$INSTALL_TL_SUCCESS"

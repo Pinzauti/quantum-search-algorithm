@@ -63,8 +63,7 @@ if [ ! -e "$INSTALL_TL_SUCCESS" ]; then
   curl -L "$INSTALL_TL_URL" | tar xz --one-top-level=itl --strip-components=1
   echo "$TEXLIVE_PROFILE" > texlive.profile
   itl/install-tl --profile=texlive.profile
-  "$TEXLIVE_BIN/tlmgr" install latexmk 
-  "$TEXLIVE_BIN/tlmgr" install biblatex
+  "$TEXLIVE_BIN/tlmgr" install latexmk
   echo "[$0] Installed TeX Live."
 
   touch "$INSTALL_TL_SUCCESS"
@@ -74,7 +73,7 @@ fi
 
 export PATH="$TEXLIVE_BIN:$PATH"
 
-python "$TEXLIVEONFLY" -c latexmk -a "-g -pdf -synctex=1 -interaction=nonstopmode" "$@"
+python "$TEXLIVEONFLY" -c latexmk -a "-g -pdf -synctex=1" "$@"
 
 mkdir -p dist
 cp *.pdf dist

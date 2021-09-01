@@ -17,13 +17,11 @@ fi
 NETLIFY_CACHE_DIR="$NETLIFY_BUILD_BASE/cache"
 
 TEXLIVE_DIR="$NETLIFY_CACHE_DIR/texlive"
-TEXLIVE_BIN="$TEXLIVE_DIR/2020/bin/x86_64-linux"
+TEXLIVE_BIN="$TEXLIVE_DIR/2021/bin/x86_64-linux"
 
 INSTALL_TL_URL="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
 INSTALL_TL="install-tl-unx.tar.gz"
 INSTALL_TL_SUCCESS="$NETLIFY_CACHE_DIR/install-tl-success"
-
-TEXLIVEONFLY="$TEXLIVE_DIR/2020/texmf-dist/scripts/texliveonfly/texliveonfly.py"
 
 TEXLIVE_PROFILE="\
 selected_scheme scheme-custom
@@ -51,10 +49,10 @@ tlpdbopt_sys_bin /usr/local/bin
 tlpdbopt_sys_info /usr/local/share/info
 tlpdbopt_sys_man /usr/local/share/man
 tlpdbopt_w32_multi_user 1
-TEXDIR $TEXLIVE_DIR/2020
+TEXDIR $TEXLIVE_DIR/2021
 TEXMFLOCAL $TEXLIVE_DIR/texmf-local
-TEXMFSYSCONFIG $TEXLIVE_DIR/2020/texmf-config
-TEXMFSYSVAR $TEXLIVE_DIR/2020/texmf-var
+TEXMFSYSCONFIG $TEXLIVE_DIR/2021/texmf-config
+TEXMFSYSVAR $TEXLIVE_DIR/2021/texmf-var
 "
 
 if [ ! -e "$INSTALL_TL_SUCCESS" ]; then
@@ -63,7 +61,7 @@ if [ ! -e "$INSTALL_TL_SUCCESS" ]; then
   curl -L "$INSTALL_TL_URL" | tar xz --one-top-level=itl --strip-components=1
   echo "$TEXLIVE_PROFILE" > texlive.profile
   itl/install-tl --profile=texlive.profile
-  "$TEXLIVE_BIN/tlmgr" install scheme-full
+  "$TEXLIVE_BIN/tlmgr" install latexmk biblatex braket amsmath amssymb amsthm mathtools frontespizio classicthesis graphicx tikz circuitikz koma-script
   echo "[$0] Installed TeX Live."
 
   touch "$INSTALL_TL_SUCCESS"
@@ -72,8 +70,6 @@ else
 fi
 
 export PATH="$TEXLIVE_BIN:$PATH"
-
-python "$TEXLIVEONFLY" -c latexmk -a "-g -pdf -synctex=1 -interaction=nonstopmode" "$@"
 
 mkdir -p dist
 cp *.pdf dist

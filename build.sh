@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if [ "$#" -eq 0 ]; then
-  echo "usage: bash $0 config.tex" >&2
+  echo "usage: bash $0 main.tex" >&2
   exit 1
 fi
 

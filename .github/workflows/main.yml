@@ -21,4 +21,4 @@ jobs:
           git checkout -b gh-pages
           git add main.pdf
           git commit -m "[github actions] deploy"
-          git push origin gh-pages
+          git push -u origin gh-pages

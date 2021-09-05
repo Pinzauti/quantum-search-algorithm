@@ -13,6 +13,9 @@ jobs:
           
       - name: Upload
         run: |
+          git config --global user.email "francescopinzauti@gmail.com"
+          git config --global user.name "Francesco Pinzauti"
           git add main.pdf
+          git checkout -b gh-pages
           git commit -m "[github actions] deploy"
           git push

@@ -13,12 +13,10 @@ jobs:
             main.tex
             main-frn.tex
             main.tex
-            
-      - name: Upload
-        run: |
-          git config --global user.email "francescopinzauti@gmail.com"
-          git config --global user.name "Francesco Pinzauti"
-          git checkout -b gh-pages
-          git add main.pdf
-          git commit -m "[github actions] deploy"
-          git push -u origin gh-pages
+      - name: Upload to Netlify       
+        uses: MrFlynn/upload-to-netlify-action@v2
+        with:
+          source-file: "main.pdf"
+          destination-path: "/quantum-search-algorithm.pdf"
+          site-name: quantum-search-algorithm
+          netlify-token: ${{ secrets.NETLIFY_TOKEN }}

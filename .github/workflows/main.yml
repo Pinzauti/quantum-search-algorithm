@@ -20,4 +20,4 @@ jobs:
           git config --global user.name "Francesco Pinzauti"
           git add main.pdf
           git commit -m "[github actions] deploy"
-          git push gh-pages
+          git push origin gh-pages

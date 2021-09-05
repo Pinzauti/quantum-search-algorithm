@@ -12,7 +12,8 @@ jobs:
           root_file: |
             main.tex
             main-frn.tex
-          
+            main.tex
+            
       - name: Upload
         run: |
           git config --global user.email "francescopinzauti@gmail.com"

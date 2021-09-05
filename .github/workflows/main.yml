@@ -15,7 +15,6 @@ jobs:
             main.tex
             main-frn.tex
             main.tex
-            main.tex
             
       - name: Upload to Netlify       
         uses: MrFlynn/upload-to-netlify-action@v2

@@ -10,7 +10,6 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
-            main.tex
             main-frn.tex
             main.tex
             
@@ -18,6 +17,6 @@ jobs:
         run: |
           git config --global user.email "francescopinzauti@gmail.com"
           git config --global user.name "Francesco Pinzauti"
-          git add main-frn.pdf
+          git add main.pdf
           git commit -m "[github actions] deploy"
           git push

@@ -16,7 +16,7 @@ jobs:
       - name: Upload to Netlify       
         uses: MrFlynn/upload-to-netlify-action@v2
         with:
-          source-file: "main.pdf"
+          source-file: "main-frn.pdf"
           destination-path: "/quantum-search-algorithm.pdf"
           site-name: quantum-search-algorithm
           netlify-token: ${{ secrets.NETLIFY_TOKEN }}

@@ -11,9 +11,24 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
+            main-frn.tex
                  
       - name: Upload to Netlify       
+        uses: MrFlynn/upload-to-netlify-action@v2
+        with:
+          source-file: "main-frn.pdf"
+          destination-path: "/main-frn.pdf"
+          site-name: quantum-search-algorithm
+          netlify-token: ${{ secrets.NETLIFY_TOKEN }}
+          
+      - name: Compile LaTeX documen
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+                 
+      - name: Upload to Netlif      
         uses: MrFlynn/upload-to-netlify-action@v2
         with:
           source-file: "main.pdf"

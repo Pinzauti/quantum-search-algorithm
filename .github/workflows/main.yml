@@ -16,18 +16,10 @@ jobs:
             main-frn.tex
             main.tex
 
-      - name: Upload to Netlify       
-        uses: MrFlynn/upload-to-netlify-action@v2
-        with:
-          source-file: "main-frn.pdf"
-          destination-path: "/main-frn.pdf"
-          site-name: quantum-search-algorithm
-          netlify-token: ${{ secrets.NETLIFY_TOKEN }}
-                 
-      - name: Upload to Netlif      
+      - name: Upload to Netlify     
         uses: MrFlynn/upload-to-netlify-action@v2
         with:
           source-file: "main.pdf"
-          destination-path: "/quantum-search-algorithm.pdf"
+          destination-path: "/main.pdf"
           site-name: quantum-search-algorithm
           netlify-token: ${{ secrets.NETLIFY_TOKEN }}

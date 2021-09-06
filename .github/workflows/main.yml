@@ -11,15 +11,12 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
+          pre_compile: "tlmgr update --self && tlmgr update --all"
           root_file: |
             main.tex
             main-frn.tex
+            main.tex
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: main.tex
-          
       - name: Upload to Netlify     
         uses: MrFlynn/upload-to-netlify-action@v2
         with:

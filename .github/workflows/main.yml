@@ -14,8 +14,8 @@ jobs:
           root_file: |
             main.tex
             main-frn.tex
-            main.tex    
-            
+            main.tex
+
       - name: Upload to Netlify     
         uses: MrFlynn/upload-to-netlify-action@v2
         with:

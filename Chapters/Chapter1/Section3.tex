@@ -1,5 +1,5 @@
 \section{Quantum circuits}
-A \emph{quantum circuit} is a set of elementary quantum operations, that is a model for quantum computation in which a computation is a sequence of quantum gates.
+A \emph{quantum circuit} is a set of elementary quantum operations, that is a model for quantum computation in which a computation is a sequence of quantum gates\footnote{The anaolgy with the classical gates is only conceptual, unlike classical computer data is not sent into the gate but the gate is instead a operation applied to all the machine.}.
 
 The basic blocks of a quantum circuit are quantum channels, single-qubit gates, two-qubit gates and the measurement operation which allow us to retrieve the result of the algorithm implemented in the circuit. We shall analyze each component in the following sections.
 
@@ -50,7 +50,7 @@ In other words, every operation executed by the circuit is \emph{reversible} and
 \caption{Ideal quantum channel}
 \label{fig:quantum-channel}
 \end{figure}
-A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information. We are going to describe memoryless quantum channels (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
+A \emph{quantum channel} represents any process that realizes a point-to-point transfer of the quantum information embodied into the state of one qubit $\ket{Q}$. We can picture a quantum channel as a pipeline intended to carry quantum information\footnote{Time proceeds from left to right, wires represent qubits.}. We are going to describe memoryless quantum channels (i.e. the output of a channel at a given time depends only upon the corresponding input and not any previous ones).
 A quantum channel should not alter the information but just transmit it, thus, from \eqref{eq:evolution}:
 \begin{defn}
 A \emph{quantum channel} is an evolution operator with $\hat{H}=\hat{\mathbb{I}}$.
@@ -59,7 +59,7 @@ The evolution due to the quantum channel can be readily built:
 \begin{equation}\label{eq:quantum-channel}
     \ket{Q}_\textup{out} = \hat{U}(\tau_\textup{ch}) \ket{Q}_\textup{in} = e^{-i\tau_\textup{ch}\hat{\mathbb{I}}} \ket{Q}_\textup{in} = e^{-i\tau_\textup{ch}/\hbar} \ket{Q}_\textup{in}
 \end{equation}
-as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \braket{\psi|\mathbb{P}_\omega|\psi} = p(\omega) \quad \forall \omega\,.$}
+as a phase factor does not change the state of the qubit.\footnote{$\ket{\psi} = \ket{\psi'}= \ket{\psi}e^{i\phi}$ since the probability of measuring a specific eigenvalue $\omega$ does not change: $p'(\omega) = \bra{\psi e^{-i\phi}}\mathbb{P}_\omega\ket{\psi e^{i\phi}} = \braket{\psi|\mathbb{P}_\omega|\psi} = p(\omega) \quad \forall \omega\,.$}
 
 Such condition can be obtained in two ways:
 \begin{description}

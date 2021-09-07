@@ -3,10 +3,9 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    steps:
-    
+    steps: 
       - name: Set up Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  
         
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
@@ -15,13 +14,13 @@ jobs:
           root_file: |
             main.tex
             main-frn.tex
-            main.tex
+            main.tex    
             
       - name: Upload to Netlify     
         uses: MrFlynn/upload-to-netlify-action@v2
         with:
           source-file: "main.pdf"
-          destination-path: "/main.pdf"
+          destination-path: "/thesis.pdf"
           site-name: quantum-search-algorithm
           netlify-token: ${{ secrets.NETLIFY_TOKEN }}
           

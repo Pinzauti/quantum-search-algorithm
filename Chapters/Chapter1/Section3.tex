@@ -19,7 +19,7 @@ A unitary operator preserves the inner product.
 \end{proof}
 
 
-Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dynamical evolution of the qubit (or the quantum register) due to each gate (or channel) \graffito{State evolution in the circuit.}
+Thanks to \hyperref[theorem:1]{theorem 1} and \hyperref[postulate:2]{postulate 2} we are able to understand the dynamical evolution of the qubit (or the quantum register) due to each gate (or channel) \marginpar{State evolution in the circuit.}
 \begin{equation}\label{eq:evolution}
      \ket{Q}_\textup{out} \equiv \hat{U}(\tau) \ket{Q}_\textup{in} = e^{-i\tau\hat{H}_Q/\hbar} \ket{Q}_\textup{in}
 \end{equation}
@@ -133,7 +133,7 @@ This gate is fundamental as it creates a superposition state (i.e. a measurement
 \label{fig:hadamard-gate}
 \end{figure}
 
-Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \graffito{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\mathbf{B} = B\mathbf{n}$ with $\mathbf{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
+Let us take an example of a possible physical implementation. Suppose the qubit being implemented by a $1/2$ spin particle according to \eqref{eq:spin-particle}. \marginpar{Hadamard gate realized trough a spin particle interacting in a magnetic field.} If the particle interact with a magnetic field $\mathbf{B} = B\mathbf{n}$ with $\mathbf{n} = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$ the Hamiltonian representing the interaction is
 \begin{equation*}
     \hat{H} = g\mu_B \mathbf{B} \cdot \hat{\mathbf{S}} = \frac{gB\mu_B}{2} \mathbf{n} \cdot \hat{\boldsymbol{\sigma}} = h \mathbf{n} \cdot \hat{\boldsymbol{\sigma}} \quad \text{with} \quad h \equiv \frac{gB\mu_B}{2}
 \end{equation*}
@@ -206,7 +206,7 @@ Control-U gates that can convert a separable state to an entangled one are calle
 \begin{equation*}
     \ket{QR}_\textup{in} = \frac{1}{\sqrt2} (\ket{0} + \ket{1})_c \otimes \ket{\psi}_t
 \end{equation*}
-\graffito{Entangling gates} 
+\marginpar{Entangling gates} 
 with $\ket{\psi}$ being the target state and the subscript c indicating the controlled one.
 If we apply the Control-U gate we have
 \begin{equation}

@@ -1,4 +1,4 @@
-\PassOptionsToPackage{style=arsclassica, eulerchapternumbers, dottedtoc, pdfspacing, floatperchapter, beramono, listings}{classicthesis} 
+% \PassOptionsToPackage{style=arsclassica, eulerchapternumbers, dottedtoc, pdfspacing, floatperchapter, beramono, listings}{classicthesis} 
 
 \PassOptionsToPackage{backend=biber, style=alphabetic}{biblatex}
 \usepackage{biblatex}
@@ -17,8 +17,11 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
 
-\usepackage{frontespizio, classicthesis}
+\usepackage{frontespizio}
 
 \PassOptionsToPackage{RPvoltages}{circuitikz}
 \usepackage{tikz, circuitikz}
 \usetikzlibrary{quantikz}
+
+\usepackage[margin=0.7in]{geometry}
+\usepackage{hyperref}

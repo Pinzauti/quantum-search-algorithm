@@ -10,7 +10,8 @@ Because of \hyperref[postulate:1]{postulate 1} and according to the definition o
 is still part of the state space and it still describes the physics of the system. (There is only a constraint: the state has to be normalized according to \eqref{eq:normalization}, such a rescaling is possible and will be assumed hereafter.) 
 
 
-Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed, in quantum computation also superposition states are perfectly acceptable. \marginpar{Main difference between bits and qubits.} What does a superposition state physically mean? If we measure for example \eqref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs*{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs*{b}^2$.
+Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed, in quantum computation also superposition states are perfectly acceptable.% \marginpar{Main difference between bits and qubits.} 
+What does a superposition state physically mean? If we measure for example \eqref{eq:linear-combination} the probability of being in the state $\ket{\alpha}$ is  $\abs*{a}^2$ and the probability of being in the state $\ket{\beta}$ is $\abs*{b}^2$.
 
 According (again) to the \hyperref[postulate:1]{first postulate} the state of a qubit is a vector in a two-dimensional Hilbert space. Let us define its basis:
 \begin{defn}\label{def:computational-basis}
@@ -22,7 +23,7 @@ Whatever we choose to be our physical realization of the qubit we have a Hermiti
 
 
 Let us use, for example, a $1/2$ spin particle.   We know that the Hermitian operator associated with spin is $S_z$ or $\hat{\sigma}_z = \frac{2}{\hbar} S_z$ that fits our scope because it has two eigenstates and two non-degenerate eigenvalues: 
-\marginpar{An example of how a qubit can be physically implemented.}
+%\marginpar{An example of how a qubit can be physically implemented.}
 
 \begin{equation}\label{eq:spin-particle}
 \begin{split}
@@ -40,7 +41,7 @@ A $n$ size \emph{quantum register} is a system QR with $\dim\mathcal{H}_{QR} = 2
 In other words, a quantum register is a system comprising multiple qubits.
 
 
-The simplest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we define the basis of $\mathcal{H}_{Q_1}$ and $\mathcal{H}_{Q_2}$ as $\{\ket{0}_1, \ket{1}_1\}$ and $\{\ket{0}_2, \ket{1}_2\}$ the basis of $H_{QR}$ is \marginpar{Quantum register with two qubits.}
+The simplest case is a system $N=2$ with two qubits $Q_1$ and $Q_2$. If we define the basis of $\mathcal{H}_{Q_1}$ and $\mathcal{H}_{Q_2}$ as $\{\ket{0}_1, \ket{1}_1\}$ and $\{\ket{0}_2, \ket{1}_2\}$ the basis of $H_{QR}$ is %\marginpar{Quantum register with two qubits.}
 \begin{equation}\label{eq:quantum-register-basis}
     \{\ket{0}_1 \otimes \ket{0}_2, \ket{1}_1 \otimes \ket{0}_2, \ket{0}_1 \otimes \ket{1}_2, \ket{1}_1 \otimes \ket{1}_2\}\
 \end{equation}
@@ -60,7 +61,7 @@ A composite system such that $\ket{QR} \neq \otimes_i \ket{Q_i}$ is an \emph{ent
 \end{defn}
 
 If we consider two qubits:
-\marginpar{An example of a separable state.}
+%\marginpar{An example of a separable state.}
 \begin{align*}
     &\ket{Q_1} = a \ket{0}_1 + b \ket{1}_1 \quad a, b \in \mathbb{C}, \quad \abs*{a}^2 + \abs*{b}^2 = 1 \\
     &\ket{Q_2} = c\ket{0}_2 + d\ket{1}_2 \quad c,d \in \mathbb{C}, \quad \abs*{c}^2 + \abs*{d}^2 = 1
@@ -73,7 +74,7 @@ the overall state of the system is:
 that is a separable state.
 
 If instead we have:
-\marginpar{An example of an entangled state.}
+%\marginpar{An example of an entangled state.}
 \begin{equation*}
     \ket{\Phi^+} = \frac{\ket{0}_1 \otimes \ket{0}_2 + \ket{1}_1 \otimes \ket{1}_2}{\sqrt{2}}
 \end{equation*}

@@ -3,9 +3,46 @@ Suppose an unsorted database containing $N$ items arranged in a completely rando
 
 Thus in the search problem, it is possible to find the object without examining all of the objects, but just by allowing a certain probability of examining the desired object.
 The quantum search algorithm is general as it can be applied far beyond the database search example just described to speed up many, though not all, classical algorithms that use search heuristics.
-\subsection{The oracle}
 
 \subsection{The procedure}
+If we want to search through a search space of $N$ elements rather than searching the elements directly we concentrate on the index to those elements, which is a number in the range $0$ to $N-1$. We assume $N=2^n$ in order to be able to store the index in $n$ classical bits. Suppose that the search problem has exactly $M$ solutions, with $1\leq M \leq N$.
+
+The algorithm makes use of a single $n$ qubit register. It begins with the computer in the state $\ket{0}^{\otimes n}$. Then the Hadamard transform discussed in section~\ref{sec:hadamard} is applied in order to initialize the system to the superposition state
+\begin{equation}\label{eq:initial-state}
+   \ket{\psi} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1}\ket{x}
+\end{equation}
+where $\ket{x}$ is the index register and each index has the same probability amplitude (i.e. $\sqrt{N}$).
+The iteration of the algorithm may be broken up in four steps:
+
+\begin{enumerate}
+  \item Apply the subroutine $\hat{U}_w$ (we are going to discuss it in section~\ref{sec:subroutine}).
+  \item Apply the Hadamard transform $\hat{H}^{\otimes n}$ \label{enum:first-hadamard}
+  \item Perform a conditional phase shift on the quantum computer, with every computational basis state except $\ket{0}$ receiving a phase shift of $-1$,
+  \begin{equation*}
+      \ket{x} \rightarrow -(-1)^{\delta_{x0}} \ket{x}.
+  \end{equation*}
+  \item Apply the Hadamard transform $\hat{H}^{\otimes n}$ \label{enum:second-hadamard}
+\end{enumerate}
+Initializing the system is obtained in $\mathcal{O}(\log{N})$, steps~\ref{enum:first-hadamard} and ~\ref{enum:second-hadamard}, the Hadamard transforms, require $n=\log{N}$ operations each.
+
+
+\begin{defn}
+We can demonstrate that the unitary operator corresponding to the phase shift in the iteration is $2\ket{0}\bra{0}-\hat{I}$. The combined effect of steps 2,3 and 4 is then:
+\begin{equation}
+    \hat{H}^{\otimes n} (2\ket{0}\bra{0}-\hat{I}) \hat{H}^{\otimes n} =  2\ket{\psi}\bra{\psi}-\hat{I}
+\end{equation}
+with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. The iteration may then be written as
 \begin{equation}
     \hat{U}_w \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}
 \end{equation}
+\end{defn}
+
+
+\subsubsection{Quantum search with M=1}
+\begin{description}
+   \item This is an entry \textit{without} a label.
+   \item[Something short] A short one-line description.
+   \item[Something long] A much longer description. 
+\end{description}
+\subsection{The subroutine}\label{sec:subroutine}
+

@@ -12,37 +12,95 @@ The algorithm makes use of a single $n$ qubit register. It begins with the compu
    \ket{\psi} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1}\ket{x}
 \end{equation}
 where $\ket{x}$ is the index register and each index has the same probability amplitude (i.e. $\sqrt{N}$).
-The iteration of the algorithm may be broken up in four steps:
+The \emph{Grover iteration} of the algorithm may be broken up in four steps:
 
 \begin{enumerate}
-  \item Apply the subroutine $\hat{U}_w$ (we are going to discuss it in section~\ref{sec:subroutine}).
+  \item Apply the \emph{subroutine} $\hat{U}_w$ (we are going to discuss it in section~\ref{sec:subroutine}).
   \item Apply the Hadamard transform $\hat{H}^{\otimes n}$ \label{enum:first-hadamard}
-  \item Perform a conditional phase shift on the quantum computer, with every computational basis state except $\ket{0}$ receiving a phase shift of $-1$,
+  \item \label{enum:phase-shift} Perform a conditional phase shift on the quantum computer, with every computational basis state except $\ket{0}$ receiving a phase shift of $-1$,
   \begin{equation*}
       \ket{x} \rightarrow -(-1)^{\delta_{x0}} \ket{x}.
   \end{equation*}
   \item Apply the Hadamard transform $\hat{H}^{\otimes n}$ \label{enum:second-hadamard}
 \end{enumerate}
-Initializing the system is obtained in $\mathcal{O}(\log{N})$, steps~\ref{enum:first-hadamard} and ~\ref{enum:second-hadamard}, the Hadamard transforms, require $n=\log{N}$ operations each.
+Initializing the system is obtained in $\mathcal{O}(\log_2{N})$ steps while steps~\ref{enum:first-hadamard} and~\ref{enum:second-hadamard}, the Hadamard transforms, require $n=\log_2{N}$ operations each. Step~\ref{enum:phase-shift}, the conditional phase shift, may be implemented using $\mathcal{O}(n)$gates. The cost of the subroutine call depends upon the specific application but we can note that the iteration requires only a single subroutine call.
 
 
 \begin{defn}
-We can demonstrate that the unitary operator corresponding to the phase shift in the iteration is $2\ket{0}\bra{0}-\hat{I}$. The combined effect of steps 2,3 and 4 is then:
-\begin{equation}
+We can demonstrate that the unitary operator corresponding to the phase shift in the iteration is $2\ket{0}\bra{0}-\hat{I}$. The combined effect of steps~\ref{enum:first-hadamard},\ref{enum:phase-shift} and~\ref{enum:second-hadamard} is then:
+\begin{equation*}
     \hat{H}^{\otimes n} (2\ket{0}\bra{0}-\hat{I}) \hat{H}^{\otimes n} =  2\ket{\psi}\bra{\psi}-\hat{I}
-\end{equation}
-with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. The iteration may then be written as
-\begin{equation}
-    \hat{U}_w \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}
+\end{equation*}
+with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. Those steps may then be written as
+\begin{equation*}
+    \hat{U}_s \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}.
+\end{equation*}
+\end{defn}
+\begin{defn}
+We can define the Grover iteration as
+\begin{equation}\label{def:grover-iteration}
+G \equiv \hat{U}_s\hat{U}_w = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_w
 \end{equation}
 \end{defn}
+\begin{figure}
+\includegraphics{circuit.png}
+\centering
+\caption{Circuit for the quantum search algorithm.}
+\end{figure}
+\begin{figure}
+\includegraphics{iteration.png}
+\centering
+\caption{Iteration $U_sU_w$}
+\end{figure}
 
-
-\subsubsection{Quantum search with M=1}
-\begin{description}
-   \item This is an entry \textit{without} a label.
-   \item[Something short] A short one-line description.
-   \item[Something long] A much longer description. 
-\end{description}
 \subsection{The subroutine}\label{sec:subroutine}
+Suppose we are supplied with a black box $f(x)$ whose internal workings are not important with the ability to recognize the solution:
+\begin{defn}
+Let's define the function $f: \{0,1,...,N-1\} \rightarrow \{0,1\}$ as follows
+\begin{equation*}
+    \begin{cases}
+f(x) = 1  & \text{if $x$ is a solution to the search problem} \\
+f(x) = 0 & \text{if $x$ is not a solution to the search problem} 
+\end{cases}
+\end{equation*}
+\end{defn}
+\begin{defn}
+The subroutine $\hat{U}_w$ is a unitary operator defined by its action on the computational basis
+\begin{equation*}
+    \ket{x}\ket{q} \xrightarrow{\hat{U}_w} \ket{x} \ket{q \oplus f(x)}
+\end{equation*}
+\end{defn}
+where $\ket{x}$ is the index register and $\ket{q}$ is an \emph{oracle qubit}, a single qubit which is flipped if $f(x) = 1$ and is unchanged otherwise.
+
+It is useful to set the oracle qubit initially in the state $\ket{q} = \frac{\ket{0}-\ket{1}}{\sqrt{2}}$ the action of the subroutine is thus\footnote{If $x$ is not a solution, applying the subroutine to $\ket{q}$ leaves the state unchanged. On the other and if $x$ is a solution $\frac{\ket{0 \oplus 1} - \ket{1 \oplus 1}}{\sqrt{2}} = \frac{\ket{1}-\ket{0}}{\sqrt{2}} = - \frac{\ket{0}-\ket{1}}{\sqrt{2}}$. And $\ket{x}$ is not affected by the value of $f(x)$.}:
+\begin{equation*}
+    \hat{U}_w \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr) = (-1)^{f(x)} \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr).
+\end{equation*}
+We can see that the state of the oracle qubit is not changed; it turns out that this remains  $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ throughtout the iteration, and can therefore be omitted:
+\begin{equation*}
+    \hat{U}_w \ket{x} = (-1)^{f(x)} \ket{x}.
+\end{equation*}
+The subroutine marks the solution by shifting the phase of the solution. For a $N$ item search with $M$ solutions, we need to apply the search subroutine $\mathcal{O}(\sqrt{N/M})$ times in order to obtain a solution.
+
+\subsection{Example with only one solution}
+Before now no assumption were made about the number of solutions $M$, let's now give an example with $M=1$.
+\begin{description}
+   \item[Inputs] The inputs of the quantum computer are:
+    \begin{enumerate}
+  \item The subroutine $\hat{U}_w$ which perform the transformation $\hat{U}_w\ket{x}\ket{q} = \ket{x}\ket{q \oplus f(x)}$, where $f(x) = 0$ for all $0 \leq x \leq 2^n$ except $x_o$.
+  \item $n+1$ qubits in the state $\ket{0}$.
+\end{enumerate}
+   \item[Outputs] $x_0$.
+   \item[Runtime] $R = \mathcal{O}(\sqrt{2^n})$ operations\footnote{$R \approx \frac{\pi \sqrt{2^n}}{4}$ as we will see in section~\ref{sec:performance}}. Succeeds with probability $\mathcal{O}(1)$.
+   \item[Prcedure] The iteration is the following:
+   \begin{enumerate}
+  \item $\ket{0}^{\otimes n} \ket{0}$ \label{enum:initial-state}
+  \item $\begin{aligned} \rightarrow \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:hadamard}
+  \item $\begin{aligned} \rightarrow \bigl[(2 \ket{\psi}\bra{\psi} - \hat{I})\hat{U}_w\bigr]^R \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \approx \ket{x_0} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:iteration}
+  \item $\rightarrow x_0$ \label{enum:result}
+\end{enumerate}
+\end{description}
+
+Step~\ref{enum:initial-state} it is simply the initial state. Step~\ref{enum:hadamard} consist of applying $H^{\otimes n}$ to the first $n$ qubits and $H X$ to the last qubit. Step~\ref{enum:iteration} is the Grover iteration defined in~\ref{def:grover-iteration} applied $R$ times and step~\ref{enum:result} is the result.
+
 

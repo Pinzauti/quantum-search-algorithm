@@ -1,1 +1,11 @@
 \section{The algorithm}\label{sec:the-algorithm}
+Suppose an unsorted database containing $N$ items arranged in a completely random order. In order to find a specific item with a probability of $\frac{1}{2}$, any classical algorithm (whether deterministic or probabilistic) will need to look at a minimum of $\frac{N}{2}$ items. Quantum mechanical systems can be in a superposition of states and simultaneously examine multiple names. By properly adjusting the phases of various operations, successful computations reinforce each other while others interfere randomly. As a result, the desired item can be obtained in only $\mathcal{O}(\sqrt{n})$ steps.
+
+Thus in the search problem, it is possible to find the object without examining all of the objects, but just by allowing a certain probability of examining the desired object.
+The quantum search algorithm is general as it can be applied far beyond the database search example just described to speed up many, though not all, classical algorithms that use search heuristics.
+\subsection{The oracle}
+
+\subsection{The procedure}
+\begin{equation}
+    \hat{U}_w \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}
+\end{equation}

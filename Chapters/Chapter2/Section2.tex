@@ -1,1 +1,26 @@
-\section{Algebraic proof of correctness}
+\section{Geometric interpretation}
+Here is a geometric interpretation of the Grover algorithm, following from the observation that the quantum state of Grover's algorithm stays in a two-dimensional subspace after each step. Define normalized states
+\begin{equation*}
+\begin{split}
+ \ket{\alpha} &\equiv \frac{1}{\sqrt{N-M}} \sum_{x}{}^{''} \ket{x} \\
+ \ket{\beta} &\equiv \frac{1}{\sqrt{M}} \sum_{x}{}^{'} \ket{x}
+\end{split}
+\end{equation*}
+\begin{equation*}
+    \ket{\psi} = \sqrt{\frac{N-M}{N}} \ket{\alpha} + \sqrt{\frac{M}{N}} \ket{\beta}
+\end{equation*}
+the initial state $\ket{\psi}$ may be expressed as:
+\begin{equation*}
+    \hat{G}\ket{\psi} = \cos\frac{3\theta}{2} \ket{\alpha} + \sin\frac{3\theta}{2} \ket{\beta}
+\end{equation*}
+so the initial state is in the subspace spanned by $\ket{\alpha}$ and $\ket{\beta}$.
+\begin{equation*}
+    \hat{G}^{k}\ket{\psi} = \cos\biggl(\frac{2k+1}{2}\theta\biggr) \ket{\alpha} + \sin\biggl(\frac{2k+1}{2}\theta\biggr) \ket{\beta}
+\end{equation*}
+
+\begin{figure}
+\includegraphics{geometric-interpretation.png}
+\centering
+\caption{The geometric interpretation of the first iteration of Grover's algorithm.}
+\end{figure}
+

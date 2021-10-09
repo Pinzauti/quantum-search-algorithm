@@ -15,7 +15,7 @@ where $\ket{x}$ is the index register and each index has the same probability am
 The \emph{Grover iteration} of the algorithm may be broken up in four steps:
 
 \begin{enumerate}
-  \item Apply the \emph{subroutine} $\hat{U}_w$ (we are going to discuss it in section~\ref{sec:subroutine}).
+  \item Apply the \emph{subroutine} $\hat{U}_\beta$ (we are going to discuss it in section~\ref{sec:subroutine}).
   \item Apply the Hadamard transform $\hat{H}^{\otimes n}$ \label{enum:first-hadamard}
   \item \label{enum:phase-shift} Perform a conditional phase shift on the quantum computer, with every computational basis state except $\ket{0}$ receiving a phase shift of $-1$,
   \begin{equation*}
@@ -33,13 +33,13 @@ We can demonstrate that the unitary operator corresponding to the phase shift in
 \end{equation*}
 with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. Those steps may then be written as
 \begin{equation*}
-    \hat{U}_s \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}.
+    \hat{U}_\psi \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}.
 \end{equation*}
 \end{defn}
 \begin{defn}
 We can define the Grover iteration as
 \begin{equation}\label{def:grover-iteration}
-G \equiv \hat{U}_s\hat{U}_w = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_w
+G \equiv \hat{U}_\psi\hat{U}_\beta = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_\beta
 \end{equation}
 \end{defn}
 \begin{figure}
@@ -50,7 +50,7 @@ G \equiv \hat{U}_s\hat{U}_w = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_w
 \begin{figure}
 \includegraphics{iteration.png}
 \centering
-\caption{Iteration $U_sU_w$}
+\caption{Iteration $U_\psi U_\beta$}
 \end{figure}
 
 \subsection{The subroutine}\label{sec:subroutine}
@@ -65,20 +65,20 @@ f(x) = 0 & \text{if $x$ is not a solution to the search problem}
 \end{equation*}
 \end{defn}
 \begin{defn}
-The subroutine $\hat{U}_w$ is a unitary operator defined by its action on the computational basis
+The subroutine $\hat{U}_\beta$ is a unitary operator defined by its action on the computational basis
 \begin{equation*}
-    \ket{x}\ket{q} \xrightarrow{\hat{U}_w} \ket{x} \ket{q \oplus f(x)}
+    \ket{x}\ket{q} \xrightarrow{\hat{U}_\beta} \ket{x} \ket{q \oplus f(x)}
 \end{equation*}
 \end{defn}
 where $\ket{x}$ is the index register and $\ket{q}$ is an \emph{oracle qubit}, a single qubit which is flipped if $f(x) = 1$ and is unchanged otherwise.
 
 It is useful to set the oracle qubit initially in the state $\ket{q} = \frac{\ket{0}-\ket{1}}{\sqrt{2}}$ the action of the subroutine is thus\footnote{If $x$ is not a solution, applying the subroutine to $\ket{q}$ leaves the state unchanged. On the other and if $x$ is a solution $\frac{\ket{0 \oplus 1} - \ket{1 \oplus 1}}{\sqrt{2}} = \frac{\ket{1}-\ket{0}}{\sqrt{2}} = - \frac{\ket{0}-\ket{1}}{\sqrt{2}}$. And $\ket{x}$ is not affected by the value of $f(x)$.}:
 \begin{equation*}
-    \hat{U}_w \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr) = (-1)^{f(x)} \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr).
+    \hat{U}_\beta \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr) = (-1)^{f(x)} \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr).
 \end{equation*}
-We can see that the state of the oracle qubit is not changed; it turns out that this remains  $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ throughtout the iteration, and can therefore be omitted:
+We can see that the state of the oracle qubit is not changed; it turns out that this remains  $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ throughout the iteration, and can therefore be omitted:
 \begin{equation*}
-    \hat{U}_w \ket{x} = (-1)^{f(x)} \ket{x}.
+    \hat{U}_\beta \ket{x} = (-1)^{f(x)} \ket{x}.
 \end{equation*}
 The subroutine marks the solution by shifting the phase of the solution. For a $N$ item search with $M$ solutions, we need to apply the search subroutine $\mathcal{O}(\sqrt{N/M})$ times in order to obtain a solution.
 
@@ -87,7 +87,7 @@ Before now no assumption were made about the number of solutions $M$, let's now 
 \begin{description}
    \item[Inputs] The inputs of the quantum computer are:
     \begin{enumerate}
-  \item The subroutine $\hat{U}_w$ which perform the transformation $\hat{U}_w\ket{x}\ket{q} = \ket{x}\ket{q \oplus f(x)}$, where $f(x) = 0$ for all $0 \leq x \leq 2^n$ except $x_o$.
+  \item The subroutine $\hat{U}_\beta$ which perform the transformation $\hat{U}_\beta\ket{x}\ket{q} = \ket{x}\ket{q \oplus f(x)}$, where $f(x) = 0$ for all $0 \leq x \leq 2^n$ except $x_o$.
   \item $n+1$ qubits in the state $\ket{0}$.
 \end{enumerate}
    \item[Outputs] $x_0$.
@@ -96,7 +96,7 @@ Before now no assumption were made about the number of solutions $M$, let's now 
    \begin{enumerate}
   \item $\ket{0}^{\otimes n} \ket{0}$ \label{enum:initial-state}
   \item $\begin{aligned} \rightarrow \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:hadamard}
-  \item $\begin{aligned} \rightarrow \bigl[(2 \ket{\psi}\bra{\psi} - \hat{I})\hat{U}_w\bigr]^R \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \approx \ket{x_0} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:iteration}
+  \item $\begin{aligned} \rightarrow \bigl[(2 \ket{\psi}\bra{\psi} - \hat{I})\hat{U}_\beta\bigr]^R \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \approx \ket{x_0} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:iteration}
   \item $\rightarrow x_0$ \label{enum:result}
 \end{enumerate}
 \end{description}

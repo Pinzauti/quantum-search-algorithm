@@ -44,9 +44,13 @@ from wich we can obtain an upper bound on the number of iterations required,
 That is, $R = \mathbb{O}(\sqrt{N/M})$ $G$ iterations (and thus oracle calls) must be performed in order to obtain a solution with high probability, a quadratic improvement over the $\mathbb{O}(N/M)$ oracle calls required classically.
 
 \subsection{Number of solutions}\label{sec:M}
-Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{See footnote~\ref{foot:sin}.} $\theta=\arcsin(2\sqrt{M(N-M)}/M)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. As a result, the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
+Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{See footnote~\ref{foot:sin}.} $\theta=\arcsin(2\sqrt{M(N-M)}/M)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. And then we see from~\ref{eq:R} the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
 
-
+We can distinguish two scenarios:
+\begin{description}
+   \item[$M$ is known] If $M$ is known in advance to be larger than $N/2$ then we can just randomly pick an item from the search space, and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
+   \item[$M$ is not known] In the case where it isn't known whether $M\geq N/2$ we double the number of elements in the search space by adding $N$ extra items to the search space, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. A new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$, as defined in~\ref{eq:upper-bound}, calls to the subroutine are required, and it follows that $\mathbb{O}(N/M)$ calls to $\hat{U}_\beta$ are required to perform the search.
+\end{description}
 \subsection{Optimality of the search algorithm}
 We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}.
 \begin{theorem}

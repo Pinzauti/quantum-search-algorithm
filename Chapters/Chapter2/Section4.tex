@@ -26,17 +26,29 @@ Following the geometric interpretation of section~\ref{sec:geometric-interpretat
 $\text{CI}(x)$ denote the integer closest to the real number $x$, rounded halves down.
 \end{defn}
 Then repeating the Grover iteration:
-\begin{equation*}
+\begin{equation}\label{eq:R}
     R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
-\end{equation*}
-times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4 of \ket{\beta}$.
+\end{equation}
+times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. Recalling the state~\ref{eq:initial-state} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
+
+When $M<<N$ we have\footnote{\label{foot:sin}We can demostrate that $\sin\theta = 2\sqrt{M(N-M)}/N$.} $\theta \approx \sin\theta \approx 2\sqrt{M/N}$ an thus the angular error in the final state,, recalling again the state~\ref{eq:initial-state}, is at most $\theta/2 \approx \sqrt{M/N}$; giving a probability of error of at most $M/N$.
+
+We can find an upper bond for R. Note from \ref{eq:R}  that R has an upper bound $R \leq \pi/2\theta$, let us find now a lower bound on $\theta$, assuming that\footnote{We are going to discuss this limit in section~\ref{sec:M}.} $M \leq N/2$ we have:
 \begin{equation*}
-    R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
+    \frac{\theta}{2} \geq \sin\frac{\theta}{2} = \sqrt{\frac{M}{N}}
 \end{equation*}
-\subsubsection{A two bit example}
+from wich we can obtain an upper bound on the number of iterations required,
+\begin{equation}\label{eq:upper-bound}
+    R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
+\end{equation}
+That is, $R = \mathbb{O}(\sqrt{N/M})$ $G$ iterations (and thus oracle calls) must be performed in order to obtain a solution with high probability, a quadratic improvement over the $\mathbb{O}(N/M)$ oracle calls required classically.
+
+\subsection{Number of solutions}\label{sec:M}
+Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{See footnote~\ref{foot:sin}.} $\theta=\arcsin(2\sqrt{M(N-M)}/M)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. As a result, the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
+
 
 \subsection{Optimality of the search algorithm}
-We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the search oracle.
+We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}.
 \begin{theorem}
 The quantum search algorithm is optimal. 
 \end{theorem}

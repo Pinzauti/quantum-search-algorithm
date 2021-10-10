@@ -54,7 +54,7 @@ G \equiv \hat{U}_\psi\hat{U}_\beta = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_
 \end{figure}
 
 \subsection{The subroutine}\label{sec:subroutine}
-Suppose we are supplied with a black box $f(x)$ whose internal workings are not important with the ability to recognize the solution:
+Suppose we are supplied with a black box $f(x)$ whose internal workings are not important with the ability to recognize the solution\footnote{Note that there is a distinction between knowing the solution and being able to recognize the solution. If, for example, we want to find the prime factor of the number $m$ even without not knowing the prime factors we can explicitly construct a subroutine which recognizes a solution when it sees one.}:
 \begin{defn}
 Let's define the function $f: \{0,1,...,N-1\} \rightarrow \{0,1\}$ as follows
 \begin{equation*}
@@ -83,7 +83,7 @@ We can see that the state of the oracle qubit is not changed; it turns out that 
 The subroutine marks the solution by shifting the phase of the solution. For a $N$ item search with $M$ solutions, we need to apply the search subroutine $\mathcal{O}(\sqrt{N/M})$ times in order to obtain a solution.
 
 \subsection{Example with only one solution}
-Before now no assumption were made about the number of solutions $M$, let's now give an example with $M=1$.
+Until now no assumption were made about the number of solutions $M$, let's now give a complete overview of the algorithm with $M=1$.
 \begin{description}
    \item[Inputs] The inputs of the quantum computer are:
     \begin{enumerate}

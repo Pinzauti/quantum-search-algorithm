@@ -52,7 +52,7 @@ G \equiv \hat{U}_\psi\hat{U}_\beta = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_
 \centering
 \caption{Iteration $U_\psi U_\beta$}
 \end{figure}
-
+Each iteration of this loop increases the amplitude in the desired state by $\mathbb{O}(1/\sqrt{N})$, as a result in $\mathbb{O}(\sqrt{N})$ repetitions of the loop, the amplitude and hence the probability in the desired state reach $\mathbb{O}(1)$.
 \subsection{The subroutine}\label{sec:subroutine}
 Suppose we are supplied with a black box $f(x)$ whose internal workings are not important with the ability to recognize the solution\footnote{Note that there is a distinction between knowing the solution and being able to recognize the solution. If, for example, we want to find the prime factor of the number $m$ even without not knowing the prime factors we can explicitly construct a subroutine which recognizes a solution when it sees one.}:
 \begin{defn}
@@ -80,8 +80,7 @@ We can see that the state of the oracle qubit is not changed; it turns out that 
 \begin{equation*}
     \hat{U}_\beta \ket{x} = (-1)^{f(x)} \ket{x}.
 \end{equation*}
-The subroutine marks the solution by shifting the phase of the solution. For a $N$ item search with $M$ solutions, we need to apply the search subroutine $\mathcal{O}(\sqrt{N/M})$ times in order to obtain a solution.
-
+The subroutine marks the solution by shifting the phase of the solution. Note that in an implementation it would involve a portion of the quantum system sensing the state and then deciding whether or not to rotate the phase. It would to it in a way so that no trace of the state of the system be left after this operation.
 \subsection{Example with only one solution}
 Until now no assumption were made about the number of solutions $M$, let's now give a complete overview of the algorithm with $M=1$.
 \begin{description}

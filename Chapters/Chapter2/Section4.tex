@@ -1,8 +1,20 @@
 \section{Computational complexity}
 Let's define some notation:
 
-Any computational problem that can be solved by a classical computer can also be solved by a quantum computer \cite[29]{NielsenChuang}. Conversely, any problem that can be solved by a quantum computer can also be solved by a classical computer, at least in principle given enough time.'
+Any computational problem that can be solved by a classical computer can also be solved by a quantum computer \cite[29]{NielsenChuang}. Conversely, any problem that can be solved by a quantum computer can also be solved by a classical computer, at least in principle given enough time.
 \subsection{Performance}\label{sec:performance}
+Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. The initial state of the system is~\ref{eq:initial-state} so rotating through $\arccos{\sqrt{M/N}}$ radians to take the system to $\ket{\beta}$.
+\begin{defn}
+$\text{CI}(x)$ denote the integer closest to the real number $x$, rounding halves down.
+\end{defn}
+Then repeating the Grover iteration:
+\begin{equation*}
+    R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
+\end{equation*}
+times rotates $\ket{\psi}$ to within an angle $\theta/2$
+\begin{equation*}
+    R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
+\end{equation*}
 \subsubsection{A two bit example}
 
 \subsection{Optimality of the search algorithm}

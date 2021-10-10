@@ -1,5 +1,6 @@
 \section{Algebraic proof of correctness}
-We have shown that during the entire computation, the state of the algorithm is a linear combination of $\ket{\psi}$ and $\ket{\beta}$. We can write the action of $\hat{U_\psi}$ and $\hat{U}_\beta$ in the space spanned by $\{\ket{\beta}, \ket{\psi}\}$ as:
+\begin{proof}
+We have shown that during the entire computation, the state of the algorithm is a linear combination of $\ket{\psi}$ and $\ket{\beta}$. We can write the action of $\hat{U_\psi}$ and $\hat{U}_\beta$ in the space spanned by $\{\ket{\beta}, \ket{\psi}\}$ as\footnote{We are assuming $M=1$ through all the proof.}:
 \begin{align*}
     &\hat{U}_\psi : a\ket{\beta} + b\ket{\psi} \rightarrow [\ket{\beta}\ket{\psi}] \begin{bmatrix}
     -1 & 0 \\
@@ -45,11 +46,27 @@ The matrix, defining $t=\arcsin{\frac{1}{\sqrt{N}}}$, has the following Jordan f
   \end{equation*}
  With $M$ being the matrix diagonalizing the operators. It follows that after R iterations we have
 \begin{equation*}
-    (\hat{U_\psi}\hat{U}_\beta)^r = M  \begin{bmatrix}
+    (\hat{U_\psi}\hat{U}_\beta)^R = M  \begin{bmatrix}
     e^{2Rit} & 0 \\
     0 & e^{-2Rit}
     \end{bmatrix}  M^{-1}.
 \end{equation*}
-We can now use trigonometric identities to copmute the probability of observing the result $\beta$ after R iterations.
+We can reasonably imagine that a near-optimal time to distinguish would be when the angles $2Rt$ and $-2Rt$ are as far apart as possible, which corresponds to $2Rt \approx \pi/2$, or $R=\pi/4t = \pi/4\arcsin(1/\sqrt{N}/4) \approx \pi \sqrt{N}/4$. Then the system is in the state
 
-\textbf{da qui in poi passaggi non chiari}.
+\begin{equation*}
+    [\ket{\beta} \ket{\psi}]
+     (\hat{U_\psi}\hat{U}_\beta)^R \begin{bmatrix}
+     0 \\ 1
+     \end{bmatrix} \approx 
+      [\ket{\beta} \ket{\psi}] M\begin{bmatrix}
+      i & 0 \\
+      0 & -i
+      \end{bmatrix} M^{-1}\begin{bmatrix}
+     0 \\ 1
+     \end{bmatrix}
+    =
+    \frac{1}{\cos t}\ket{\beta} - \frac{\sin t}{\cos t}\ket{\psi}
+\end{equation*}
+
+and a short calculation now shows that the observation yelds the correct answer $\beta$ with error $\mathcal{O}(\frac{1}{N})$
+\end{proof}

@@ -1,24 +1,42 @@
 \section{Computational complexity}
 Let's define some notation:
+\begin{defn}[Big $\mathbb{O}$ notation]
+   Let $f$ be a real or complex valued function and $g$ a real valued function. Let both functions be defined on some unbounded subset of positive real numbers. One writes
+   \begin{equation*}
+       f(x) = \mathbb{O}(g(x)) \quad \text{as} \quad x \rightarrow a
+   \end{equation*}
+   if 
+   \begin{equation*}
+      \lim_{x \to a} \sup{\frac{\abs{f(x)}}{g(x)}} < \infty
+   \end{equation*}
+   \end{defn}
+   \begin{defn}[Big $\Omega$ Knuth notation]
+      Let $f$ be a real or complex valued function and $g$ a real valued function. Let both functions be defined on some unbounded subset of positive real numbers. One writes
+   \begin{equation*}
+       f(x) = \Omega(g(x))
+    \Longleftrightarrow
+      g(x) = \mathbb{O}(f(x)).
+   \end{equation*}
+   \end{defn}
+   
 
-Any computational problem that can be solved by a classical computer can also be solved by a quantum computer \cite[29]{NielsenChuang}. Conversely, any problem that can be solved by a quantum computer can also be solved by a classical computer, at least in principle given enough time.
 \subsection{Performance}\label{sec:performance}
 Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. The initial state of the system is~\ref{eq:initial-state} so rotating through $\arccos{\sqrt{M/N}}$ radians to take the system to $\ket{\beta}$.
 \begin{defn}
-$\text{CI}(x)$ denote the integer closest to the real number $x$, rounding halves down.
+$\text{CI}(x)$ denote the integer closest to the real number $x$, rounded halves down.
 \end{defn}
 Then repeating the Grover iteration:
 \begin{equation*}
     R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
 \end{equation*}
-times rotates $\ket{\psi}$ to within an angle $\theta/2$
+times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4 of \ket{\beta}$.
 \begin{equation*}
     R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
 \end{equation*}
 \subsubsection{A two bit example}
 
 \subsection{Optimality of the search algorithm}
-We shall show that no quantum algorithm can perform the task of searching trhough $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the search oracle.
+We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the search oracle.
 \begin{theorem}
 The quantum search algorithm is optimal. 
 \end{theorem}
@@ -26,3 +44,5 @@ The quantum search algorithm is optimal.
 d
 \end{proof}
 \subsection{NP vs BPQ}
+
+Any computational problem that can be solved by a classical computer can also be solved by a quantum computer \cite[29]{NielsenChuang}. Conversely, any problem that can be solved by a quantum computer can also be solved by a classical computer, at least in principle given enough time.

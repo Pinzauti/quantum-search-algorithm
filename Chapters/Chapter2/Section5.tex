@@ -1,3 +1,7 @@
 \section{Practical applications}
 \subsection{Cryptography}
+The quantum search algorithm can be seen as an algorithm for function inversion. If we have a function $y=f(x)$ that can be evaluated on a quantum computer, the quantum search algorithm allow us to calculate $x$ when given $y$.
+
+Consequently, Grover's algorithm gives broad asymptotic speed-ups to many kinds of brute-force attacks on symmetric-key cryptography, including collision attacks and pre-image attacks.
+The algorithm could brute-force a $128$-bit symmetric cryptographic key in $R = \mathbb{O} (\sqrt{N/M}) = \mathbb{O} (\sqrt{N}) = \mathbb{O} (\sqrt{2^{128}}) = \mathbb{O} (2^{64})$ iterations and a 256-bit key (the actual standard for cryptography) in $\mathbb{O} (2^{128})$ iterations. Because of that  it is sometimes suggested~\cite{10.1007/978-3-642-12929-2_6} that symmetric key lengths be doubled to protect against future quantum attacks.
 \subsection{Limitations}

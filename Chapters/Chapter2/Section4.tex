@@ -52,13 +52,20 @@ We can distinguish two scenarios:
    \item[$M$ is not known] In the case where it isn't known whether $M\geq N/2$ we double the number of elements in the search space by adding $N$ extra items to the search space, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. A new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$, as defined in~\ref{eq:upper-bound}, calls to the subroutine are required, and it follows that $\mathbb{O}(N/M)$ calls to $\hat{U}_\beta$ are required to perform the search.
 \end{description}
 \subsection{Optimality of the search algorithm}
-We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}.
+We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}:
 \begin{theorem}
 The quantum search algorithm is optimal. 
 \end{theorem}
 \begin{proof}
-d
-\end{proof}
-\subsection{NP vs BPQ}
+TODO [...]
 
+To achieve a probability of success at least $1/2$ for finding a solution to the search problem we must call the oracle $\Omega(\sqrt{N})$ times.
+\end{proof}
+
+\subsection{NP vs BPQ}
+\begin{figure}
+\includegraphics{computational-complexity.png}
+\centering
+\caption{The relationship between classical and quantum complexity classes.}
+\end{figure}
 Any computational problem that can be solved by a classical computer can also be solved by a quantum computer \cite[29]{NielsenChuang}. Conversely, any problem that can be solved by a quantum computer can also be solved by a classical computer, at least in principle given enough time.

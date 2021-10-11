@@ -29,7 +29,7 @@ Then repeating the Grover iteration:
 \begin{equation}\label{eq:R}
     R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
 \end{equation}
-times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. According to~\ref{eq:beta-projection} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
+times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. Substituting $\theta$ in~\ref{eq:beta-projection} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
 
 When $M<<N$ we have\footnote{\label{foot:sin}We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$.} $\theta \approx \sin\theta \approx 2\sqrt{M/N}$ an thus the angular error in the final state, recalling again~\ref{eq:beta-projection}, is at most $\theta/2 \approx \sqrt{M/N}$; giving a probability of error of at most $M/N$.
 
@@ -42,6 +42,12 @@ from which we can obtain an upper bound on the number of iterations required,
     R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
 \end{equation}
 That is, $R = \mathbb{O}(\sqrt{N/M})$ $G$ iterations (and thus oracle calls) must be performed in order to obtain a solution with high probability, a quadratic improvement over the $\mathbb{O}(N/M)$ oracle calls required classically.
+
+\subsubsection{An example with $M$ = 1 and $N$ = 4}
+If we have $N = 4$ items and only a solution in the classical case an average of $N/2 = 2$ subroutine calls would be needed to find the solution ($4$ in the worst case).
+With the quantum search algorithm we have $\sin{\frac{\theta}{2}} = \sqrt{\frac{M}{N}} = \frac{1}{2}$ and thus $\frac{\theta}{2} = \frac{\pi}{6}$ and $\theta = \frac{\pi}{3}$. After one $\hat{G}$ iteration then, according to~\ref{eq:beta-projection}, we rotate $\ket{\psi}$ to a $\frac{\pi}{2}$ angle with $\ket{\alpha}$; that is, it lines up with $\ket{\beta}$.
+
+When we measure by projecting onto the computational basis, we obtain the result $\ket{\beta}$ with certainty with just one iteration, a notable improvement over the classical case.
 
 \subsection{Number of solutions}\label{sec:M}
 Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{See footnote~\ref{foot:sin}.} $\theta=\arcsin(2\sqrt{M(N-M)}/M)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. And then we see from~\ref{eq:R} the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.

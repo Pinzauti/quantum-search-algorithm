@@ -1,5 +1,5 @@
 \section{Computational complexity}
-Let us define some notation:
+Let us define some notation.
 \begin{defn}[Big $\mathbb{O}$ notation]
    Let $f$ be a real or complex valued function and $g$ a real valued function. Let both functions be defined on some unbounded subset of positive real numbers. One writes
    \begin{equation*}
@@ -7,7 +7,7 @@ Let us define some notation:
    \end{equation*}
    if 
    \begin{equation*}
-      \lim_{x \to a} \sup{\frac{\abs{f(x)}}{g(x)}} < \infty
+      \lim_{x \to a} \sup{\frac{\abs{f(x)}}{g(x)}} < \infty.
    \end{equation*}
    \end{defn}
    \begin{defn}[Big $\Omega$ Knuth notation]
@@ -21,19 +21,19 @@ Let us define some notation:
    
 
 \subsection{Performance}\label{sec:performance}
-Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. Each iteration rotates the state in the plane determined by $\ket{\psi}$ and $\ket{\beta}$, after $R$ iterations, the state is rotated by $\frac{2R + 1}{2}\theta$ from the $\ket{\alpha}$ axis. To optimize the proability of finding the solutions when we perform the measurement we will iterate until this angle is close to $\frac{\pi}{2}$, or
+Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. Each iteration rotates the state in the plane determined by $\ket{\psi}$ and $\ket{\beta}$, after $R$ iterations, the state is rotated by $\frac{2R + 1}{2}\theta$ from the $\ket{\alpha}$ axis. To optimize the probability of finding the solutions when we perform the measurement we will iterate until this angle is close to $\frac{\pi}{2}$, or
 \begin{equation*}
-    \frac{2R + 1}{2}\theta \simeq \frac{\pi}{2} \Rightarrow 2R + 1 \simeq \frac{\pi}{\theta}
+    \frac{2R + 1}{2}\theta \simeq \frac{\pi}{2} \Rightarrow 2R + 1 \simeq \frac{\pi}{\theta},
 \end{equation*}
-we recall equation~\ref{eq:beta-projection}, or
+we recall equation~\ref{eq:beta-projection} which we can approximate to
 \begin{equation*}
-    \theta = 2\sqrt{\frac{M}{N}}
+    \theta \simeq 2\sqrt{\frac{M}{N}}
 \end{equation*}
 for $M<<N$ and large $N$. If we choose
 \begin{equation*}
     R = \frac{\pi}{4}\sqrt{\frac{N}{M}} \biggl[1+\mathbb{O}\biggl(\frac{M}{N}\biggr)\biggr],
 \end{equation*}
-then the probability of obtaining the measurement result $\ket{\beta}$ will be
+then the final probability of obtaining the measurement result $\ket{\beta}$ will be
 \begin{equation*}
     \abs{\braket{\beta | \hat{G}^k | \psi}} = \sin^2\biggl(\frac{2R + 1}{2}\theta\biggr) = 1 - \mathbb{O}\biggl(\frac{M}{N}\biggl)
 \end{equation*}
@@ -41,21 +41,22 @@ from which we can obtain an upper bound on the number of iterations required,
 \begin{equation}\label{eq:upper-bound}
     R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
 \end{equation}
-That is, $R = \mathbb{O}\bigl(\sqrt{\frac{N}{M}}\bigr)$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with high probability and a $\mathbb{O}\bigl(\frac{M}{N}\bigr)$ error; a quadratic improvement over the $\mathbb{O}\bigl(\frac{N}{M}\bigr)$ oracle calls required classically.
+That is, $R = \mathbb{O}\bigl(\sqrt{\frac{N}{M}}\bigr)$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with a $\mathbb{O}\bigl(\frac{M}{N}\bigr)$ error; a quadratic improvement over the $\mathbb{O}\bigl(\frac{N}{M}\bigr)$ oracle calls required classically.
 
 \subsubsection{An example with $M$ = 1 and $N$ = 4}
-If we have $N = 4$ items and only a solution in the classical case an average of $N/2 = 2$ subroutine calls would be needed to find the solution ($4$ in the worst case).
-With the quantum search algorithm we have $\sin{\frac{\theta}{2}} = \sqrt{\frac{M}{N}} = \frac{1}{2}$ and thus $\frac{\theta}{2} = \frac{\pi}{6}$ and $\theta = \frac{\pi}{3}$. After one $\hat{G}$ iteration then, according to~\ref{eq:beta-projection}, we rotate $\ket{\psi}$ to a $\frac{\pi}{2}$ angle with $\ket{\alpha}$; that is, it lines up with $\ket{\beta}$.
+If we have $N = 4$ items and only a solution in the classical case an average of $\frac{N}{2} = 2$ subroutine calls would be needed to find the solution ($4$ in the worst case).
+With the quantum search algorithm we have $\sin{\frac{\theta}{2}} = \sqrt{\frac{M}{N}} = \frac{1}{2}$ and thus $\frac{\theta}{2} = \frac{\pi}{6}$ and $\theta = \frac{\pi}{3}$. After one $\hat{G}$ iteration then, according to~\ref{eq:Gk}, we rotate $\ket{\psi}$ to a $\frac{\pi}{2}$ angle with $\ket{\alpha}$; that is, it lines up with $\ket{\beta}$.
 
 When we measure by projecting onto the computational basis, we obtain the result $\ket{\beta}$ with certainty with just one iteration, a notable improvement over the classical case.
 
 \subsection{Number of solutions}\label{sec:M}
-Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$..} $\theta=\arcsin(2\sqrt{M(N-M)}/N)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. As a result the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
+Until now we assumed that $M\leq \frac{N}{2}$; if $M \geq \frac{N}{2}$ from the expression\footnote{We can demonstrate that $\sin\theta = 2\sqrt{\frac{M(N-M)}{N}}$.} $\theta=\arcsin(2\frac{\sqrt{M(N-M)}}{N})$ we can see that $\theta$ get smaller as $M$ increase from $\frac{N}{2}$ to $N$. As a result the number of iterations needed by the search algorithm increases with $M$, for $M\geq \frac{N}{2}$.
 
 We can distinguish two scenarios:
 \begin{description}
-   \item[$M$ is known] If $M$ is known \textbf{a priori} to be larger than $N/2$ then we can just randomly pick an item from the search space, and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
-   \item[$M$ is not known] In the case where it isn't known whether $M\geq N/2$ we double the number of elements in the search space by adding $N$ extra items to the search space, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. A new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$, as defined in~\ref{eq:upper-bound}, calls to the subroutine are required, and it follows that $\mathbb{O}(N/M)$ calls to $\hat{U}_\beta$ are required to perform the search.
+   \item[$M$ is known] If $M$ is known \emph{a priori} to be larger than $\frac{N}{2}$ then we can just randomly pick an item from the search space and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
+   \item[$M$ is not known] In the case where it isn't known whether $M\geq \frac{N}{2}$ we double the number of elements in the search space by adding $N$ extra items to it, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. We then create a new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$ calls to the subroutine are required, with $R$ as defined in~\ref{eq:upper-bound}; it follows that $\mathbb{O}(\frac{N}{M})$ calls to $\hat{U}_\beta$ are required to perform the search.
+   
 \end{description}
 \subsection{Optimality of the search algorithm}
 We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}:
@@ -82,16 +83,20 @@ We take for granted some basic definitions of classical computational complexity
 There are some evidence~\cite{Bennett_1997} that $\textbf{BQP} \neq \textbf{BPP}$ (i.e. polynomial-time quantum Turing machines are more powerful than polynomial-time probabilistic Turing machines). Since \textbf{BPP} is regarded as the class of all efficiently computable languages, this provides evidence that quantum computers could be inherently more powerful than classical computers in a model-independent way.
 
 However exactly where \textbf{BQP} fits with respect to \textbf{P}, \textbf{NP} and \textbf{PSPACE} is as yet unknown. What is known is that quantum computers can solve all the problems in \textbf{P} efficiently and that there are no problems outside of \textbf{PSPACE} which they can solve efficiently. Therefore, \textbf{BQP} lies somewhere between \textbf{P} and \textbf{PSPACE}.
-Proving that $\textbf{BQP} \neq \textbf{BPP}$ would definitively establish that $\textbf{P} \neq \textbf{PSPACE}$ solving a major problem in computer science.
-
-
-\begin{figure}
+It has been demonstrated that
+\begin{equation*}
+   \textbf{P}   \subseteq \textbf{BPP} \subseteq \textbf{BQP}  \subseteq \textbf{PSPACE}
+\end{equation*}
+and so proving that $\textbf{BPP} \subset \textbf{BQP}$ would definitively establish that $\textbf{P} \subset \textbf{PSPACE}$, solving a major outstanding problem in computer science.
+\begin{figure}[htb]
 \includegraphics{computational-complexity.png}
 \centering
 \caption{The relationship between classical and quantum complexity classes.}
 \end{figure}
-We know that we can adopt the quantum search algorithm to solve any \textbf{NP} problem, where the subroutine checks all the proposed solutions to the problem.
-The fact that the quantum search algorithm is optimal means that it is not possible to search an $N$ item search space using $\mathbb{O}(\log_2{N})$ calls of $\hat{U}_\beta$. If such an algorithm existed, it would allow us to solve \textbf{NP}-complete problems efficiently on a quantum computer.
 
-This does not rule out the possibility that \textbf{NP} $\subseteq$ \textbf{BQP}. What this result do establish is that there is no a search-based method for attacking \textbf{NP}-complete problems.
-However we note that many researchers believe that the search space of \textbf{NP}-complete problems has no structure and that the best possible method for solving such problems is to adopt a search method. And for many problems in the \textbf{NP}-complete class there is no better method known than exhaustive search of all the possible solution. If one takes this point of view this indicates that \textbf{BQP} does not contain the \textbf{NP}-complete problems.
+Another open computational problem is $\textbf{NP} \stackrel{?}{\subseteq} \textbf{BQP}$.
+We know that we can adopt the quantum search algorithm to solve any \textbf{NP}-complete\footnote{We can demonstrate that solving \textbf{NP}-complete problems in polynomial times would mean solving every other \textbf{NP} problem in polynomial time.} problem, with the subroutine checking all the proposed solutions to it.
+The fact that the quantum search algorithm is optimal means that it is not possible to search an $N$ item search space using $\mathbb{O}(\log_2{N})$ calls of $\hat{U}_\beta$. If such an algorithm had existed, it would have allowed us to solve \textbf{NP}-complete problems efficiently on a quantum computer by transforming problems in \textbf{NP} into Grover-type search problems.
+
+This does not rule out the possibility that \textbf{NP} $\subset$ \textbf{BQP}. What this result do establish is that there is no search-based method for attacking \textbf{NP}-complete problems.
+However we note that it is widely believed that the search space of \textbf{NP}-complete problems has no structure and that the best possible method for solving such problems is to adopt an unstructured search method. Furthermore for many problems in the \textbf{NP}-complete class there is no better method known than exhaustive search of all the possible solution. If one takes this point of view this indicates that \textbf{BQP} does not contain \textbf{NP}-complete problems.

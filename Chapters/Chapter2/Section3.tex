@@ -17,7 +17,7 @@ We have shown that during the entire computation, the state of the algorithm is 
     \begin{bmatrix}
     a \\
     b
-    \end{bmatrix} 
+    \end{bmatrix}.
 \end{align*}
 In the basis $\{\ket{\beta}, \ket{\psi}\}$\footnote{This basis is neither orthogonal nor a basis of the whole space.} the operator $\hat{U_\psi}\hat{U}_\beta$ is given by the matrix:
 \begin{equation*}
@@ -32,7 +32,7 @@ In the basis $\{\ket{\beta}, \ket{\psi}\}$\footnote{This basis is neither orthog
     \begin{bmatrix}
     1 & 2/\sqrt{N} \\
     -2/\sqrt{N} & 1-4\sqrt{N}
-    \end{bmatrix} 
+    \end{bmatrix}.
 \end{equation*}
 The matrix, with $\frac{\theta}{2} = \arcsin{\frac{1}{\sqrt{N}}}$ obtained from~\ref{eq:beta-projection}, has the following Jordan form
 \begin{equation*}
@@ -46,7 +46,7 @@ The matrix, with $\frac{\theta}{2} = \arcsin{\frac{1}{\sqrt{N}}}$ obtained from~
   \end{equation*}
  with $M$ being the matrix diagonalizing the operators. It follows that after R iterations we have
 \begin{equation*}
-    (\hat{U_\psi}\hat{U}_\beta)^R = M  \begin{bmatrix}
+    (\hat{U}_\psi\hat{U}_\beta)^R = M  \begin{bmatrix}
     e^{Ri\theta} & 0 \\
     0 & e^{-Ri\theta}
     \end{bmatrix}  M^{-1}.
@@ -55,7 +55,7 @@ Using this form, we can use trigonometric identities to compute the probability 
 
 \begin{equation*}
    \abs*{ [\braket{\beta | \beta} \braket{\beta | \psi}]
-     (\hat{U_\psi}\hat{U}_\beta)^R \begin{bmatrix}
+     (\hat{U}_\psi\hat{U}_\beta)^R \begin{bmatrix}
      0 \\ 1
      \end{bmatrix} }^2= \sin^2\biggl(\frac{2R+1}{2}\theta\biggr)
 \end{equation*}

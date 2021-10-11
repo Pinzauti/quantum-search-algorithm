@@ -91,7 +91,7 @@ Until now no assumption were made about the number of solutions $M$, let's now g
 \end{enumerate}
    \item[Outputs] $x_0$.
    \item[Runtime] $R = \mathcal{O}(\sqrt{2^n})$ operations\footnote{$R$ has the exact value defined in~\ref{eq:upper-bound} as we will see in section~\ref{sec:performance}}. Succeeds with probability $\mathcal{O}(1)$.
-   \item[Prcedure] The iteration is the following:
+   \item[Procedure] The iteration is the following:
    \begin{enumerate}
   \item $\ket{0}^{\otimes n} \ket{0}$ \label{enum:initial-state}
   \item $\begin{aligned} \rightarrow \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x} \biggl[\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr] \end{aligned}$ \label{enum:hadamard}

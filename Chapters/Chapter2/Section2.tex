@@ -1,15 +1,15 @@
 \section{Geometric interpretation}\label{sec:geometric-interpretation}
-Here is a geometric interpretation of the Grover algorithm, following from the observation that the quantum state~\ref{eq:initial-state} stays in a two-dimensional subspace after each step of the algorithm. We will show that the Grover iteration can be regarded as a rotation in the two-dimensional subspace spanned by the startinc vector $\ket{\psi}$ and the state $\ket{\beta}$ consisting of a uniform superposition of solutions to the search problem. 
+Here is a geometric interpretation of the Grover algorithm, following from the observation that the quantum state~\ref{eq:initial-state} stays in a two-dimensional subspace after each step of the algorithm. We will show that the Grover iteration can be regarded as a rotation in the two-dimensional subspace spanned by the starting vector $\ket{\psi}$ and the state $\ket{\beta}$ consisting of a uniform superposition of solutions to the search problem. 
 
-We shall adopt the convection that $\sum_{x}^{''}$ indicates a sum over all $x$ which are solutions to the search problem, and $\sum_{x}^{'}$ indicates a sum over all $x$ which are note solutions to the search problem. Define normalized states.
+We shall adopt the convection that $\sum_{x}^{''}$ indicates a sum over all $x$ which are solutions to the search problem, and $\sum_{x}^{'}$ indicates a sum over all $x$ which are not solutions to the search problem. Define normalized states.
 
 \begin{equation*}
 \begin{split}
  \ket{\alpha} &\equiv \frac{1}{\sqrt{N-M}} \sum_{x}{}^{''} \ket{x} \\
- \ket{\beta} &\equiv \frac{1}{\sqrt{M}} \sum_{x}{}^{'} \ket{x}
+ \ket{\beta} &\equiv \frac{1}{\sqrt{M}} \sum_{x}{}^{'} \ket{x}.
 \end{split}
 \end{equation*}
-the initial state $\ket{\psi}$ may be expressed as:
+The initial state $\ket{\psi}$ may be expressed as:
 \begin{equation*}
     \ket{\psi} = \sqrt{\frac{N-M}{N}} \ket{\alpha} + \sqrt{\frac{M}{N}} \ket{\beta}
 \end{equation*}
@@ -22,7 +22,7 @@ The algorithm begins with the initial ket $\ket{\psi}$, which lies in the subspa
 \end{equation}
  The operator $\hat{U}_\psi = 2 \ket{\psi}\bra{\psi} - \hat{I}$ is a reflection through $\ket{\psi}$. Both operators $\ket{U}_\psi$ and $\ket{U}_\beta$ take states in the subspace spanned by $\ket{\alpha}$ and $\ket{\beta}$ to states in the subspace. The product of two reflections is a rotation. Therefore, the state space stays in this subspace for the entire algorithm (i.e. $G^k\ket{\psi}$ remains in the subspace spanned by $\ket{\alpha}$ and $\ket{\beta}$ for all $k$). 
  
- Let $\cos\theta/2 = \sqrt{(N-M)/N}$ so that $\ket{\psi} = \cos\theta/2\ket{\alpha} + \sin\theta/2\ket{\beta}$.  The effect of the two refelction is
+ Let $\cos\theta/2 = \sqrt{(N-M)/N}$ so that $\ket{\psi} = \cos\theta/2\ket{\alpha} + \sin\theta/2\ket{\beta}$.  The effect of the two reflections is
  
  \begin{equation*}
     \hat{G}\ket{\psi} = \cos\frac{3\theta}{2} \ket{\alpha} + \sin\frac{3\theta}{2} \ket{\beta}

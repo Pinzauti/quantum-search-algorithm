@@ -34,7 +34,7 @@ In the basis $\{\ket{\beta}, \ket{\psi}\}$\footnote{This basis is neither orthog
     -2/\sqrt{N} & 1-4\sqrt{N}
     \end{bmatrix} 
 \end{equation*}
-The matrix, defining $t=\arcsin{\frac{1}{\sqrt{N}}}$, has the following Jordan form
+The matrix, with $t\equiv \arcsin{\frac{1}{\sqrt{N}}}$, has the following Jordan form
 \begin{equation*}
     \hat{U}_\psi\hat{U}_\beta = M  \begin{bmatrix}
     e^{2it} & 0 \\
@@ -42,9 +42,9 @@ The matrix, defining $t=\arcsin{\frac{1}{\sqrt{N}}}$, has the following Jordan f
     \end{bmatrix}  M^{-1} \quad \text{where} \quad M = \begin{bmatrix}
     -i & i \\
     e^{it} & e^{-it}
-    \end{bmatrix}.
+    \end{bmatrix}
   \end{equation*}
- With $M$ being the matrix diagonalizing the operators. It follows that after R iterations we have
+ with $M$ being the matrix diagonalizing the operators. It follows that after R iterations we have
 \begin{equation*}
     (\hat{U_\psi}\hat{U}_\beta)^R = M  \begin{bmatrix}
     e^{2Rit} & 0 \\
@@ -68,5 +68,5 @@ We can reasonably imagine that a near-optimal time to distinguish would be when 
     \frac{1}{\cos t}\ket{\beta} - \frac{\sin t}{\cos t}\ket{\psi}
 \end{equation*}
 
-and a short calculation now shows that the observation yelds the correct answer $\beta$ with error $\mathcal{O}(\frac{1}{N})$
+and a short calculation now shows that the observation yields the correct answer $\beta$ with error $\mathcal{O}(\frac{1}{N})$
 \end{proof}

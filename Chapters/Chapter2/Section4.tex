@@ -21,27 +21,27 @@ Let us define some notation:
    
 
 \subsection{Performance}\label{sec:performance}
-Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. The initial state of the system is~\ref{eq:initial-state} so rotating through $\arccos{\sqrt{M/N}}$ radians to take the system to $\ket{\beta}$.
-\begin{defn}
-$\text{CI}(x)$ denote the integer closest to the real number $x$, rounded halves down.
-\end{defn}
-Then repeating the Grover iteration:
-\begin{equation}\label{eq:R}
-    R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
-\end{equation}
-times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. Substituting $\theta$ in~\ref{eq:beta-projection} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
-
-When $M<<N$ we have\footnote{\label{foot:sin}We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$.} $\theta \approx \sin\theta \approx 2\sqrt{M/N}$ an thus the angular error in the final state, recalling again~\ref{eq:beta-projection}, is at most $\theta/2 \approx \sqrt{M/N}$; giving a probability of error of at most $M/N$.
-
-We can find an upper bond for R. Note from \ref{eq:R}  that R has an upper bound $R \leq \pi/2\theta$, let us find now a lower bound on $\theta$, assuming that\footnote{We are going to discuss this limit in section~\ref{sec:M}.} $M \leq N/2$ we have:
+Following the geometric interpretation of section~\ref{sec:geometric-interpretation} we are going to calculate the number of iterations $R$ necessary for the algorithm to find the solution. Each iteration rotates the state in the plane determined by $\ket{\psi}$ and $\ket{\beta}$, after $R$ iterations, the state is rotated by $\frac{2R + 1}{2}\theta$ from the $\ket{\alpha}$ axis. To optimize the proability of finding the solutions when we perform the measurement we will iterate until this angle is close to $\frac{\pi}{2}$, or
 \begin{equation*}
-    \frac{\theta}{2} \geq \sin\frac{\theta}{2} = \sqrt{\frac{M}{N}}
+    \frac{2R + 1}{2}\theta \simeq \frac{\pi}{2} \Rightarrow 2R + 1 \simeq \frac{\pi}{\theta}
+\end{equation*}
+we recall equation~\ref{eq:beta-projection}, or
+\begin{equation*}
+    \theta = 2\sqrt{\frac{M}{N}}
+\end{equation*}
+for $M<<N$ and large $N$. If we choose
+\begin{equation*}
+    R = \frac{\pi}{4}\sqrt{\frac{N}{M}} \biggl[1+\mathbb{O}\biggl(\frac{M}{N}\biggr)\biggr],
+\end{equation*}
+then the probability of obtaining the measurement result $\ket{\beta}$ will be
+\begin{equation*}
+    \abs{\braket{\beta | \hat{G}^k | \psi}} = \sin^2\biggl(\frac{2R + 1}{2}\theta\biggr) = 1 - \mathbb{O}\biggl(\frac{M}{N}\biggl)
 \end{equation*}
 from which we can obtain an upper bound on the number of iterations required,
 \begin{equation}\label{eq:upper-bound}
     R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
 \end{equation}
-That is, $R = \mathbb{O}(\sqrt{N/M})$ $G$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with high probability, a quadratic improvement over the $\mathbb{O}(N/M)$ oracle calls required classically.
+That is, $R = \mathbb{O}\bigl(\sqrt{\frac{N}{M}}\bigr)$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with high probability and a $\mathbb{O}\bigl(\frac{M}{N}\bigr)$ error; a quadratic improvement over the $\mathbb{O}\bigl(\frac{N}{M}\bigr)$ oracle calls required classically.
 
 \subsubsection{An example with $M$ = 1 and $N$ = 4}
 If we have $N = 4$ items and only a solution in the classical case an average of $N/2 = 2$ subroutine calls would be needed to find the solution ($4$ in the worst case).
@@ -50,11 +50,11 @@ With the quantum search algorithm we have $\sin{\frac{\theta}{2}} = \sqrt{\frac{
 When we measure by projecting onto the computational basis, we obtain the result $\ket{\beta}$ with certainty with just one iteration, a notable improvement over the classical case.
 
 \subsection{Number of solutions}\label{sec:M}
-Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{See footnote~\ref{foot:sin}.} $\theta=\arcsin(2\sqrt{M(N-M)}/M)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. And then we see from~\ref{eq:R} the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
+Until now we assumed that $M\leq N/2$; if $M \geq N/2$ from the expression\footnote{We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$..} $\theta=\arcsin(2\sqrt{M(N-M)}/N)$ we can see that $\theta$ get smaller as $M$ increase from $N/2$ to $N$. As a result the number of iterations needed by the search algorithm increases with $M$, for $M\geq N/2$.
 
 We can distinguish two scenarios:
 \begin{description}
-   \item[$M$ is known] If $M$ is known in advance to be larger than $N/2$ then we can just randomly pick an item from the search space, and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
+   \item[$M$ is known] If $M$ is known \textbf{a priori} to be larger than $N/2$ then we can just randomly pick an item from the search space, and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
    \item[$M$ is not known] In the case where it isn't known whether $M\geq N/2$ we double the number of elements in the search space by adding $N$ extra items to the search space, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. A new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$, as defined in~\ref{eq:upper-bound}, calls to the subroutine are required, and it follows that $\mathbb{O}(N/M)$ calls to $\hat{U}_\beta$ are required to perform the search.
 \end{description}
 \subsection{Optimality of the search algorithm}

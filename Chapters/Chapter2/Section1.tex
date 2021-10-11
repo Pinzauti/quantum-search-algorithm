@@ -27,14 +27,14 @@ Initializing the system is obtained in $\mathcal{O}(\log_2{N})$ steps while step
 
 
 \begin{defn}
-We can demonstrate that the unitary operator corresponding to the phase shift in the iteration is $2\ket{0}\bra{0}-\hat{I}$. The combined effect of steps~\ref{enum:first-hadamard},\ref{enum:phase-shift} and~\ref{enum:second-hadamard} is then:
+We can demonstrate that the unitary operator corresponding to the phase shift in the iteration is $2\ket{0}\bra{0}-\hat{I}$. The combined effect of steps~\ref{enum:first-hadamard},\ref{enum:phase-shift} and~\ref{enum:second-hadamard} is then\footnote{Recall from~\ref{sec:hadamard} that $\hat{H}^{\otimes n} \ket{0} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1}\ket{x}$.}:
 \begin{equation*}
     \hat{H}^{\otimes n} (2\ket{0}\bra{0}-\hat{I}) \hat{H}^{\otimes n} =  2\ket{\psi}\bra{\psi}-\hat{I}
 \end{equation*}
 with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. Those steps may then be written as
-\begin{equation*}
+\begin{equation}\label{eq:psi-reflection}
     \hat{U}_\psi \equiv 2 \ket{\psi}\bra{\psi} - \hat{I}.
-\end{equation*}
+\end{equation}
 \end{defn}
 \begin{defn}
 We can define the Grover iteration as

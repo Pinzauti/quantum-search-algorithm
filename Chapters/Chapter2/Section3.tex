@@ -34,39 +34,31 @@ In the basis $\{\ket{\beta}, \ket{\psi}\}$\footnote{This basis is neither orthog
     -2/\sqrt{N} & 1-4\sqrt{N}
     \end{bmatrix} 
 \end{equation*}
-The matrix, with $t\equiv \arcsin{\frac{1}{\sqrt{N}}}$, has the following Jordan form
+The matrix, with $\frac{\theta}{2} = \arcsin{\frac{1}{\sqrt{N}}}$ obtained from~\ref{eq:beta-projection}, has the following Jordan form
 \begin{equation*}
     \hat{U}_\psi\hat{U}_\beta = M  \begin{bmatrix}
-    e^{2it} & 0 \\
-    0 & e^{-2it}
+    e^{i\theta} & 0 \\
+    0 & e^{-i\theta}
     \end{bmatrix}  M^{-1} \quad \text{where} \quad M = \begin{bmatrix}
     -i & i \\
-    e^{it} & e^{-it}
+    e^{i\theta/2} & e^{-i\theta/2}
     \end{bmatrix}
   \end{equation*}
  with $M$ being the matrix diagonalizing the operators. It follows that after R iterations we have
 \begin{equation*}
     (\hat{U_\psi}\hat{U}_\beta)^R = M  \begin{bmatrix}
-    e^{2Rit} & 0 \\
-    0 & e^{-2Rit}
+    e^{Ri\theta} & 0 \\
+    0 & e^{-Ri\theta}
     \end{bmatrix}  M^{-1}.
 \end{equation*}
-We can reasonably imagine that a near-optimal time to distinguish would be when the angles $2Rt$ and $-2Rt$ are as far apart as possible, which corresponds to $2Rt \approx \pi/2$, or $R=\pi/4t = \pi/4\arcsin(1/\sqrt{N}/4) \approx \pi \sqrt{N}/4$. Then the system is in the state
+Using this form, we can use trigonometric identities to compute the probability of observing $\beta$ after $R$ iterations
 
 \begin{equation*}
-    [\ket{\beta} \ket{\psi}]
+   \abs*{ [\braket{\beta | \beta} \braket{\beta | \psi}]
      (\hat{U_\psi}\hat{U}_\beta)^R \begin{bmatrix}
      0 \\ 1
-     \end{bmatrix} \approx 
-      [\ket{\beta} \ket{\psi}] M\begin{bmatrix}
-      i & 0 \\
-      0 & -i
-      \end{bmatrix} M^{-1}\begin{bmatrix}
-     0 \\ 1
-     \end{bmatrix}
-    =
-    \frac{1}{\cos t}\ket{\beta} - \frac{\sin t}{\cos t}\ket{\psi}
+     \end{bmatrix} }^2= \sin^2\biggl(\frac{2R+1}{2}\theta\biggr)
 \end{equation*}
 
-and a short calculation now shows that the observation yields the correct answer $\beta$ with error $\mathcal{O}(\frac{1}{N})$
+and we will show in section~\ref{sec:performance} that the observation yields the correct answer $\beta$ with error $\mathcal{O}(\frac{1}{N})$.
 \end{proof}

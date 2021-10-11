@@ -29,9 +29,9 @@ Then repeating the Grover iteration:
 \begin{equation}\label{eq:R}
     R = \text{CI}\biggl(\frac{\arccos{M/N}}{\theta}\biggr)
 \end{equation}
-times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. Recalling the state~\ref{eq:initial-state} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
+times rotates $\ket{\psi}$ to within an angle $\theta/2 \leq \pi/4$ of $\ket{\beta}$. According to~\ref{eq:beta-projection} we can see that observation of the state in the computational basis yields a solution with a probability at least $1/2$. 
 
-When $M<<N$ we have\footnote{\label{foot:sin}We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$.} $\theta \approx \sin\theta \approx 2\sqrt{M/N}$ an thus the angular error in the final state,, recalling again the state~\ref{eq:initial-state}, is at most $\theta/2 \approx \sqrt{M/N}$; giving a probability of error of at most $M/N$.
+When $M<<N$ we have\footnote{\label{foot:sin}We can demonstrate that $\sin\theta = 2\sqrt{M(N-M)}/N$.} $\theta \approx \sin\theta \approx 2\sqrt{M/N}$ an thus the angular error in the final state, recalling again~\ref{eq:beta-projection}, is at most $\theta/2 \approx \sqrt{M/N}$; giving a probability of error of at most $M/N$.
 
 We can find an upper bond for R. Note from \ref{eq:R}  that R has an upper bound $R \leq \pi/2\theta$, let us find now a lower bound on $\theta$, assuming that\footnote{We are going to discuss this limit in section~\ref{sec:M}.} $M \leq N/2$ we have:
 \begin{equation*}

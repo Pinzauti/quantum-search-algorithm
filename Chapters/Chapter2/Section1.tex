@@ -38,7 +38,7 @@ with $\ket{\psi}$ being the initial state in~\ref{eq:initial-state}. Those steps
 \end{defn}
 \begin{defn}
 We can define the Grover iteration as
-\begin{equation}\label{def:grover-iteration}
+\begin{equation}\label{eq:grover-iteration}
 G \equiv \hat{U}_\psi\hat{U}_\beta = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_\beta
 \end{equation}
 \end{defn}
@@ -53,17 +53,20 @@ G \equiv \hat{U}_\psi\hat{U}_\beta = (2 \ket{\psi}\bra{\psi} - \hat{I}) \hat{U}_
 \caption{Iteration $U_\psi U_\beta$}
 \end{figure}
 Each iteration of this loop increases the amplitude in the desired state by $\mathbb{O}(1/\sqrt{N})$, as a result in $\mathbb{O}(\sqrt{N})$ repetitions of the loop, the amplitude and hence the probability in the desired state reach $\mathbb{O}(1)$.
+
 \subsection{The subroutine}\label{sec:subroutine}
 Suppose we are supplied with a black box $f(x)$ whose internal workings are not important with the ability to recognize the solution\footnote{Note that there is a distinction between knowing the solution and being able to recognize the solution. If, for example, we want to find the prime factor of the number $m$ even without not knowing the prime factors we can explicitly construct a subroutine which recognizes a solution when it sees one.}:
 \begin{defn}
 Let's define the function $f: \{0,1,...,N-1\} \rightarrow \{0,1\}$ as follows
 \begin{equation*}
     \begin{cases}
-f(x) = 1  & \text{if $x$ is a solution to the search problem} \\
-f(x) = 0 & \text{if $x$ is not a solution to the search problem} 
+&f(x) = 1   \quad  x=\beta \\
+&f(x) = 0   \quad x\neq\beta
 \end{cases}
 \end{equation*}
+with $\beta$ solution to the search problem.
 \end{defn}
+But furthermore, it is a quantum subroutine, so it can respond to queries that are superpositions of states:
 \begin{defn}
 The subroutine $\hat{U}_\beta$ is a unitary operator defined by its action on the computational basis
 \begin{equation*}

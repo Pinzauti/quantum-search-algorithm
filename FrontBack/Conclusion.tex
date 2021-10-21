@@ -1,2 +1,34 @@
 \addtocontents{toc}{\protect\vspace{\beforebibskip}}
-\chapter{Conclusion}
+\chapter{Conclusions}
+We have shown how quantum computation inherently and significantly differs from classical computation.
+We have seen that in the entanglement which is absent in the classical world, or in the qubit which allows more than two possible states and finally with the fact that all the gates, being described by unitary operators, are necessarily reversible, unlike, again, in classical computation.
+
+\bigskip
+Grover's algorithm then, as we would have expected, is totally different from a classical search algorithm. We proved how the algorithm provides a quadratic speedup compared to its classical equivalent. It was also shown how it is possible to solve the problem that arises when the number of solutions is greater than half the number of items to search in.
+
+We have seen how the optimality of Grover's algorithm for unstructured search suggests (but does not prove) that quantum computers cannot solve \textbf{NP}-complete problems in polynomial time.
+
+\bigskip
+However, there are still many open questions.
+
+Grover's algorithm is described as a database search algorithm. Databases in existing applications are often
+too large to fit in one computer’s memory. They’re
+distributed through the network and searched in parallel, and records can be quickly added, copied, and
+modified. Distributed storage also facilitates redundancy, backup, and crash recovery.  Databases
+might temporarily experience exponential growth, as
+exemplified by the Web, but existing search infrastructures appear scalable enough for such applications, as Google’s continuing success shows. Grover’s
+algorithm, on the other hand, isn’t well-suited to
+searching databases of this kind because it demands a quantum superposition of all database
+records. Creating such a superposition, or using a superposition of indices in that capacity, seems to require localizing classical records in one place, which
+is impractical for the largest databases, and large databases is where the quadratic speed up of the algorithm is more useful.
+
+\bigskip
+Another problem is that Grover’s algorithm is mainly sensitive to the number of solutions, but not to the solutions themselves and not to input
+features (such as symmetries) that are sometimes exploited
+by classical algorithms.
+
+\bigskip
+In addition to that the algorithm should be tested on real quantum hardware to verify that these theoretical improvements really correspond to an actual speed up from an experimental point of view, considering especially quantum noise and the limited number of qubits available in the actual hardware at the time of writing.
+
+\bigskip
+In any case, it seems inevitable that this algorithm, and quantum computation in general, will play a fundamental role in the future of informatics, physics and probably even beyond that.

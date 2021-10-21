@@ -72,18 +72,20 @@ The subroutine $\hat{U}_\beta$ is a unitary operator defined by its action on th
 \begin{equation*}
     \ket{x}\ket{q} \xrightarrow{\hat{U}_\beta} \ket{x} \ket{q \oplus f(x)}
 \end{equation*}
-where $\ket{x}$ is the index register and $\ket{q}$ is an \emph{oracle qubit}, a single qubit which is flipped if $f(x) = 1$ and is unchanged otherwise.
+where $\ket{x}$ is the index register and $\ket{q}$ is an \emph{ancilla qubit}, a single qubit which is flipped if $f(x) = 1$ and is unchanged otherwise.
 \end{defn}
 
-It is useful to set the oracle qubit initially in the state $\ket{q} = \frac{\ket{0}-\ket{1}}{\sqrt{2}}$, the action of the subroutine is thus\footnote{If $x$ is not a solution, applying the subroutine to $\ket{q}$ leaves the state unchanged. On the other and if $x$ is a solution $\ket{q \oplus 1} = \frac{\ket{0 \oplus 1} - \ket{1 \oplus 1}}{\sqrt{2}} = \frac{\ket{1}-\ket{0}}{\sqrt{2}} = - \frac{\ket{0}-\ket{1}}{\sqrt{2}}$. And $\ket{x}$ is not affected by the value of $f(x)$.}:
+It is useful to set the ancilla qubit initially in the state $\ket{q} = \frac{\ket{0}-\ket{1}}{\sqrt{2}}$, the action of the subroutine is thus\footnote{If $x$ is not a solution, applying the subroutine to $\ket{q}$ leaves the state unchanged. On the other and if $x$ is a solution $\ket{q \oplus 1} = \frac{\ket{0 \oplus 1} - \ket{1 \oplus 1}}{\sqrt{2}} = \frac{\ket{1}-\ket{0}}{\sqrt{2}} = - \frac{\ket{0}-\ket{1}}{\sqrt{2}}$. And $\ket{x}$ is not affected by the value of $f(x)$.}:
 \begin{equation*}
     \hat{U}_\beta \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr) = (-1)^{f(x)} \ket{x} \biggl(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\biggr).
 \end{equation*}
-We can see that the state of the oracle qubit is not changed; it turns out that this remains  $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ throughout the iteration, and can therefore be omitted:
+We can see that the state of the ancilla qubit is not changed; it turns out that this remains  $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ throughout the iteration, and can therefore be omitted:
 \begin{equation*}
     \hat{U}_\beta \ket{x} = (-1)^{f(x)} \ket{x}.
 \end{equation*}
-The subroutine marks the solution by shifting the phase of the solution. Note that in an implementation it would involve a portion of the quantum system sensing the state and then deciding whether or not to rotate the phase. It would to it in a way so that no trace of the state of the system be left after this operation.
+The subroutine and its relative ancilla qubit is usually managed through techniques of \emph{uncomputation}\footnote{Uncomputation is a technique, used in reversible circuits, for cleaning up temporary effects on ancilla bits so they can be re-used.}.
+
+We have seen that the result of the subroutine is to mark the solution by shifting the phase of the solution. Note that in an implementation it would involve a portion of the quantum system sensing the state and then deciding whether or not to rotate the phase. It would to it in a way so that no trace of the state of the system be left after this operation.
 \subsection{Example with only one solution}
 Until now no assumption were made about the number of solutions $M$, let's now give a complete overview of the algorithm with $M=1$.
 \begin{description}

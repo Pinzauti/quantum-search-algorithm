@@ -11,7 +11,7 @@ The algorithm makes use of a single $n$ qubit register. It begins with the compu
 \begin{equation}\label{eq:initial-state}
    \ket{\psi} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1}\ket{x}
 \end{equation}
-where $\ket{x}$ is the index register and each index has the same probability amplitude (i.e. $\frac{1}{N}$).
+where $\ket{x} = \otimes_n \ket{q_n}$ is the index register and each index has the same probability amplitude (i.e. $\frac{1}{N}$).
 The iteration of the algorithm, called \emph{Grover iteration}, may be broken up in four steps:
 
 \begin{enumerate}

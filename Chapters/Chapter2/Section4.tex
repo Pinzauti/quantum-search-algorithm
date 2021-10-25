@@ -100,3 +100,9 @@ The fact that the quantum search algorithm is optimal means that it is not possi
 
 This does not rule out the possibility that \textbf{NP} $\subset$ \textbf{BQP}. What this result do establish is that there is no search-based method for attacking \textbf{NP}-complete problems.
 However we note that it is widely believed that the search space of \textbf{NP}-complete problems has no structure and that the best possible method for solving such problems is to adopt an unstructured search method. Furthermore for many problems in the \textbf{NP}-complete class there is no better method known than exhaustive search of all the possible solution. If one takes this point of view this indicates that \textbf{BQP} does not contain \textbf{NP}-complete problems.
+
+\subsection{Cryptography}
+The quantum search algorithm can be seen as an algorithm for function inversion. If we have a function $y=f(x)$ that can be evaluated on a quantum computer, the quantum search algorithm allow us to calculate $x$ when given $y$.
+
+Consequently, Grover's algorithm gives broad asymptotic speed-ups to many kinds of brute-force attacks on symmetric-key cryptography, including collision attacks\footnote{A collision attack on a cryptographic hash is a brute-force method that tries to find two inputs producing the same hash value.} and pre-image attacks\footnote{A pre-image attack on cryptographic hash functions is is a brute-force method that tries to find a message that has a specific hash value.}.
+The algorithm could brute-force a $128$-bit symmetric cryptographic key in $R = \mathbb{O} \biggl(\sqrt{\frac{N}{M}}\biggr) = \mathbb{O} (\sqrt{N}) = \mathbb{O} (\sqrt{2^{128}}) = \mathbb{O} (2^{64})$ iterations and a 256-bit key (the actual standard for cryptography) in $\mathbb{O} (2^{128})$ iterations. Because of that  it is sometimes suggested~\cite{10.1007/978-3-642-12929-2_6} that symmetric key lengths be doubled to protect against future quantum attacks.

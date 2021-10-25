@@ -59,17 +59,10 @@ We can distinguish two scenarios:
    
 \end{description}
 \subsection{Optimality of the search algorithm}
-We shall show that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{n})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}:
+It can be shown that no quantum algorithm can perform the task of searching through $N$ unsorted items using fewer than $\Omega(\sqrt{N})$ access to the subroutine\footnote{Again we restrict ourself in the case $M=1$.}, which means that
 \begin{theorem}
 The quantum search algorithm is asymptotically optimal. 
 \end{theorem}
-\begin{proof}
-TODO [...]
-
-To achieve a probability of success at least $1/2$ for finding a solution to the search problem we must call the oracle $\Omega(\sqrt{N})$ times.
-\end{proof}
-
-\subsection{Quantum computational complexity}
 We take for granted some basic definitions of classical computational complexity theory and we proceed defying
 \begin{defn}
 \textbf{BPP} is the class of languages that can be solved in polynomial time by probabilistic Turing machines with error probability bounded by $1/3$. Using standard boosting techniques the error probability can then be made exponentially small in $k$ by iterating the algorithm $k$ times.

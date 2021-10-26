@@ -1,9 +1,9 @@
 \section{Computational complexity}
 Let us define some notation.
-\begin{defn}[Big $\mathbb{O}$ notation]
+\begin{defn}[Big $\mathcal{O}$ notation]
    Let $f$ be a real or complex valued function and $g$ a real valued function. Let both functions be defined on some unbounded subset of positive real numbers. One writes
    \begin{equation*}
-       f(x) = \mathbb{O}(g(x)) \quad \text{as} \quad x \rightarrow a
+       f(x) = \mathcal{O}(g(x)) \quad \text{as} \quad x \rightarrow a
    \end{equation*}
    if 
    \begin{equation*}
@@ -15,7 +15,7 @@ Let us define some notation.
    \begin{equation*}
        f(x) = \Omega(g(x))
     \Longleftrightarrow
-      g(x) = \mathbb{O}(f(x)).
+      g(x) = \mathcal{O}(f(x)).
    \end{equation*}
    \end{defn}
    
@@ -31,17 +31,17 @@ we recall equation~\ref{eq:beta-projection} which we can approximate to
 \end{equation*}
 for $M<<N$ and large $N$. If we choose
 \begin{equation*}
-    R = \frac{\pi}{4}\sqrt{\frac{N}{M}} \biggl[1+\mathbb{O}\biggl(\frac{M}{N}\biggr)\biggr],
+    R = \frac{\pi}{4}\sqrt{\frac{N}{M}} \biggl[1+\mathcal{O}\biggl(\frac{M}{N}\biggr)\biggr],
 \end{equation*}
 then the final probability of obtaining the measurement result $\ket{\beta}$ will be
 \begin{equation*}
-    \abs{\braket{\beta | \hat{G}^k | \psi}} = \sin^2\biggl(\frac{2R + 1}{2}\theta\biggr) = 1 - \mathbb{O}\biggl(\frac{M}{N}\biggl)
+    \abs{\braket{\beta | \hat{G}^k | \psi}} = \sin^2\biggl(\frac{2R + 1}{2}\theta\biggr) = 1 - \mathcal{O}\biggl(\frac{M}{N}\biggl)
 \end{equation*}
 from which we can obtain an upper bound on the number of iterations required,
 \begin{equation}\label{eq:upper-bound}
     R \leq \frac{\pi}{4} \sqrt{\frac{N}{M}}.
 \end{equation}
-That is, $R = \mathbb{O}\bigl(\sqrt{\frac{N}{M}}\bigr)$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with a $\mathbb{O}\bigl(\frac{M}{N}\bigr)$ error; a quadratic improvement over the $\mathbb{O}\bigl(\frac{N}{M}\bigr)$ oracle calls required classically.
+That is, $R = \mathcal{O}\bigl(\sqrt{\frac{N}{M}}\bigr)$ iterations (and thus subroutine calls) must be performed in order to obtain a solution with a $\mathcal{O}\bigl(\frac{M}{N}\bigr)$ error; a quadratic improvement over the $\mathcal{O}\bigl(\frac{N}{M}\bigr)$ oracle calls required classically.
 
 \subsubsection{An example with $M$ = 1 and $N$ = 4}
 If we have $N = 4$ items and only a solution in the classical case an average of $\frac{N}{2} = 2$ subroutine calls would be needed to find the solution ($4$ in the worst case).
@@ -55,7 +55,7 @@ Until now we assumed that $M\leq \frac{N}{2}$; if $M \geq \frac{N}{2}$ from the 
 We can distinguish two scenarios:
 \begin{description}
    \item[$M$ is known] If $M$ is known \emph{a priori} to be larger than $\frac{N}{2}$ then we can just randomly pick an item from the search space and then check that it is a solution using the subroutine. This approach has a success probability at least one-half, and only requires one consultation with the oracle.
-   \item[$M$ is not known] In the case where it isn't known whether $M\geq \frac{N}{2}$ we double the number of elements in the search space by adding $N$ extra items to it, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. We then create a new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$ calls to the subroutine are required, with $R$ as defined in~\ref{eq:upper-bound}; it follows that $\mathbb{O}\bigl(\frac{N}{M}\bigr)$ calls to $\hat{U}_\beta$ are required to perform the search.
+   \item[$M$ is not known] In the case where it isn't known whether $M\geq \frac{N}{2}$ we double the number of elements in the search space by adding $N$ extra items to it, none of which are solutions. We can do that adding a single qubit $\ket{x'}$ to the search index, doubling the number of items to be searched to $2N$. We then create a new augmented subroutine $\hat{U'}_\beta$ which marks an item only if it is a solution to the search problem and the extra bit is set to zero. The new search problem has then $M \leq 2N$ solutions and therefore running the algorithm with the subroutine $\hat{U'}_\beta$ at most $R$ calls to the subroutine are required, with $R$ as defined in~\ref{eq:upper-bound}; it follows that $\mathcal{O}\bigl(\frac{N}{M}\bigr)$ calls to $\hat{U}_\beta$ are required to perform the search.
    
 \end{description}
 \subsection{Optimality of the search algorithm}
@@ -89,7 +89,7 @@ and so proving that $\textbf{BPP} \subset \textbf{BQP}$ would definitively estab
 
 Another open computational problem is $\textbf{NP} \stackrel{?}{\subseteq} \textbf{BQP}$.
 We know that we can adopt the quantum search algorithm to solve any \textbf{NP}-complete\footnote{We can demonstrate that solving \textbf{NP}-complete problems in polynomial times would mean solving every other \textbf{NP} problem in polynomial time.} problem, with the subroutine checking all the proposed solutions to it.
-The fact that the quantum search algorithm is optimal means that it is not possible to search an $N$ item search space using $\mathbb{O}(\log_2{N})$ calls of $\hat{U}_\beta$. If such an algorithm had existed, it would have allowed us to solve \textbf{NP}-complete problems efficiently on a quantum computer by transforming problems in \textbf{NP} into Grover-type search problems.
+The fact that the quantum search algorithm is optimal means that it is not possible to search an $N$ item search space using $\mathcal{O}(\log_2{N})$ calls of $\hat{U}_\beta$. If such an algorithm had existed, it would have allowed us to solve \textbf{NP}-complete problems efficiently on a quantum computer by transforming problems in \textbf{NP} into Grover-type search problems.
 
 This does not rule out the possibility that \textbf{NP} $\subset$ \textbf{BQP}. What this result do establish is that there is no search-based method for attacking \textbf{NP}-complete problems.
 However we note that it is widely believed that the search space of \textbf{NP}-complete problems has no structure and that the best possible method for solving such problems is to adopt an unstructured search method. Furthermore for many problems in the \textbf{NP}-complete class there is no better method known than exhaustive search of all the possible solution. If one takes this point of view this indicates that \textbf{BQP} does not contain \textbf{NP}-complete problems.
@@ -98,4 +98,4 @@ However we note that it is widely believed that the search space of \textbf{NP}-
 The quantum search algorithm can be seen as an algorithm for function inversion. If we have a function $y=f(x)$ that can be evaluated on a quantum computer, the quantum search algorithm allow us to calculate $x$ when given $y$.
 
 Consequently, Grover's algorithm gives broad asymptotic speed-ups to many kinds of brute-force attacks on symmetric-key cryptography, including collision attacks\footnote{A collision attack on a cryptographic hash is a brute-force method that tries to find two inputs producing the same hash value.} and pre-image attacks\footnote{A pre-image attack on cryptographic hash functions is is a brute-force method that tries to find a message that has a specific hash value.}.
-The algorithm could brute-force a $128$-bit symmetric cryptographic key in $R = \mathbb{O} \biggl(\sqrt{\frac{N}{M}}\biggr) = \mathbb{O} (\sqrt{N}) = \mathbb{O} (\sqrt{2^{128}}) = \mathbb{O} (2^{64})$ iterations and a 256-bit key (the actual standard for cryptography) in $\mathbb{O} (2^{128})$ iterations. Because of that  it is sometimes suggested~\cite{10.1007/978-3-642-12929-2_6} that symmetric key lengths be doubled to protect against future quantum attacks.
+The algorithm could brute-force a $128$-bit symmetric cryptographic key in $R = \mathcal{O} \biggl(\sqrt{\frac{N}{M}}\biggr) = \mathcal{O} (\sqrt{N}) = \mathcal{O} (\sqrt{2^{128}}) = \mathcal{O} (2^{64})$ iterations and a 256-bit key (the actual standard for cryptography) in $\mathcal{O} (2^{128})$ iterations. Because of that  it is sometimes suggested~\cite{10.1007/978-3-642-12929-2_6} that symmetric key lengths be doubled to protect against future quantum attacks.

@@ -66,6 +66,6 @@ If as in~\ref{eq:beta-projection}
 \begin{equation*}
     \abs{\braket{\beta | \hat{U} |0}} \equiv \sin\frac{\theta}{2}
 \end{equation*}
-we can then replace in the Grover iteration  $\hat{U}_\psi$ with $\hat{U}$ and $\ket{\alpha}$ with $\hat{U}\ket{0}$ and obtaining the same conclusions.
+we can then replace in the Grover iteration  $\hat{U}_\psi$ with $2\hat{U}\ket{0}\bra{0}\hat{U}^\dag -\hat{I}$ and $\ket{\psi}$ with $\hat{U}\ket{0}$ and obtaining the same conclusions.
 
 Therefore we can still search a database if we replace $\hat{H}^{\otimes n}$ by $\hat{U}$ in the algorithm. But if we don't have any information about which state is the solution then $\hat{H}^{\otimes n}$ is the best choice as it generates a known overlap of the state with each solution state and furthermore it has the largest average overlap with all the possible solution states as Hadamard gives a superposition state where each index as the same probability amplitude. If however we do have some information about the solution states it can be useful to use another specific unitary operator.

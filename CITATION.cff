@@ -1,15 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this work in your research, please cite the following."
-preferred-citation:
-- type: unpublished
+title: Quantum Search Algorithm
+message: If you want to use this work, please cite it as below.
+type: unpublished
 authors:
-- family-names: Pinzauti
-  given-names: Francesco
-title: "Quantum Search Algorithm"
-year: 2021
-department: School of Mathemtical, Physical and Natural Sciences
-institution:
-- name: "Università degli Studi di Firenze"
-city: Florence
-country: IT
-
+  - given-names: Francesco
+    family-names: Pinzauti

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this work in your research, please cite the following."
-references:
+preferred-citation:
 - type: unpublished
 authors:
 - family-names: Pinzauti
@@ -10,6 +10,6 @@ year: 2021
 department: School of Mathemtical, Physical and Natural Sciences
 institution:
 - name: "Università degli Studi di Firenze"
-city: Firenze
+city: Florence
 country: IT
 

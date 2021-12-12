@@ -4,9 +4,8 @@ references:
 - type: unpublished
 authors:
 - family-names: Pinzauti
-given-names: Francesco
+  given-names: Francesco
 title: "Quantum Search Algorithm"
-thesis-type: Master
 year: 2021
 department: School of Mathemtical, Physical and Natural Sciences
 institution:

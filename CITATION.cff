@@ -1,16 +1,16 @@
 cff-version: 1.2.0
 message: "If you use this work in your research, please cite the following."
 references:
-  - type: unpublished
-    authors:
-      - family-names: Pinzauti
-        given-names: Francesco
-    title: "Quantum Search Algorithm"
-    thesis-type: Master
-    year: 2021
-    department: School of Mathemtical, Physical and Natural Sciences
-    institution:
-      - name: "Università degli Studi di Firenze"
-        city: Firenze
-        country: IT
+- type: unpublished
+authors:
+- family-names: Pinzauti
+given-names: Francesco
+title: "Quantum Search Algorithm"
+thesis-type: Master
+year: 2021
+department: School of Mathemtical, Physical and Natural Sciences
+institution:
+- name: "Università degli Studi di Firenze"
+city: Firenze
+country: IT
 

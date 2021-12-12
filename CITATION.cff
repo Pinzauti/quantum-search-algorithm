@@ -1,14 +1,16 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use this work in your research, please cite the following."
+references:
+- type: thesis
 authors:
-- family-names: "YOUR_NAME_HERE"
-  given-names: "YOUR_NAME_HERE"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-- family-names: "Lisa"
-  given-names: "Mona"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "quantum-search-algorithm"
-version: 1.0.0
-doi: 10.5281/zenodo.1234
-date-released: 2021-12-12
-url: "https://github.com/Pinzauti/quantum-search-algorithm"
+- family-names: Pinzauti
+  given-names: Francesco
+title: "Quantum Search Algorithm"
+thesis-type: Master
+year: 2021
+department: School of Mathemtical, Physical and Natural Sciences
+institution:
+- name: "Università degli Studi di Firenze"
+city: Firenze
+country: IT
+

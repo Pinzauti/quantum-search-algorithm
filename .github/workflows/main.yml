@@ -13,14 +13,14 @@ jobs:
           pre_compile: "tlmgr update --self && tlmgr update --all"
           args: "-g -pdf -file-line-error -halt-on-error -interaction=nonstopmode"
           root_file: |
-            main.tex
-            main-frn.tex
-            main.tex
+            src/main.tex
+            src/main-frn.tex
+            src/main.tex
 
       - name: Upload to Netlify     
         uses: MrFlynn/upload-to-netlify-action@v2
         with:
-          source-file: "main.pdf"
+          source-file: "src/main.pdf"
           destination-path: "/thesis.pdf"
           site-name: quantum-search-algorithm
           netlify-token: ${{ secrets.NETLIFY_TOKEN }}
